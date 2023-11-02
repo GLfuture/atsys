@@ -1,0 +1,2 @@
+/usr/bin/ar qc libglobal.a  CMakeFiles/global.dir/global.cc.o CMakeFiles/global.dir/init.cc.o
+/usr/bin/ranlib libglobal.a

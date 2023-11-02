@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../../include/api/api_base.h
+context.h
+../../include/api/context.h
+
+../../include/api/context.h
+memory
+-
+
+../../include/api/login_api.h
+api_base.h
+../../include/api/api_base.h
+
+/home/gong/projects/attendance/src/api/login_api.cc
+api/login_api.h
+/home/gong/projects/attendance/src/api/api/login_api.h
+
