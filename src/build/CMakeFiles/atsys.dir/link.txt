@@ -1,1 +1,0 @@
-/usr/bin/c++  -g  -rdynamic CMakeFiles/atsys.dir/main.cc.o  -o atsys   -L/home/gong/projects/attendance/src/../lib  -Wl,-rpath,/home/gong/projects/attendance/src/../lib: -lspdlog api/libapi.a app/libapp.a layer/liblayer.a global/libglobal.a -lMySqlPool -lMySql -lmysqlclient layer/liblayer.a api/libapi.a -lpthread -lreactor base/libbase.a -lyaml-cpp 

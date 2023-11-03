@@ -14,8 +14,6 @@ public:
     int start(uint32_t port,uint32_t backlog,uint16_t event_num);
     Reactor::Ptr Get_Reactor(int i){    return reactors[i]; }
     Server_Base::Ptr Get_Server(int i ){    return workers[i];  }
-    
-
 private:
     std::vector<Reactor::Ptr> reactors;
     std::vector<Server_Base::Ptr> workers;

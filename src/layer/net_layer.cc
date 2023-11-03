@@ -34,7 +34,7 @@ int Net_Layer::start(uint32_t port,uint32_t backlog,uint16_t event_num)
         int timerfd = workers[i]->Start_Timer();
         workers[i]->callback.Accept_cb = std::bind(global_accept_cb,i);
         workers[i]->callback.Read_cb = std::bind(global_read_cb,i);
-        workers[i]->callback.Write_cb = std::bind(global_read_cb,i);
+        workers[i]->callback.Write_cb = std::bind(global_write_cb,i);
         workers[i]->callback.Exit_cb = std::bind(global_exit_cb,i);
         reactors[i] = std::make_shared<Reactor>(event_num);
         reactors[i]->Add_Reactor(epfd,fd,EPOLLIN);

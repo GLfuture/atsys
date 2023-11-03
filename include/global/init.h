@@ -10,8 +10,8 @@ extern int init_conf(const std::string& filename);
 extern void init_callback(App::Ptr app);
 
 
-void Accept_cb(int workerid,Net_Layer::Ptr net_level);
+void Accept_cb(int workerid,Net_Layer::Ptr net_layer);
 void Read_cb(int workerid,App::Ptr app_ptr);
-void Write_cb(int workerid,Net_Layer::Ptr net_level);
-void Exit_cb(int workerid,Net_Layer::Ptr net_level);
+void Write_cb(int workerid,Net_Layer::Ptr net_layer);
+void Exit_cb(int workerid,Net_Layer::Ptr net_layer);
 #endif

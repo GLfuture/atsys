@@ -1,0 +1,199 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "src",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5,
+						6
+					],
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "src/api",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/api",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "src/app",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/app",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "src/base",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/base",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "src/layer",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/layer",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "src/global",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/global",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					],
+					"name" : "atsys",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "api::@f0e24b7f04f99860965c",
+					"jsonFile" : "target-api-Debug-9c20b1ae481f0ed51da8.json",
+					"name" : "api",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "app::@ff93792cf40911dae1b8",
+					"jsonFile" : "target-app-Debug-db09e281e6ecae1030e3.json",
+					"name" : "app",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "atsys::@145eef247bfb46b6828c",
+					"jsonFile" : "target-atsys-Debug-ddf367498b7c7de36729.json",
+					"name" : "atsys",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "base::@da17c8cd1000ca7e4b79",
+					"jsonFile" : "target-base-Debug-a1ba764a25ae894458a7.json",
+					"name" : "base",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "global::@ed15893da2232e6a601b",
+					"jsonFile" : "target-global-Debug-d76055a82e297fa1d31a.json",
+					"name" : "global",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "layer::@1c728babf99f9e00369f",
+					"jsonFile" : "target-layer-Debug-eb63c0a57dc86bed2093.json",
+					"name" : "layer",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/gong/projects/attendance/build",
+		"source" : "/home/gong/projects/attendance"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

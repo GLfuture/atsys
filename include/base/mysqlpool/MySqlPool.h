@@ -20,6 +20,7 @@ private:
 class MySqlPool
 {
 public:
+    using Ptr = std::shared_ptr<MySqlPool>;
     MySqlPool(){}
 
     MySqlPool(const MySqlPool& pool)

@@ -1,6 +1,6 @@
 #include "base/parser/parser.h"
 
-int Parser_NSP::Parser_Json::Prase(const std::string& content)
+int Parser_NSP::Parser_Json::Parse(const std::string& content)
 {
     rapidjson::Document doc;
     doc.Parse(content.c_str());
@@ -14,14 +14,14 @@ int Parser_NSP::Parser_Json::Prase(const std::string& content)
 }
 
 
-int Parser_NSP::Parser_Yaml::Prase(const std::string& content)
+int Parser_NSP::Parser_Yaml::Parse(const std::string& content)
 {
     m_root = YAML::Load(content);
     if(m_root.IsNull()) return PARSE_ERROR;
     return OK;
 }
 
-int Parser_NSP::Parser_Config::Prase(const std::string &content)
+int Parser_NSP::Parser_Config::Parse(const std::string &content)
 {
     std::stringstream iss(content);
     std::string line;

@@ -1,0 +1,52 @@
+[
+{
+  "directory": "/home/gong/projects/attendance/build/src",
+  "command": "/usr/bin/g++   -I/home/gong/projects/attendance/include  -g   -std=gnu++17 -o CMakeFiles/atsys.dir/main.cc.o -c /home/gong/projects/attendance/src/main.cc",
+  "file": "/home/gong/projects/attendance/src/main.cc"
+},
+{
+  "directory": "/home/gong/projects/attendance/build/src/api",
+  "command": "/usr/bin/g++   -I/home/gong/projects/attendance/include  -g   -std=gnu++17 -o CMakeFiles/api.dir/login_api.cc.o -c /home/gong/projects/attendance/src/api/login_api.cc",
+  "file": "/home/gong/projects/attendance/src/api/login_api.cc"
+},
+{
+  "directory": "/home/gong/projects/attendance/build/src/app",
+  "command": "/usr/bin/g++   -I/home/gong/projects/attendance/include  -g   -std=gnu++17 -o CMakeFiles/app.dir/app.cc.o -c /home/gong/projects/attendance/src/app/app.cc",
+  "file": "/home/gong/projects/attendance/src/app/app.cc"
+},
+{
+  "directory": "/home/gong/projects/attendance/build/src/base",
+  "command": "/usr/bin/g++   -I/home/gong/projects/attendance/include  -g   -std=gnu++17 -o CMakeFiles/base.dir/CachePool.cc.o -c /home/gong/projects/attendance/src/base/CachePool.cc",
+  "file": "/home/gong/projects/attendance/src/base/CachePool.cc"
+},
+{
+  "directory": "/home/gong/projects/attendance/build/src/base",
+  "command": "/usr/bin/g++   -I/home/gong/projects/attendance/include  -g   -std=gnu++17 -o CMakeFiles/base.dir/configer.cc.o -c /home/gong/projects/attendance/src/base/configer.cc",
+  "file": "/home/gong/projects/attendance/src/base/configer.cc"
+},
+{
+  "directory": "/home/gong/projects/attendance/build/src/base",
+  "command": "/usr/bin/g++   -I/home/gong/projects/attendance/include  -g   -std=gnu++17 -o CMakeFiles/base.dir/parser.cc.o -c /home/gong/projects/attendance/src/base/parser.cc",
+  "file": "/home/gong/projects/attendance/src/base/parser.cc"
+},
+{
+  "directory": "/home/gong/projects/attendance/build/src/layer",
+  "command": "/usr/bin/g++   -I/home/gong/projects/attendance/include  -g   -std=gnu++17 -o CMakeFiles/layer.dir/event_layer.cc.o -c /home/gong/projects/attendance/src/layer/event_layer.cc",
+  "file": "/home/gong/projects/attendance/src/layer/event_layer.cc"
+},
+{
+  "directory": "/home/gong/projects/attendance/build/src/layer",
+  "command": "/usr/bin/g++   -I/home/gong/projects/attendance/include  -g   -std=gnu++17 -o CMakeFiles/layer.dir/net_layer.cc.o -c /home/gong/projects/attendance/src/layer/net_layer.cc",
+  "file": "/home/gong/projects/attendance/src/layer/net_layer.cc"
+},
+{
+  "directory": "/home/gong/projects/attendance/build/src/global",
+  "command": "/usr/bin/g++   -I/home/gong/projects/attendance/include  -g   -std=gnu++17 -o CMakeFiles/global.dir/global.cc.o -c /home/gong/projects/attendance/src/global/global.cc",
+  "file": "/home/gong/projects/attendance/src/global/global.cc"
+},
+{
+  "directory": "/home/gong/projects/attendance/build/src/global",
+  "command": "/usr/bin/g++   -I/home/gong/projects/attendance/include  -g   -std=gnu++17 -o CMakeFiles/global.dir/init.cc.o -c /home/gong/projects/attendance/src/global/init.cc",
+  "file": "/home/gong/projects/attendance/src/global/init.cc"
+}
+]

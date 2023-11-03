@@ -27,7 +27,7 @@ namespace Parser_NSP {
       };
       using Ptr = std::shared_ptr<Parser_Base>;
 
-      virtual int Prase(const std::string& content) = 0;
+      virtual int Parse(const std::string& content) = 0;
 
       virtual ~Parser_Base(){}
     };
@@ -39,7 +39,7 @@ namespace Parser_NSP {
       using Ptr = std::shared_ptr<Parser_Json>;
       using Value = rapidjson::Value;
 
-      int Prase(const std::string& content) override; 
+      int Parse(const std::string& content) override; 
 
       template<class T>
       inline int Get_Value(const rapidjson::Value& root,const std::string& key,T& value)
@@ -48,7 +48,7 @@ namespace Parser_NSP {
         return VALUE_TYPE_ERROR;
       }
 
-      Value& Get_Root()
+      const Value& Get_Root()
       {
         return m_root;
       }
@@ -61,7 +61,7 @@ namespace Parser_NSP {
     public:
       using Ptr = std::shared_ptr<Parser_Yaml>;
       using Value = YAML::Node;
-      int Prase(const std::string& content) override; 
+      int Parse(const std::string& content) override; 
 
       template <class T>
       inline int Get_Value(const YAML::Node &root,const std::string& key ,T& value)
@@ -96,7 +96,7 @@ namespace Parser_NSP {
       using Ptr = std::shared_ptr<Parser_Config>;
 
 
-      int Prase(const std::string& content) override;
+      int Parse(const std::string& content) override;
 
       int Get_Value(const std::string& key,std::string& value);
       

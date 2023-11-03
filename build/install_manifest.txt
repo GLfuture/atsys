@@ -1,0 +1,1 @@
+/home/gong/projects/attendance/build/../sbin/atsys
