@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/base.dir/CachePool.cc.o"
   "CMakeFiles/base.dir/configer.cc.o"
+  "CMakeFiles/base.dir/encoder.cc.o"
   "CMakeFiles/base.dir/parser.cc.o"
   "libbase.a"
   "libbase.pdb"

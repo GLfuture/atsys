@@ -12,7 +12,7 @@ namespace Configer_NSP
     protected:
         int Read_Conf(const std::string &filepath, std::string &result);
     };
-
+#if 0
     class Json_Configer:public Configer_Base
     {
     public:
@@ -23,7 +23,7 @@ namespace Configer_NSP
             Parser= std::make_shared<Parser_NSP::Parser_Json>();
         }
         
-        Json_Parser_Ptr Get_Parser()
+        Json_Parser_Ptr Get_Parser()s
         {
             return Parser;
         }
@@ -32,7 +32,7 @@ namespace Configer_NSP
     private:
         Json_Parser_Ptr Parser;
     };
-
+#endif
     class Yaml_Configer:public Configer_Base
     {
     public:

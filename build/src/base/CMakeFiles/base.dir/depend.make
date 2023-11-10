@@ -8,6 +8,9 @@ src/base/CMakeFiles/base.dir/configer.cc.o: ../include/base/parser/configer.h
 src/base/CMakeFiles/base.dir/configer.cc.o: ../include/base/parser/parser.h
 src/base/CMakeFiles/base.dir/configer.cc.o: ../src/base/configer.cc
 
+src/base/CMakeFiles/base.dir/encoder.cc.o: ../include/base/encoder/encoder.h
+src/base/CMakeFiles/base.dir/encoder.cc.o: ../src/base/encoder.cc
+
 src/base/CMakeFiles/base.dir/parser.cc.o: ../include/base/parser/parser.h
 src/base/CMakeFiles/base.dir/parser.cc.o: ../src/base/parser.cc
 

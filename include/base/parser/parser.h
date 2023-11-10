@@ -8,8 +8,10 @@
 #include <filesystem>
 #include <string.h>
 #include <yaml-cpp/yaml.h>
+#if 0
 #include <rapidjson/rapidjson.h>
 #include <rapidjson/document.h>
+#endif
 #include <type_traits>
 #include <vector>
 #include <spdlog/spdlog.h>
@@ -31,7 +33,7 @@ namespace Parser_NSP {
 
       virtual ~Parser_Base(){}
     };
-
+#if 0
     //解析json配置文件
     class Parser_Json : public Parser_Base
     {
@@ -55,7 +57,7 @@ namespace Parser_NSP {
     private:
       Value m_root;
     };
-
+#endif
     class Parser_Yaml : public Parser_Base
     {
     public:
@@ -106,7 +108,7 @@ namespace Parser_NSP {
 
 
 }
-
+#if 0
 //Config_Json的特化
 //int 特化
 template <>
@@ -266,4 +268,5 @@ inline int Parser_NSP::Parser_Json::Get_Value<rapidjson::Value>(const rapidjson:
   }
   return OK;
 }
+#endif
 #endif

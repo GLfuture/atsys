@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/gong/projects/attendance/src/base/CachePool.cc" "/home/gong/projects/attendance/build/src/base/CMakeFiles/base.dir/CachePool.cc.o"
   "/home/gong/projects/attendance/src/base/configer.cc" "/home/gong/projects/attendance/build/src/base/CMakeFiles/base.dir/configer.cc.o"
+  "/home/gong/projects/attendance/src/base/encoder.cc" "/home/gong/projects/attendance/build/src/base/CMakeFiles/base.dir/encoder.cc.o"
   "/home/gong/projects/attendance/src/base/parser.cc" "/home/gong/projects/attendance/build/src/base/CMakeFiles/base.dir/parser.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

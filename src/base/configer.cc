@@ -21,7 +21,7 @@ int Configer_NSP::Configer_Base::Read_Conf(const std::string &filepath, std::str
     result.assign(buffer,len);
     return 0;
 }
-
+#if 0
 int Configer_NSP::Json_Configer::Load_Conf(const std::string &filepath)
 {
     std::string content;
@@ -33,7 +33,7 @@ int Configer_NSP::Json_Configer::Load_Conf(const std::string &filepath)
     }
     return Parser->Parse(content);
 }
-
+#endif
 int Configer_NSP::Yaml_Configer::Load_Conf(const std::string &filepath)
 {
     Parser->Get_Root() = YAML::LoadFile(filepath);

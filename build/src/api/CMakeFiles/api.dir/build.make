@@ -57,9 +57,48 @@ include src/api/CMakeFiles/api.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/api/CMakeFiles/api.dir/flags.make
 
+src/api/CMakeFiles/api.dir/api_manager.cc.o: src/api/CMakeFiles/api.dir/flags.make
+src/api/CMakeFiles/api.dir/api_manager.cc.o: ../src/api/api_manager.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/api/CMakeFiles/api.dir/api_manager.cc.o"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/api.dir/api_manager.cc.o -c /home/gong/projects/attendance/src/api/api_manager.cc
+
+src/api/CMakeFiles/api.dir/api_manager.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/api.dir/api_manager.cc.i"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/projects/attendance/src/api/api_manager.cc > CMakeFiles/api.dir/api_manager.cc.i
+
+src/api/CMakeFiles/api.dir/api_manager.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/api.dir/api_manager.cc.s"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/projects/attendance/src/api/api_manager.cc -o CMakeFiles/api.dir/api_manager.cc.s
+
+src/api/CMakeFiles/api.dir/card_api.cc.o: src/api/CMakeFiles/api.dir/flags.make
+src/api/CMakeFiles/api.dir/card_api.cc.o: ../src/api/card_api.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/api/CMakeFiles/api.dir/card_api.cc.o"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/api.dir/card_api.cc.o -c /home/gong/projects/attendance/src/api/card_api.cc
+
+src/api/CMakeFiles/api.dir/card_api.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/api.dir/card_api.cc.i"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/projects/attendance/src/api/card_api.cc > CMakeFiles/api.dir/card_api.cc.i
+
+src/api/CMakeFiles/api.dir/card_api.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/api.dir/card_api.cc.s"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/projects/attendance/src/api/card_api.cc -o CMakeFiles/api.dir/card_api.cc.s
+
+src/api/CMakeFiles/api.dir/data_api.cc.o: src/api/CMakeFiles/api.dir/flags.make
+src/api/CMakeFiles/api.dir/data_api.cc.o: ../src/api/data_api.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/api/CMakeFiles/api.dir/data_api.cc.o"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/api.dir/data_api.cc.o -c /home/gong/projects/attendance/src/api/data_api.cc
+
+src/api/CMakeFiles/api.dir/data_api.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/api.dir/data_api.cc.i"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/projects/attendance/src/api/data_api.cc > CMakeFiles/api.dir/data_api.cc.i
+
+src/api/CMakeFiles/api.dir/data_api.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/api.dir/data_api.cc.s"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/projects/attendance/src/api/data_api.cc -o CMakeFiles/api.dir/data_api.cc.s
+
 src/api/CMakeFiles/api.dir/login_api.cc.o: src/api/CMakeFiles/api.dir/flags.make
 src/api/CMakeFiles/api.dir/login_api.cc.o: ../src/api/login_api.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/api/CMakeFiles/api.dir/login_api.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/api/CMakeFiles/api.dir/login_api.cc.o"
 	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/api.dir/login_api.cc.o -c /home/gong/projects/attendance/src/api/login_api.cc
 
 src/api/CMakeFiles/api.dir/login_api.cc.i: cmake_force
@@ -70,17 +109,68 @@ src/api/CMakeFiles/api.dir/login_api.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/api.dir/login_api.cc.s"
 	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/projects/attendance/src/api/login_api.cc -o CMakeFiles/api.dir/login_api.cc.s
 
+src/api/CMakeFiles/api.dir/logout_api.cc.o: src/api/CMakeFiles/api.dir/flags.make
+src/api/CMakeFiles/api.dir/logout_api.cc.o: ../src/api/logout_api.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/api/CMakeFiles/api.dir/logout_api.cc.o"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/api.dir/logout_api.cc.o -c /home/gong/projects/attendance/src/api/logout_api.cc
+
+src/api/CMakeFiles/api.dir/logout_api.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/api.dir/logout_api.cc.i"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/projects/attendance/src/api/logout_api.cc > CMakeFiles/api.dir/logout_api.cc.i
+
+src/api/CMakeFiles/api.dir/logout_api.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/api.dir/logout_api.cc.s"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/projects/attendance/src/api/logout_api.cc -o CMakeFiles/api.dir/logout_api.cc.s
+
+src/api/CMakeFiles/api.dir/register_api.cc.o: src/api/CMakeFiles/api.dir/flags.make
+src/api/CMakeFiles/api.dir/register_api.cc.o: ../src/api/register_api.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/api/CMakeFiles/api.dir/register_api.cc.o"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/api.dir/register_api.cc.o -c /home/gong/projects/attendance/src/api/register_api.cc
+
+src/api/CMakeFiles/api.dir/register_api.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/api.dir/register_api.cc.i"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/projects/attendance/src/api/register_api.cc > CMakeFiles/api.dir/register_api.cc.i
+
+src/api/CMakeFiles/api.dir/register_api.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/api.dir/register_api.cc.s"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/projects/attendance/src/api/register_api.cc -o CMakeFiles/api.dir/register_api.cc.s
+
+src/api/CMakeFiles/api.dir/user_api.cc.o: src/api/CMakeFiles/api.dir/flags.make
+src/api/CMakeFiles/api.dir/user_api.cc.o: ../src/api/user_api.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/api/CMakeFiles/api.dir/user_api.cc.o"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/api.dir/user_api.cc.o -c /home/gong/projects/attendance/src/api/user_api.cc
+
+src/api/CMakeFiles/api.dir/user_api.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/api.dir/user_api.cc.i"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/projects/attendance/src/api/user_api.cc > CMakeFiles/api.dir/user_api.cc.i
+
+src/api/CMakeFiles/api.dir/user_api.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/api.dir/user_api.cc.s"
+	cd /home/gong/projects/attendance/build/src/api && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/projects/attendance/src/api/user_api.cc -o CMakeFiles/api.dir/user_api.cc.s
+
 # Object files for target api
 api_OBJECTS = \
-"CMakeFiles/api.dir/login_api.cc.o"
+"CMakeFiles/api.dir/api_manager.cc.o" \
+"CMakeFiles/api.dir/card_api.cc.o" \
+"CMakeFiles/api.dir/data_api.cc.o" \
+"CMakeFiles/api.dir/login_api.cc.o" \
+"CMakeFiles/api.dir/logout_api.cc.o" \
+"CMakeFiles/api.dir/register_api.cc.o" \
+"CMakeFiles/api.dir/user_api.cc.o"
 
 # External object files for target api
 api_EXTERNAL_OBJECTS =
 
+src/api/libapi.a: src/api/CMakeFiles/api.dir/api_manager.cc.o
+src/api/libapi.a: src/api/CMakeFiles/api.dir/card_api.cc.o
+src/api/libapi.a: src/api/CMakeFiles/api.dir/data_api.cc.o
 src/api/libapi.a: src/api/CMakeFiles/api.dir/login_api.cc.o
+src/api/libapi.a: src/api/CMakeFiles/api.dir/logout_api.cc.o
+src/api/libapi.a: src/api/CMakeFiles/api.dir/register_api.cc.o
+src/api/libapi.a: src/api/CMakeFiles/api.dir/user_api.cc.o
 src/api/libapi.a: src/api/CMakeFiles/api.dir/build.make
 src/api/libapi.a: src/api/CMakeFiles/api.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libapi.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library libapi.a"
 	cd /home/gong/projects/attendance/build/src/api && $(CMAKE_COMMAND) -P CMakeFiles/api.dir/cmake_clean_target.cmake
 	cd /home/gong/projects/attendance/build/src/api && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/api.dir/link.txt --verbose=$(VERBOSE)
 

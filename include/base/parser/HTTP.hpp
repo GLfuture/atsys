@@ -16,6 +16,7 @@ namespace HTTP_NSP
     using std::vector;
     using Http_kv_List = unordered_map<string, string>;
     using Http_String = string_view;
+    
     class HTTP
     {
     public:
@@ -34,17 +35,20 @@ namespace HTTP_NSP
             if(end == std::string::npos) return INCOMPLETE;
             string head = request.substr(beg, end);
             Decode_Head(head);
-            string other = request.substr( end + 4 );
+            if(Request_Get_Http_Type().compare("OPTIONS") == 0){
+                return end + 4;
+            }
             beg = end + 4;
-            if(end == std::string::npos) return INCOMPLETE;
             std::string_view len_str = Request_Get_Key_Value("Content-Length");
             if(len_str.empty()) return PROTO_ERROR;
             int content_len = atoi(len_str.cbegin());
-            string body = request.substr(beg , end);
+            string other = request.substr(beg);
+            if(content_len > other.length()) return INCOMPLETE;
+            string body = request.substr(beg , content_len);
             Decode_Body(body);
-            return end + 2;
+            return beg + content_len + 2;
         }
-
+        
         string Content_Head()
         {
             string response_head = "HTTP/" + this->version + " " + std::to_string(this->status) + " ";

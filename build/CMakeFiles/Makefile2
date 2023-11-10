@@ -200,12 +200,12 @@ src/CMakeFiles/atsys.dir/all: src/layer/CMakeFiles/layer.dir/all
 src/CMakeFiles/atsys.dir/all: src/global/CMakeFiles/global.dir/all
 	$(MAKE) -f src/CMakeFiles/atsys.dir/build.make src/CMakeFiles/atsys.dir/depend
 	$(MAKE) -f src/CMakeFiles/atsys.dir/build.make src/CMakeFiles/atsys.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=5,6 "Built target atsys"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=11,12 "Built target atsys"
 .PHONY : src/CMakeFiles/atsys.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/atsys.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/projects/attendance/build/CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/projects/attendance/build/CMakeFiles 23
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/atsys.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/projects/attendance/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/atsys.dir/rule
@@ -227,12 +227,12 @@ src/CMakeFiles/atsys.dir/clean:
 src/api/CMakeFiles/api.dir/all:
 	$(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/depend
 	$(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=1,2 "Built target api"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target api"
 .PHONY : src/api/CMakeFiles/api.dir/all
 
 # Build rule for subdir invocation for target.
 src/api/CMakeFiles/api.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/projects/attendance/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/projects/attendance/build/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 src/api/CMakeFiles/api.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/projects/attendance/build/CMakeFiles 0
 .PHONY : src/api/CMakeFiles/api.dir/rule
@@ -254,7 +254,7 @@ src/api/CMakeFiles/api.dir/clean:
 src/app/CMakeFiles/app.dir/all:
 	$(MAKE) -f src/app/CMakeFiles/app.dir/build.make src/app/CMakeFiles/app.dir/depend
 	$(MAKE) -f src/app/CMakeFiles/app.dir/build.make src/app/CMakeFiles/app.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=3,4 "Built target app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=9,10 "Built target app"
 .PHONY : src/app/CMakeFiles/app.dir/all
 
 # Build rule for subdir invocation for target.
@@ -281,12 +281,12 @@ src/app/CMakeFiles/app.dir/clean:
 src/base/CMakeFiles/base.dir/all:
 	$(MAKE) -f src/base/CMakeFiles/base.dir/build.make src/base/CMakeFiles/base.dir/depend
 	$(MAKE) -f src/base/CMakeFiles/base.dir/build.make src/base/CMakeFiles/base.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=7,8,9,10 "Built target base"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=13,14,15,16,17 "Built target base"
 .PHONY : src/base/CMakeFiles/base.dir/all
 
 # Build rule for subdir invocation for target.
 src/base/CMakeFiles/base.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/projects/attendance/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/projects/attendance/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 src/base/CMakeFiles/base.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/projects/attendance/build/CMakeFiles 0
 .PHONY : src/base/CMakeFiles/base.dir/rule
@@ -308,12 +308,12 @@ src/base/CMakeFiles/base.dir/clean:
 src/layer/CMakeFiles/layer.dir/all: src/api/CMakeFiles/api.dir/all
 	$(MAKE) -f src/layer/CMakeFiles/layer.dir/build.make src/layer/CMakeFiles/layer.dir/depend
 	$(MAKE) -f src/layer/CMakeFiles/layer.dir/build.make src/layer/CMakeFiles/layer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=14,15,16 "Built target layer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=21,22,23 "Built target layer"
 .PHONY : src/layer/CMakeFiles/layer.dir/all
 
 # Build rule for subdir invocation for target.
 src/layer/CMakeFiles/layer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/projects/attendance/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/projects/attendance/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 src/layer/CMakeFiles/layer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/projects/attendance/build/CMakeFiles 0
 .PHONY : src/layer/CMakeFiles/layer.dir/rule
@@ -337,12 +337,12 @@ src/global/CMakeFiles/global.dir/all: src/base/CMakeFiles/base.dir/all
 src/global/CMakeFiles/global.dir/all: src/layer/CMakeFiles/layer.dir/all
 	$(MAKE) -f src/global/CMakeFiles/global.dir/build.make src/global/CMakeFiles/global.dir/depend
 	$(MAKE) -f src/global/CMakeFiles/global.dir/build.make src/global/CMakeFiles/global.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=11,12,13 "Built target global"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=18,19,20 "Built target global"
 .PHONY : src/global/CMakeFiles/global.dir/all
 
 # Build rule for subdir invocation for target.
 src/global/CMakeFiles/global.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/projects/attendance/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/projects/attendance/build/CMakeFiles 19
 	$(MAKE) -f CMakeFiles/Makefile2 src/global/CMakeFiles/global.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/gong/projects/attendance/build/CMakeFiles 0
 .PHONY : src/global/CMakeFiles/global.dir/rule

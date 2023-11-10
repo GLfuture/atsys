@@ -83,9 +83,22 @@ src/base/CMakeFiles/base.dir/configer.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/base.dir/configer.cc.s"
 	cd /home/gong/projects/attendance/build/src/base && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/projects/attendance/src/base/configer.cc -o CMakeFiles/base.dir/configer.cc.s
 
+src/base/CMakeFiles/base.dir/encoder.cc.o: src/base/CMakeFiles/base.dir/flags.make
+src/base/CMakeFiles/base.dir/encoder.cc.o: ../src/base/encoder.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/base/CMakeFiles/base.dir/encoder.cc.o"
+	cd /home/gong/projects/attendance/build/src/base && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/base.dir/encoder.cc.o -c /home/gong/projects/attendance/src/base/encoder.cc
+
+src/base/CMakeFiles/base.dir/encoder.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/base.dir/encoder.cc.i"
+	cd /home/gong/projects/attendance/build/src/base && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gong/projects/attendance/src/base/encoder.cc > CMakeFiles/base.dir/encoder.cc.i
+
+src/base/CMakeFiles/base.dir/encoder.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/base.dir/encoder.cc.s"
+	cd /home/gong/projects/attendance/build/src/base && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gong/projects/attendance/src/base/encoder.cc -o CMakeFiles/base.dir/encoder.cc.s
+
 src/base/CMakeFiles/base.dir/parser.cc.o: src/base/CMakeFiles/base.dir/flags.make
 src/base/CMakeFiles/base.dir/parser.cc.o: ../src/base/parser.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/base/CMakeFiles/base.dir/parser.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/base/CMakeFiles/base.dir/parser.cc.o"
 	cd /home/gong/projects/attendance/build/src/base && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/base.dir/parser.cc.o -c /home/gong/projects/attendance/src/base/parser.cc
 
 src/base/CMakeFiles/base.dir/parser.cc.i: cmake_force
@@ -100,6 +113,7 @@ src/base/CMakeFiles/base.dir/parser.cc.s: cmake_force
 base_OBJECTS = \
 "CMakeFiles/base.dir/CachePool.cc.o" \
 "CMakeFiles/base.dir/configer.cc.o" \
+"CMakeFiles/base.dir/encoder.cc.o" \
 "CMakeFiles/base.dir/parser.cc.o"
 
 # External object files for target base
@@ -107,10 +121,11 @@ base_EXTERNAL_OBJECTS =
 
 src/base/libbase.a: src/base/CMakeFiles/base.dir/CachePool.cc.o
 src/base/libbase.a: src/base/CMakeFiles/base.dir/configer.cc.o
+src/base/libbase.a: src/base/CMakeFiles/base.dir/encoder.cc.o
 src/base/libbase.a: src/base/CMakeFiles/base.dir/parser.cc.o
 src/base/libbase.a: src/base/CMakeFiles/base.dir/build.make
 src/base/libbase.a: src/base/CMakeFiles/base.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libbase.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libbase.a"
 	cd /home/gong/projects/attendance/build/src/base && $(CMAKE_COMMAND) -P CMakeFiles/base.dir/cmake_clean_target.cmake
 	cd /home/gong/projects/attendance/build/src/base && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/base.dir/link.txt --verbose=$(VERBOSE)
 

@@ -85,6 +85,8 @@ src/atsys: src/layer/liblayer.a
 src/atsys: src/global/libglobal.a
 src/atsys: src/layer/liblayer.a
 src/atsys: src/api/libapi.a
+src/atsys: /usr/lib/x86_64-linux-gnu/libssl.so
+src/atsys: /usr/lib/x86_64-linux-gnu/libcrypto.so
 src/atsys: src/base/libbase.a
 src/atsys: src/CMakeFiles/atsys.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gong/projects/attendance/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable atsys"

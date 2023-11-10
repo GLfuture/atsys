@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_FLAGS = -g   -std=gnu++17
 
-CXX_DEFINES = 
+CXX_DEFINES = -DCPP_JWT_USE_VENDORED_NLOHMANN_JSON
 
 CXX_INCLUDES = -I/home/gong/projects/attendance/include 
 

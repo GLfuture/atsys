@@ -73,7 +73,7 @@ public:
 	// 回滚事务
 	bool Rollback();
     
-    
+    int Get_Errno(){ return mysql_errno(handle); }
 
 
     template<typename ...Str>

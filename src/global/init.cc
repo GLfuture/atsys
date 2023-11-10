@@ -114,7 +114,13 @@ int init_conf(const std::string& filename)
         global_redis_db_index = atoi(temp.c_str());
         temp.clear();
     }
-
+    parser->Get_Value("redis_expire_time",temp);
+    if(temp.empty()){
+        return -1;
+    }else{
+        global_redis_expire_time = atoi(temp.c_str());
+        temp.clear();
+    }
     return 0;
 }
 
@@ -160,15 +166,15 @@ void Read_cb(int workerid,App::Ptr app_ptr)
     HTTP_NSP::HTTP::Ptr http = std::make_shared<HTTP_NSP::HTTP>();
     int ret_len = http->Parse(buffer);
     std::string ret_body;
-    if(ret_len > 0){
-        ret_body = event_layer->Deal_Event(http);
-        cptr->Erase_Rbuffer(ret_len);
-    }else if(ret_len == HTTP_NSP::HTTP::PROTO_ERROR){
+    if(ret_len == HTTP_NSP::HTTP::PROTO_ERROR && http->Request_Get_Http_Type().compare("POST") == 0){
         http->Response_Set_Status(400);
         http->Response_Set_Key_Value("Content-Length","0");
         http->Response_Set_Key_Value("Connection","close");
     }else if(ret_len == HTTP_NSP::HTTP::INCOMPLETE){
         return ;
+    }else{
+        ret_body = event_layer->Deal_Event(http);
+        cptr->Erase_Rbuffer(ret_len);
     }
     std::string ret_msg = http->Content_Head() + ret_body + "\r\n";
     cptr->Appand_Wbuffer(ret_msg);
@@ -182,7 +188,6 @@ void Write_cb(int workerid,Net_Layer::Ptr net_layer)
     uint32_t cfd = R->Get_Now_Event().data.fd;
     Tcp_Conn_Base::Ptr cptr = worker->Get_Conn(cfd);
     int len = worker->Send(cptr,cptr->Get_Wbuffer_Length());
-    std::cout<<"send len:"<<len<<std::endl;
     if(len <= 0){
         cptr->Erase_Rbuffer(cptr->Get_Wbuffer_Length());
         return;

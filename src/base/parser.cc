@@ -1,5 +1,5 @@
 #include "base/parser/parser.h"
-
+#if 0
 int Parser_NSP::Parser_Json::Parse(const std::string& content)
 {
     rapidjson::Document doc;
@@ -12,7 +12,7 @@ int Parser_NSP::Parser_Json::Parse(const std::string& content)
     m_root.CopyFrom(doc,doc.GetAllocator());
     return OK;
 }
-
+#endif
 
 int Parser_NSP::Parser_Yaml::Parse(const std::string& content)
 {

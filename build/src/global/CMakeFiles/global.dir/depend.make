@@ -5,10 +5,17 @@ src/global/CMakeFiles/global.dir/global.cc.o: ../include/global/global.h
 src/global/CMakeFiles/global.dir/global.cc.o: ../src/global/global.cc
 
 src/global/CMakeFiles/global.dir/init.cc.o: ../include/api/api_base.h
+src/global/CMakeFiles/global.dir/init.cc.o: ../include/api/api_manager.h
+src/global/CMakeFiles/global.dir/init.cc.o: ../include/api/card_api.h
 src/global/CMakeFiles/global.dir/init.cc.o: ../include/api/context.h
+src/global/CMakeFiles/global.dir/init.cc.o: ../include/api/data_api.h
 src/global/CMakeFiles/global.dir/init.cc.o: ../include/api/login_api.h
+src/global/CMakeFiles/global.dir/init.cc.o: ../include/api/logout_api.h
+src/global/CMakeFiles/global.dir/init.cc.o: ../include/api/register_api.h
+src/global/CMakeFiles/global.dir/init.cc.o: ../include/api/user_api.h
 src/global/CMakeFiles/global.dir/init.cc.o: ../include/app/app.h
 src/global/CMakeFiles/global.dir/init.cc.o: ../include/base/cachepool/CachePool.h
+src/global/CMakeFiles/global.dir/init.cc.o: ../include/base/encoder/encoder.h
 src/global/CMakeFiles/global.dir/init.cc.o: ../include/base/mysqlpool/MySql.h
 src/global/CMakeFiles/global.dir/init.cc.o: ../include/base/mysqlpool/MySqlPool.h
 src/global/CMakeFiles/global.dir/init.cc.o: ../include/base/net/conn.h
@@ -23,8 +30,10 @@ src/global/CMakeFiles/global.dir/init.cc.o: ../include/base/net/underlying/timew
 src/global/CMakeFiles/global.dir/init.cc.o: ../include/base/parser/HTTP.hpp
 src/global/CMakeFiles/global.dir/init.cc.o: ../include/base/parser/configer.h
 src/global/CMakeFiles/global.dir/init.cc.o: ../include/base/parser/parser.h
+src/global/CMakeFiles/global.dir/init.cc.o: ../include/base/token_analyzer/token_analyzer.h
 src/global/CMakeFiles/global.dir/init.cc.o: ../include/global/global.h
 src/global/CMakeFiles/global.dir/init.cc.o: ../include/global/init.h
+src/global/CMakeFiles/global.dir/init.cc.o: ../include/layer/data_layer.h
 src/global/CMakeFiles/global.dir/init.cc.o: ../include/layer/event_layer.h
 src/global/CMakeFiles/global.dir/init.cc.o: ../include/layer/net_layer.h
 src/global/CMakeFiles/global.dir/init.cc.o: ../src/global/init.cc

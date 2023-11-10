@@ -225,6 +225,33 @@ configer.cc.s:
 	cd /home/gong/projects/attendance/build && $(MAKE) -f src/base/CMakeFiles/base.dir/build.make src/base/CMakeFiles/base.dir/configer.cc.s
 .PHONY : configer.cc.s
 
+encoder.o: encoder.cc.o
+
+.PHONY : encoder.o
+
+# target to build an object file
+encoder.cc.o:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/base/CMakeFiles/base.dir/build.make src/base/CMakeFiles/base.dir/encoder.cc.o
+.PHONY : encoder.cc.o
+
+encoder.i: encoder.cc.i
+
+.PHONY : encoder.i
+
+# target to preprocess a source file
+encoder.cc.i:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/base/CMakeFiles/base.dir/build.make src/base/CMakeFiles/base.dir/encoder.cc.i
+.PHONY : encoder.cc.i
+
+encoder.s: encoder.cc.s
+
+.PHONY : encoder.s
+
+# target to generate assembly for a file
+encoder.cc.s:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/base/CMakeFiles/base.dir/build.make src/base/CMakeFiles/base.dir/encoder.cc.s
+.PHONY : encoder.cc.s
+
 parser.o: parser.cc.o
 
 .PHONY : parser.o
@@ -271,6 +298,9 @@ help:
 	@echo "... configer.o"
 	@echo "... configer.i"
 	@echo "... configer.s"
+	@echo "... encoder.o"
+	@echo "... encoder.i"
+	@echo "... encoder.s"
 	@echo "... parser.o"
 	@echo "... parser.i"
 	@echo "... parser.s"

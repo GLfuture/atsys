@@ -171,6 +171,87 @@ api/fast:
 	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/build
 .PHONY : api/fast
 
+api_manager.o: api_manager.cc.o
+
+.PHONY : api_manager.o
+
+# target to build an object file
+api_manager.cc.o:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/api_manager.cc.o
+.PHONY : api_manager.cc.o
+
+api_manager.i: api_manager.cc.i
+
+.PHONY : api_manager.i
+
+# target to preprocess a source file
+api_manager.cc.i:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/api_manager.cc.i
+.PHONY : api_manager.cc.i
+
+api_manager.s: api_manager.cc.s
+
+.PHONY : api_manager.s
+
+# target to generate assembly for a file
+api_manager.cc.s:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/api_manager.cc.s
+.PHONY : api_manager.cc.s
+
+card_api.o: card_api.cc.o
+
+.PHONY : card_api.o
+
+# target to build an object file
+card_api.cc.o:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/card_api.cc.o
+.PHONY : card_api.cc.o
+
+card_api.i: card_api.cc.i
+
+.PHONY : card_api.i
+
+# target to preprocess a source file
+card_api.cc.i:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/card_api.cc.i
+.PHONY : card_api.cc.i
+
+card_api.s: card_api.cc.s
+
+.PHONY : card_api.s
+
+# target to generate assembly for a file
+card_api.cc.s:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/card_api.cc.s
+.PHONY : card_api.cc.s
+
+data_api.o: data_api.cc.o
+
+.PHONY : data_api.o
+
+# target to build an object file
+data_api.cc.o:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/data_api.cc.o
+.PHONY : data_api.cc.o
+
+data_api.i: data_api.cc.i
+
+.PHONY : data_api.i
+
+# target to preprocess a source file
+data_api.cc.i:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/data_api.cc.i
+.PHONY : data_api.cc.i
+
+data_api.s: data_api.cc.s
+
+.PHONY : data_api.s
+
+# target to generate assembly for a file
+data_api.cc.s:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/data_api.cc.s
+.PHONY : data_api.cc.s
+
 login_api.o: login_api.cc.o
 
 .PHONY : login_api.o
@@ -198,6 +279,87 @@ login_api.cc.s:
 	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/login_api.cc.s
 .PHONY : login_api.cc.s
 
+logout_api.o: logout_api.cc.o
+
+.PHONY : logout_api.o
+
+# target to build an object file
+logout_api.cc.o:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/logout_api.cc.o
+.PHONY : logout_api.cc.o
+
+logout_api.i: logout_api.cc.i
+
+.PHONY : logout_api.i
+
+# target to preprocess a source file
+logout_api.cc.i:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/logout_api.cc.i
+.PHONY : logout_api.cc.i
+
+logout_api.s: logout_api.cc.s
+
+.PHONY : logout_api.s
+
+# target to generate assembly for a file
+logout_api.cc.s:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/logout_api.cc.s
+.PHONY : logout_api.cc.s
+
+register_api.o: register_api.cc.o
+
+.PHONY : register_api.o
+
+# target to build an object file
+register_api.cc.o:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/register_api.cc.o
+.PHONY : register_api.cc.o
+
+register_api.i: register_api.cc.i
+
+.PHONY : register_api.i
+
+# target to preprocess a source file
+register_api.cc.i:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/register_api.cc.i
+.PHONY : register_api.cc.i
+
+register_api.s: register_api.cc.s
+
+.PHONY : register_api.s
+
+# target to generate assembly for a file
+register_api.cc.s:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/register_api.cc.s
+.PHONY : register_api.cc.s
+
+user_api.o: user_api.cc.o
+
+.PHONY : user_api.o
+
+# target to build an object file
+user_api.cc.o:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/user_api.cc.o
+.PHONY : user_api.cc.o
+
+user_api.i: user_api.cc.i
+
+.PHONY : user_api.i
+
+# target to preprocess a source file
+user_api.cc.i:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/user_api.cc.i
+.PHONY : user_api.cc.i
+
+user_api.s: user_api.cc.s
+
+.PHONY : user_api.s
+
+# target to generate assembly for a file
+user_api.cc.s:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/user_api.cc.s
+.PHONY : user_api.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -211,9 +373,27 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... api"
+	@echo "... api_manager.o"
+	@echo "... api_manager.i"
+	@echo "... api_manager.s"
+	@echo "... card_api.o"
+	@echo "... card_api.i"
+	@echo "... card_api.s"
+	@echo "... data_api.o"
+	@echo "... data_api.i"
+	@echo "... data_api.s"
 	@echo "... login_api.o"
 	@echo "... login_api.i"
 	@echo "... login_api.s"
+	@echo "... logout_api.o"
+	@echo "... logout_api.i"
+	@echo "... logout_api.s"
+	@echo "... register_api.o"
+	@echo "... register_api.i"
+	@echo "... register_api.s"
+	@echo "... user_api.o"
+	@echo "... user_api.i"
+	@echo "... user_api.s"
 .PHONY : help
 
 
