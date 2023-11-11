@@ -21,6 +21,7 @@ private:
     std::string Deal_Register_Event(HTTP_NSP::HTTP::Ptr http);
     std::string Deal_Logout_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt_object& obj);
     std::string Deal_Card_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt_object& obj);
+    std::string Deal_Time_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt_object& obj);
     std::string Deal_Data_Card_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt_object& obj);
     std::string Deal_Data_User_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt_object& obj);
     std::string Deal_User_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt_object& obj);

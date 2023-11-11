@@ -9,6 +9,7 @@ src/app/CMakeFiles/app.dir/app.cc.o: ../include/api/data_api.h
 src/app/CMakeFiles/app.dir/app.cc.o: ../include/api/login_api.h
 src/app/CMakeFiles/app.dir/app.cc.o: ../include/api/logout_api.h
 src/app/CMakeFiles/app.dir/app.cc.o: ../include/api/register_api.h
+src/app/CMakeFiles/app.dir/app.cc.o: ../include/api/time_api.h
 src/app/CMakeFiles/app.dir/app.cc.o: ../include/api/user_api.h
 src/app/CMakeFiles/app.dir/app.cc.o: ../include/app/app.h
 src/app/CMakeFiles/app.dir/app.cc.o: ../include/base/cachepool/CachePool.h

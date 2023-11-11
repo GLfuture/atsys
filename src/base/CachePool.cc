@@ -184,7 +184,7 @@ string CacheConn::set(string key, string &value)
 	return ret_value;
 }
 
-string CacheConn::setex(string key, int timeout, string value)
+string CacheConn::setex(string key, int64_t timeout, string value)
 {
 	string ret_value;
 
@@ -193,7 +193,7 @@ string CacheConn::setex(string key, int timeout, string value)
 		return ret_value;
 	}
 
-	redisReply *reply = (redisReply *)redisCommand(m_pContext, "SETEX %s %d %s", key.c_str(), timeout, value.c_str());
+	redisReply *reply = (redisReply *)redisCommand(m_pContext, "SETEX %s %ld %s", key.c_str(), timeout, value.c_str());
 	if (!reply)
 	{
 		spdlog::error("File:{} Line:{} redisCommand failed:{}",__FILE__,__LINE__, m_pContext->errstr);

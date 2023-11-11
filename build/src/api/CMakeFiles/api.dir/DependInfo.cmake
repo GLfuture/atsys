@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/gong/projects/attendance/src/api/login_api.cc" "/home/gong/projects/attendance/build/src/api/CMakeFiles/api.dir/login_api.cc.o"
   "/home/gong/projects/attendance/src/api/logout_api.cc" "/home/gong/projects/attendance/build/src/api/CMakeFiles/api.dir/logout_api.cc.o"
   "/home/gong/projects/attendance/src/api/register_api.cc" "/home/gong/projects/attendance/build/src/api/CMakeFiles/api.dir/register_api.cc.o"
+  "/home/gong/projects/attendance/src/api/time_api.cc" "/home/gong/projects/attendance/build/src/api/CMakeFiles/api.dir/time_api.cc.o"
   "/home/gong/projects/attendance/src/api/user_api.cc" "/home/gong/projects/attendance/build/src/api/CMakeFiles/api.dir/user_api.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

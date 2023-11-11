@@ -53,10 +53,12 @@ enum RET_CODE{
     STATUS_TOKEN_EXPIRED,               //token expire
     STATUS_JSON_ERROR,                  //json error
     STATUS_JSON_NO_NEC_MEM,             //json doesn't has necessary member
-    STATUS_METHOD_OP_SUCCESS,           //card method operates successfully
-    STATUS_METHOD_OP_FAIL,              //card method operates fail
-    STATUS_METHOD_ERROR,                //card method error
+    STATUS_METHOD_OP_SUCCESS,           //method operates successfully
+    STATUS_METHOD_OP_FAIL,              //method operates fail
+    STATUS_METHOD_ERROR,                // method error
     STATUS_PRIVILIDGE_ERROR,            //incorrect privilidge
+    STATUS_REPEATEDLY_CLOCK,            //clock repedtedly
+    STATUS_NOT_CLOCK_IN,                //didn't clock in
 };
 
 enum ROLE_TYPE{
@@ -82,6 +84,7 @@ enum API_TYPE
     LOGIN_API,
     REGISTER_API,
     LOGOUT_API,
+    TIME_API,
     CARD_NEW_API,
     CARD_DEL_API,
     CARD_UPD_API,

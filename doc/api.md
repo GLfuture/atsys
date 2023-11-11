@@ -14,14 +14,12 @@ code: 8   //has no token in head
 code: 9   //token expire 
 code: 10  //json has errors
 code: 11  //json doesn't has necessary member
-code: 12  //card method operates successfully
-code: 13  //card method operates fail
-code: 14  //card method id error
+code: 12  //method operates successfully
+code: 13  //method operates fail
+code: 14  //method error
 code: 15  //privilidge error
-code: 16  //alter user's data success
-code: 17  //alter user's data fail
-
-
+code: 16  //clok reaptedly(already clocked)
+code: 17  //didn't clock in(not ready to clock)
 #### login
 
 uri:/api/login
@@ -120,6 +118,28 @@ return:
     code:
 }
 
+/api/time
+simple user
+need:
+{
+    method:1 //1为打卡开始,0为结束
+}
+return:
+{
+    code:
+}
+need:
+{
+    method:0
+}
+return:
+{
+    time:   //时间戳
+    code:
+}
+manager:
+
+
 
 // GET 
 uri /api/data/card
@@ -182,5 +202,15 @@ return:
 }
 
 user:api/data/user
-
+return:
+{
+    "uid":
+    {
+        "username":
+        "email":
+        "telphone":
+        "address":
+        "sex":  //0 女  1 男
+    }
+}
 

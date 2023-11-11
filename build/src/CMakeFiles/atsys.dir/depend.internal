@@ -10,6 +10,7 @@ src/CMakeFiles/atsys.dir/main.cc.o
  ../include/api/login_api.h
  ../include/api/logout_api.h
  ../include/api/register_api.h
+ ../include/api/time_api.h
  ../include/api/user_api.h
  ../include/app/app.h
  ../include/base/cachepool/CachePool.h

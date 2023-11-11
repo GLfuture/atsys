@@ -74,6 +74,10 @@ std::string Event_Layer::Deal_POST_Event(HTTP_NSP::HTTP::Ptr http)
                 {
                     ret_str = Deal_User_Event(http,obj);
                 }
+                else if(url.compare("/api/time") == 0)
+                {
+                    ret_str = Deal_Time_Event(http,obj);
+                }
                 else{
                     ret_str = Deal_Incorrect_Api_Event();
                 }
@@ -489,4 +493,61 @@ std::string Event_Layer::Deal_User_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt
     json j;
     j["code"] = code;
     return j.dump();
+}
+
+std::string Event_Layer::Deal_Time_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt_object& obj)
+{
+    int code = 0;
+    json ret_j;
+    if(obj.payload().has_claim("role") && obj.payload().get_claim_value<std::string>("role").compare("sim") == 0 && obj.payload().has_claim("uid"))
+    {
+        int uid = atoi(obj.payload().get_claim_value<std::string>("uid").c_str());
+        std::string body(http->Request_Get_Body());
+        if (json::accept(body))
+        {
+            json j = json::parse(body);
+            int method;
+            if (j.contains("method") && j["method"].is_number())
+                method = j["method"];
+            else
+            {
+                code = STATUS_JSON_NO_NEC_MEM;
+                goto end;
+            }
+            Time_Context::Ptr time_ctx = std::make_shared<Time_Context>(SIMPLE,uid,method);
+            code = api_manager->Get_API(TIME_API)->Function(time_ctx);
+            if(time_ctx->_time != 0){
+                ret_j["time"] = time_ctx->_time;
+            }
+        }
+        else
+        {
+            code = STATUS_JSON_ERROR;
+        }
+    }else if(obj.payload().has_claim("role") && obj.payload().get_claim_value<std::string>("role").compare("man") == 0 && obj.payload().has_claim("mid"))
+    {
+        std::string body(http->Request_Get_Body());
+        if (json::accept(body))
+        {
+            json j = json::parse(body);
+            int method;
+            if (j.contains("method") && j["method"].is_number())
+                method = j["method"];
+            else
+            {
+                code = STATUS_JSON_NO_NEC_MEM;
+                goto end;
+            }
+            Time_Context::Ptr time_ctx = std::make_shared<Time_Context>(MANAGER,0,method);
+            code = api_manager->Get_API(TIME_API)->Function(time_ctx);
+        }
+    }
+    else{
+        code = STATUS_PRIVILIDGE_ERROR;
+    }
+
+
+end:  
+    ret_j["code"] = code;
+    return ret_j.dump();
 }

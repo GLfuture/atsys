@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/api.dir/login_api.cc.o"
   "CMakeFiles/api.dir/logout_api.cc.o"
   "CMakeFiles/api.dir/register_api.cc.o"
+  "CMakeFiles/api.dir/time_api.cc.o"
   "CMakeFiles/api.dir/user_api.cc.o"
   "libapi.a"
   "libapi.pdb"

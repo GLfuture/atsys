@@ -9,6 +9,7 @@ src/api/CMakeFiles/api.dir/api_manager.cc.o: ../include/api/data_api.h
 src/api/CMakeFiles/api.dir/api_manager.cc.o: ../include/api/login_api.h
 src/api/CMakeFiles/api.dir/api_manager.cc.o: ../include/api/logout_api.h
 src/api/CMakeFiles/api.dir/api_manager.cc.o: ../include/api/register_api.h
+src/api/CMakeFiles/api.dir/api_manager.cc.o: ../include/api/time_api.h
 src/api/CMakeFiles/api.dir/api_manager.cc.o: ../include/api/user_api.h
 src/api/CMakeFiles/api.dir/api_manager.cc.o: ../include/base/cachepool/CachePool.h
 src/api/CMakeFiles/api.dir/api_manager.cc.o: ../include/base/encoder/encoder.h
@@ -84,6 +85,19 @@ src/api/CMakeFiles/api.dir/register_api.cc.o: ../include/base/parser/parser.h
 src/api/CMakeFiles/api.dir/register_api.cc.o: ../include/base/token_analyzer/token_analyzer.h
 src/api/CMakeFiles/api.dir/register_api.cc.o: ../include/global/global.h
 src/api/CMakeFiles/api.dir/register_api.cc.o: ../src/api/register_api.cc
+
+src/api/CMakeFiles/api.dir/time_api.cc.o: ../include/api/api_base.h
+src/api/CMakeFiles/api.dir/time_api.cc.o: ../include/api/context.h
+src/api/CMakeFiles/api.dir/time_api.cc.o: ../include/api/time_api.h
+src/api/CMakeFiles/api.dir/time_api.cc.o: ../include/base/cachepool/CachePool.h
+src/api/CMakeFiles/api.dir/time_api.cc.o: ../include/base/encoder/encoder.h
+src/api/CMakeFiles/api.dir/time_api.cc.o: ../include/base/mysqlpool/MySql.h
+src/api/CMakeFiles/api.dir/time_api.cc.o: ../include/base/mysqlpool/MySqlPool.h
+src/api/CMakeFiles/api.dir/time_api.cc.o: ../include/base/parser/HTTP.hpp
+src/api/CMakeFiles/api.dir/time_api.cc.o: ../include/base/parser/parser.h
+src/api/CMakeFiles/api.dir/time_api.cc.o: ../include/base/token_analyzer/token_analyzer.h
+src/api/CMakeFiles/api.dir/time_api.cc.o: ../include/global/global.h
+src/api/CMakeFiles/api.dir/time_api.cc.o: ../src/api/time_api.cc
 
 src/api/CMakeFiles/api.dir/user_api.cc.o: ../include/api/api_base.h
 src/api/CMakeFiles/api.dir/user_api.cc.o: ../include/api/context.h

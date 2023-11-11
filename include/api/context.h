@@ -174,5 +174,23 @@ public:
     int sex;
 };
 
+class Time_Context: public Context_Base
+{
+public:
+    using Ptr = std::shared_ptr<Time_Context>;
+    Time_Context(int role,int uid,int method)
+    {
+        this->method = method;
+        this->uid = uid;
+        this->role = role;
+        _time = 0;
+    }
+public:
+    time_t _time;
+    int method;
+    int uid;
+    int role;
+};
+
 
 #endif

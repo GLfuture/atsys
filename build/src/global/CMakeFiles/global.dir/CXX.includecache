@@ -39,6 +39,8 @@ api/logout_api.h
 ../include/api/api/logout_api.h
 api/user_api.h
 ../include/api/api/user_api.h
+api/time_api.h
+../include/api/api/time_api.h
 
 ../include/api/card_api.h
 api_base.h
@@ -67,6 +69,12 @@ api_base.h
 ../include/api/register_api.h
 api/api_base.h
 ../include/api/api/api_base.h
+
+../include/api/time_api.h
+api_base.h
+../include/api/api_base.h
+ctime
+-
 
 ../include/api/user_api.h
 api_base.h

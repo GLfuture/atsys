@@ -1,2 +1,2 @@
-/usr/bin/ar qc libapi.a  CMakeFiles/api.dir/api_manager.cc.o CMakeFiles/api.dir/card_api.cc.o CMakeFiles/api.dir/data_api.cc.o CMakeFiles/api.dir/login_api.cc.o CMakeFiles/api.dir/logout_api.cc.o CMakeFiles/api.dir/register_api.cc.o CMakeFiles/api.dir/user_api.cc.o
+/usr/bin/ar qc libapi.a  CMakeFiles/api.dir/api_manager.cc.o CMakeFiles/api.dir/card_api.cc.o CMakeFiles/api.dir/data_api.cc.o CMakeFiles/api.dir/login_api.cc.o CMakeFiles/api.dir/logout_api.cc.o CMakeFiles/api.dir/register_api.cc.o CMakeFiles/api.dir/time_api.cc.o CMakeFiles/api.dir/user_api.cc.o
 /usr/bin/ranlib libapi.a

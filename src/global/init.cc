@@ -133,9 +133,6 @@ void init_callback(App::Ptr app)
     global_exit_cb   = std::bind(Exit_cb,std::placeholders::_1,app->Get_Net_Layer());
 }
 
-
-
-
 void Accept_cb(int workerid,Net_Layer::Ptr net_layer)
 {
     std::unique_lock lock(mtx);

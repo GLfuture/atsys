@@ -49,7 +49,7 @@ public:
 	// ------------------- 字符串相关 -------------------
 	string get(string key);
 	string set(string key, string &value);
-	string setex(string key, int timeout, string value);
+	string setex(string key, int64_t timeout, string value);
 
 	// string mset(string key, map);
 	// 批量获取

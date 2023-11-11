@@ -333,6 +333,33 @@ register_api.cc.s:
 	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/register_api.cc.s
 .PHONY : register_api.cc.s
 
+time_api.o: time_api.cc.o
+
+.PHONY : time_api.o
+
+# target to build an object file
+time_api.cc.o:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/time_api.cc.o
+.PHONY : time_api.cc.o
+
+time_api.i: time_api.cc.i
+
+.PHONY : time_api.i
+
+# target to preprocess a source file
+time_api.cc.i:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/time_api.cc.i
+.PHONY : time_api.cc.i
+
+time_api.s: time_api.cc.s
+
+.PHONY : time_api.s
+
+# target to generate assembly for a file
+time_api.cc.s:
+	cd /home/gong/projects/attendance/build && $(MAKE) -f src/api/CMakeFiles/api.dir/build.make src/api/CMakeFiles/api.dir/time_api.cc.s
+.PHONY : time_api.cc.s
+
 user_api.o: user_api.cc.o
 
 .PHONY : user_api.o
@@ -391,6 +418,9 @@ help:
 	@echo "... register_api.o"
 	@echo "... register_api.i"
 	@echo "... register_api.s"
+	@echo "... time_api.o"
+	@echo "... time_api.i"
+	@echo "... time_api.s"
 	@echo "... user_api.o"
 	@echo "... user_api.i"
 	@echo "... user_api.s"

@@ -36,6 +36,11 @@
 },
 {
   "directory": "/home/gong/projects/attendance/build/src/api",
+  "command": "/usr/bin/g++  -DCPP_JWT_USE_VENDORED_NLOHMANN_JSON -I/home/gong/projects/attendance/include  -g   -std=gnu++17 -o CMakeFiles/api.dir/time_api.cc.o -c /home/gong/projects/attendance/src/api/time_api.cc",
+  "file": "/home/gong/projects/attendance/src/api/time_api.cc"
+},
+{
+  "directory": "/home/gong/projects/attendance/build/src/api",
   "command": "/usr/bin/g++  -DCPP_JWT_USE_VENDORED_NLOHMANN_JSON -I/home/gong/projects/attendance/include  -g   -std=gnu++17 -o CMakeFiles/api.dir/user_api.cc.o -c /home/gong/projects/attendance/src/api/user_api.cc",
   "file": "/home/gong/projects/attendance/src/api/user_api.cc"
 },

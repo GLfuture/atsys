@@ -9,6 +9,7 @@ src/layer/CMakeFiles/layer.dir/event_layer.cc.o: ../include/api/data_api.h
 src/layer/CMakeFiles/layer.dir/event_layer.cc.o: ../include/api/login_api.h
 src/layer/CMakeFiles/layer.dir/event_layer.cc.o: ../include/api/logout_api.h
 src/layer/CMakeFiles/layer.dir/event_layer.cc.o: ../include/api/register_api.h
+src/layer/CMakeFiles/layer.dir/event_layer.cc.o: ../include/api/time_api.h
 src/layer/CMakeFiles/layer.dir/event_layer.cc.o: ../include/api/user_api.h
 src/layer/CMakeFiles/layer.dir/event_layer.cc.o: ../include/base/cachepool/CachePool.h
 src/layer/CMakeFiles/layer.dir/event_layer.cc.o: ../include/base/encoder/encoder.h
