@@ -108,11 +108,16 @@ std::string Event_Layer::Deal_GET_Event(HTTP_NSP::HTTP::Ptr http)
         }
         else
         {
-            if(url.compare("/api/data/card") == 0){
-                ret_str =  Deal_Data_Card_Event(http,obj);
+            if(url.compare("/api/data/card/self") == 0){
+                ret_str =  Deal_Data_Card_Self_Event(http,obj);
             }else if(url.compare("/api/data/user") == 0){
                 ret_str = Deal_Data_User_Event(http,obj);
-            }else{
+            }else if(url.compare("/api/data/time") == 0){
+                ret_str = Deal_Data_Time_Event(http,obj);
+            }else if(url.compare("/api/data/card") == 0){
+                ret_str = Deal_Data_Card_Event(http,obj);
+            }
+            else{
                 ret_str = Deal_Incorrect_Api_Event();
             }
 
@@ -416,20 +421,20 @@ end:
     return j.dump();
 }
 
-std::string Event_Layer::Deal_Data_Card_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt_object& obj)
+std::string Event_Layer::Deal_Data_Card_Self_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt_object& obj)
 {
     if (obj.payload().has_claim("role") && obj.payload().get_claim_value<std::string>("role").compare("man") == 0 && obj.payload().has_claim("mid"))
     { // manager
-        Data_Card_Context::Ptr data_card_ctx = std::make_shared<Data_Card_Context>(MANAGER,0);
-        api_manager->Get_API(DATA_CARD_API)->Function(data_card_ctx);
-        return data_card_ctx->j.dump();
+        Data_Card_Self_Context::Ptr data_card_self_ctx = std::make_shared<Data_Card_Self_Context>(MANAGER,0);
+        api_manager->Get_API(DATA_CARD_Self_API)->Function(data_card_self_ctx);
+        return data_card_self_ctx->j.dump();
     }
     else if (obj.payload().has_claim("role") && obj.payload().get_claim_value<std::string>("role").compare("sim") == 0 && obj.payload().has_claim("uid"))
     { // simple user
         int uid = atoi(obj.payload().get_claim_value<std::string>("uid").c_str());
-        Data_Card_Context::Ptr data_card_ctx = std::make_shared<Data_Card_Context>(SIMPLE, uid);
-        api_manager->Get_API(DATA_CARD_API)->Function(data_card_ctx);
-        return data_card_ctx->j.dump();
+        Data_Card_Self_Context::Ptr data_card_self_ctx = std::make_shared<Data_Card_Self_Context>(SIMPLE, uid);
+        api_manager->Get_API(DATA_CARD_Self_API)->Function(data_card_self_ctx);
+        return data_card_self_ctx->j.dump();
     }
     return "null";
 }
@@ -452,6 +457,17 @@ std::string Event_Layer::Deal_Data_User_Event(HTTP_NSP::HTTP::Ptr http,const jwt
     }
     return "null";
 }
+
+std::string Event_Layer::Deal_Data_Card_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt_object& obj)
+{
+    Data_Card_Context::Ptr data_card_ctx = std::make_shared<Data_Card_Context>();
+    if (obj.payload().has_claim("role"))
+    {
+        api_manager->Get_API(DATA_CARD_API)->Function(data_card_ctx);
+    }
+    return data_card_ctx->j.dump();
+}
+
 
 std::string Event_Layer::Deal_User_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt_object& obj)
 {
@@ -526,21 +542,8 @@ std::string Event_Layer::Deal_Time_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt
         }
     }else if(obj.payload().has_claim("role") && obj.payload().get_claim_value<std::string>("role").compare("man") == 0 && obj.payload().has_claim("mid"))
     {
-        std::string body(http->Request_Get_Body());
-        if (json::accept(body))
-        {
-            json j = json::parse(body);
-            int method;
-            if (j.contains("method") && j["method"].is_number())
-                method = j["method"];
-            else
-            {
-                code = STATUS_JSON_NO_NEC_MEM;
-                goto end;
-            }
-            Time_Context::Ptr time_ctx = std::make_shared<Time_Context>(MANAGER,0,method);
-            code = api_manager->Get_API(TIME_API)->Function(time_ctx);
-        }
+        Time_Context::Ptr time_ctx = std::make_shared<Time_Context>(MANAGER,0,0);
+        code = api_manager->Get_API(TIME_API)->Function(time_ctx);
     }
     else{
         code = STATUS_PRIVILIDGE_ERROR;
@@ -550,4 +553,15 @@ std::string Event_Layer::Deal_Time_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt
 end:  
     ret_j["code"] = code;
     return ret_j.dump();
+}
+
+std::string Event_Layer::Deal_Data_Time_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt_object& obj)
+{
+
+    Data_Time_Context::Ptr data_time_ctx = std::make_shared<Data_Time_Context>();
+    if(obj.payload().has_claim("role") )
+    {
+        api_manager->Get_API(DATA_TIME_API)->Function(data_time_ctx);
+    }
+    return data_time_ctx->j.dump();
 }

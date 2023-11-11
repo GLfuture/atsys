@@ -138,20 +138,24 @@ return:
     code:
 }
 manager:
+need: nothing
+return:
+{
+    code:
+}
 
 
-
-// GET 
-uri /api/data/card
+//get one user's card
+uri /api/data/card/self
 return :
 simple:
 {
-    "cardname1":{
-        "cid":
+    "cid":{
+        "cardname":
         "num":
     },
-    "cardname2":{
-        "cid":
+    "cid":{
+        "cardname":
         "num":
     }
     ...
@@ -159,25 +163,25 @@ simple:
 no card return null
 manager:
 {
-    "username1":
-        "uid":
-        "cardname1":{
-            "cid" : 
+    "uid":
+        "username":
+        "cid":{
+            "cardname" : 
             "num" : num
         },
-        "cardname2"：{
-            "cid":
+        "cid"：{
+            "cardname":
             "num":num
         },
         ...
-    "username2":
-        "uid":
-        "cardname1":{
-            "cid" : 
+    "uid":
+        "username":
+        "cidA":{
+            "cardname" : 
             "num" : num
         }
-        "cardname2"：{
-            "cid":
+        "cid"：{
+            "cardname":
             "num":num
         }
         ...
@@ -185,14 +189,29 @@ manager:
 }
 no card return null
 
-uri /api/data/user
-need:
+//get card data
+uri:/api/data/card?page=0
+return:
+{
+    "cid1":
+    {
+        "cardname"
+    }
+    "cid2":
+    {
+        "cardname"
+    }
+    ...
+}
+
+//get  user data
 manager:/api/data/user?page=0
+need:
 return:
 {
     "uid1":
     {
-        "username":
+        "username":username
         "email":
         "telphone":
         "address":
@@ -206,7 +225,7 @@ return:
 {
     "uid":
     {
-        "username":
+        "username":username
         "email":
         "telphone":
         "address":
@@ -214,3 +233,15 @@ return:
     }
 }
 
+manager and user:
+api/data/time
+
+return:
+{
+    "username1":
+
+}
+
+attention:
+username+data       代表真实用户名
+username不加data    代表“username”这个key

@@ -114,11 +114,11 @@ public:
     int num;
 };
 
-class Data_Card_Context: public Context_Base
+class Data_Card_Self_Context: public Context_Base
 {
 public:
-    using Ptr = std::shared_ptr<Data_Card_Context>;
-    Data_Card_Context(int role,int uid)
+    using Ptr = std::shared_ptr<Data_Card_Self_Context>;
+    Data_Card_Self_Context(int role,int uid)
     {
         this->role = role;
         this->uid = uid;
@@ -148,6 +148,30 @@ public:
     int uid;
     nlohmann::json j;
 };
+
+class Data_Card_Context:public Context_Base
+{
+public:
+    using Ptr = std::shared_ptr<Data_Card_Context>;
+    Data_Card_Context()
+    {
+        j = nlohmann::json();
+    }
+public:
+    nlohmann::json j;
+};
+
+class Data_Time_Context:public Context_Base
+{
+public:
+    using Ptr = std::shared_ptr<Data_Time_Context>;
+    Data_Time_Context(){
+        j = nlohmann::json();
+    }
+public:
+    nlohmann::json j;
+};
+
 
 class User_Upd_Context:public Context_Base
 {
