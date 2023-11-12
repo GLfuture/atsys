@@ -530,7 +530,7 @@ std::string Event_Layer::Deal_Time_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt
                 code = STATUS_JSON_NO_NEC_MEM;
                 goto end;
             }
-            Time_Context::Ptr time_ctx = std::make_shared<Time_Context>(SIMPLE,uid,method);
+            Time_Context::Ptr time_ctx = std::make_shared<Time_Context>(SIMPLE,uid,method,0);
             code = api_manager->Get_API(TIME_API)->Function(time_ctx);
             if(time_ctx->_time != 0){
                 ret_j["time"] = time_ctx->_time;
@@ -542,8 +542,29 @@ std::string Event_Layer::Deal_Time_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt
         }
     }else if(obj.payload().has_claim("role") && obj.payload().get_claim_value<std::string>("role").compare("man") == 0 && obj.payload().has_claim("mid"))
     {
-        Time_Context::Ptr time_ctx = std::make_shared<Time_Context>(MANAGER,0,0);
-        code = api_manager->Get_API(TIME_API)->Function(time_ctx);
+        std::string body(http->Request_Get_Body());
+        if (json::accept(body))
+        {
+            json j = json::parse(body);
+            int method;
+            time_t time;
+            if (j.contains("method") && j["method"].is_number())
+                method = j["method"];
+            else
+            {
+                code = STATUS_JSON_NO_NEC_MEM;
+                goto end;
+            }
+            if (j.contains("time") && j["time"].is_number())
+                time = j["time"];
+            else
+            {
+                code = STATUS_JSON_NO_NEC_MEM;
+                goto end;
+            }
+            Time_Context::Ptr time_ctx = std::make_shared<Time_Context>(MANAGER, 0,method,time);
+            code = api_manager->Get_API(TIME_API)->Function(time_ctx);
+        }
     }
     else{
         code = STATUS_PRIVILIDGE_ERROR;

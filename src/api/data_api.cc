@@ -98,7 +98,7 @@ int Data_Time_API::Function(Context_Base::Ptr ctx)
 {
     Data_Time_Context::Ptr data_time_ctx = std::dynamic_pointer_cast<Data_Time_Context>(ctx);
     MySqlConn* mysql_conn = mysqlpool->Get_Conn(0);
-    std::string query = "select username,sex,total_time from user left join time on user.uid = time.uid;";
+    std::string query = "select username,total_time,need_time from user left join time on user.uid = time.uid;";
     std::vector<std::vector<std::string>> res;
     spdlog::info("data_time_api: {}",query);
     mysql_conn->Select(query,res);
@@ -108,8 +108,8 @@ int Data_Time_API::Function(Context_Base::Ptr ctx)
     }
     for(int i=1;i<res.size();i++)
     {
-        data_time_ctx->j[res[i][0]]["sex"] = atoi(res[i][1].c_str());
-        data_time_ctx->j[res[i][0]]["total_time"] = atol(res[i][2].c_str());
+        data_time_ctx->j[res[i][0]]["total_time"] = atol(res[i][1].c_str());
+        data_time_ctx->j[res[i][0]]["need_time"] = atol(res[i][2].c_str());
     }
     mysqlpool->Ret_Conn(mysql_conn);
     return STATUS_METHOD_OP_SUCCESS;

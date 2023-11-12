@@ -71,12 +71,28 @@ int Time_API::Function(Context_Base::Ptr ctx)
     }
     else if(time_ctx->role == MANAGER)
     {
-        std::string query = "update time set total_time=0;";
-        mysql_conn->Update(query);
-        if(mysql_conn->Get_Errno()!=0){
-            mysqlpool->Ret_Conn(mysql_conn);
-            cachepool->RelCacheConn(cache_conn);
-            return STATUS_METHOD_OP_FAIL;
+        if(time_ctx->method == 0){
+            std::string query = "update time set total_time=0;";
+            spdlog::info("time_api: {}", query);
+            mysql_conn->Update(query);
+            if (mysql_conn->Get_Errno() != 0)
+            {
+                mysqlpool->Ret_Conn(mysql_conn);
+                cachepool->RelCacheConn(cache_conn);
+                return STATUS_METHOD_OP_FAIL;
+            }
+        }
+        else if(time_ctx->role == 1)
+        {
+            std::string query = "update time set need_time=";
+            query =query + std::to_string(time_ctx->settime) + ";";
+            spdlog::info("time_api: {}", query);
+            mysql_conn->Update(query);
+            if(mysql_conn->Get_Errno() != 0){
+                mysqlpool->Ret_Conn(mysql_conn);
+                cachepool->RelCacheConn(cache_conn);
+                return STATUS_METHOD_OP_FAIL;
+            }
         }
     }
     mysqlpool->Ret_Conn(mysql_conn);

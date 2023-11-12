@@ -202,15 +202,17 @@ class Time_Context: public Context_Base
 {
 public:
     using Ptr = std::shared_ptr<Time_Context>;
-    Time_Context(int role,int uid,int method)
+    Time_Context(int role,int uid,int method,time_t settime)
     {
         this->method = method;
         this->uid = uid;
         this->role = role;
         _time = 0;
+        this->settime = settime;
     }
 public:
     time_t _time;
+    time_t settime;
     int method;
     int uid;
     int role;

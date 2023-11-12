@@ -35,6 +35,7 @@ create table manager (
 create table time (
     uid         bigint,
     total_time  bigint default 0,
+    need_time   bigint default 0,
     foreign key(uid) references user(uid)
 );
 

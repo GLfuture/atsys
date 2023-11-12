@@ -354,10 +354,6 @@ base/cachepool/CachePool.h
 spdlog/spdlog.h
 -
 
-/home/gong/projects/attendance/src/global/global.cc
-global/global.h
-/home/gong/projects/attendance/src/global/global/global.h
-
 /home/gong/projects/attendance/src/global/init.cc
 global/init.h
 /home/gong/projects/attendance/src/global/global/init.h
