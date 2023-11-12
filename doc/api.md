@@ -3,32 +3,50 @@
 return code type:
 
 code: 0   //Login success
+
 code: 1   //password error
+
 code: 2   //no user(maybe need to register?)
+
 code: 3   //register success
+
 code: 4   //has repeated username
+
 code: 5   //register failed
+
 code: 6   //logout success
+
 code: 7   //logout fail
+
 code: 8   //has no token in head
+
 code: 9   //token expire 
+
 code: 10  //json has errors
+
 code: 11  //json doesn't has necessary member
+
 code: 12  //method operates successfully
+
 code: 13  //method operates fail
+
 code: 14  //method error
+
 code: 15  //privilidge error
+
 code: 16  //clok reaptedly(already clocked)
+
 code: 17  //didn't clock in(not ready to clock)
+
 #### login
 
 uri:/api/login
 
 need:
 {
-    "role":1
+    "role":1,
     "username":"",
-    "password":"",
+    "password":""
 }
 
 role:
