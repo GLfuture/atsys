@@ -77,9 +77,9 @@ return :
 }
 
 
+//change card's data
 
 uri:/api/card
-
 
 method: 0 //new card need card's name
 method: 1 //delete need uid and cid(simple user del conn record(use uid and cid)     manager del card record(use cid))
@@ -94,7 +94,9 @@ return:
 {
     "code":
 }
+
 or
+
 need:
 {
     method:1
@@ -104,7 +106,9 @@ return :
 {
     "code":
 }
+
 or
+
 need:
 simple user:
 {
@@ -119,7 +123,12 @@ manager:
     cid:
     num:
 }
+return:
+{
+    "code":
+}
 
+//change user's data
 uri /api/user
 
 need:
@@ -138,6 +147,7 @@ return:
     code:
 }
 
+//clock in/off
 uri /api/time
 
 simple user
@@ -165,7 +175,6 @@ return:
 
 manager:
 
-need: nothing
 return:
 {
     code:
@@ -270,6 +279,8 @@ return:
 }
 
 manager and user:
+
+//get time data
 
 api/data/time
 
