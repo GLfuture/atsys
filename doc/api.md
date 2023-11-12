@@ -291,7 +291,6 @@ api/data/time
 return:
 {
     "username1":
-
 }
 
 attention:
