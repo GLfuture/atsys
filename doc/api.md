@@ -121,6 +121,7 @@ manager:
 }
 
 uri /api/user
+
 need:
 {
     //需要改哪个字段传哪个字段，也可以全传
@@ -131,31 +132,39 @@ need:
     "address":   varchar(20)
     "sex": int   //0 女 1 男
 }
+
 return:
 {
     code:
 }
 
-/api/time
+uri /api/time
+
 simple user
+
 need:
 {
     method:1 //1为打卡开始,0为结束
 }
+
 return:
 {
     code:
 }
+
 need:
 {
     method:0
 }
+
 return:
 {
     time:   //时间戳
     code:
 }
+
 manager:
+
 need: nothing
 return:
 {
@@ -164,7 +173,9 @@ return:
 
 
 //get one user's card
+
 uri /api/data/card/self
+
 return :
 simple:
 {
@@ -178,7 +189,9 @@ simple:
     }
     ...
 }
+
 no card return null
+
 manager:
 {
     "uid":
@@ -208,7 +221,9 @@ manager:
 no card return null
 
 //get card data
+
 uri:/api/data/card?page=0
+
 return:
 {
     "cid1":
@@ -223,7 +238,9 @@ return:
 }
 
 //get  user data
+
 manager:/api/data/user?page=0
+
 need:
 return:
 {
@@ -239,6 +256,7 @@ return:
 }
 
 user:api/data/user
+
 return:
 {
     "uid":
@@ -252,6 +270,7 @@ return:
 }
 
 manager and user:
+
 api/data/time
 
 return:
