@@ -90,6 +90,7 @@ need:
     method:0
     cname:""
 }
+
 return:
 {
     "code":
@@ -102,6 +103,7 @@ need:
     method:1
     cid:
 }
+
 return :
 {
     "code":
@@ -116,6 +118,7 @@ simple user:
     cid:
     num:        //+为加,-为减
 }
+
 manager:
 {
     method:2
@@ -123,6 +126,7 @@ manager:
     cid:
     num:
 }
+
 return:
 {
     "code":
