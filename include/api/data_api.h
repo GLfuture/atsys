@@ -4,11 +4,11 @@
 #include "api_base.h"
 
 
-class Data_Card_Self_API:public API_Base
+class Data_Card_Concrete_API:public API_Base
 {
 public:
-    using Ptr = std::shared_ptr<Data_Card_Self_API>;
-    Data_Card_Self_API(MySqlPool::Ptr mysqlpool,CachePool::Ptr cachepool);
+    using Ptr = std::shared_ptr<Data_Card_Concrete_API>;
+    Data_Card_Concrete_API(MySqlPool::Ptr mysqlpool,CachePool::Ptr cachepool);
     int Function(Context_Base::Ptr ctx) override;
 };
 

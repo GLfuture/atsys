@@ -108,8 +108,8 @@ std::string Event_Layer::Deal_GET_Event(HTTP_NSP::HTTP::Ptr http)
         }
         else
         {
-            if(url.compare("/api/data/card/self") == 0){
-                ret_str =  Deal_Data_Card_Self_Event(http,obj);
+            if(url.compare("/api/data/card/concrete") == 0){
+                ret_str =  Deal_Data_Card_Concrete_Event(http,obj);
             }else if(url.compare("/api/data/user") == 0){
                 ret_str = Deal_Data_User_Event(http,obj);
             }else if(url.compare("/api/data/time") == 0){
@@ -328,13 +328,21 @@ std::string Event_Layer::Deal_Card_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt
             case OP_NEW_CARD:
             {
                 if(obj.payload().has_claim("role") &&obj.payload().get_claim_value<std::string>("role").compare("man") == 0&&obj.payload().has_claim("mid")){
+                    std::string cname,description;
                     if(j.contains("cname")&&j["cname"].is_string()){
-                        std::string cname = j["cname"];
-                        Card_New_Context::Ptr ctx = std::make_shared<Card_New_Context>(cname);
-                        code = api_manager->Get_API(CARD_NEW_API) ->Function(ctx);
+                        cname = j["cname"];
                     }else{
                         code = STATUS_JSON_NO_NEC_MEM;
+                        goto end;
                     }
+                    if(j.contains("description")&&j["description"].is_string()){
+                        description = j["description"];
+                    }else{
+                        code = STATUS_JSON_NO_NEC_MEM;
+                        goto end;
+                    }
+                    Card_New_Context::Ptr ctx = std::make_shared<Card_New_Context>(cname,description);
+                    code = api_manager->Get_API(CARD_NEW_API) ->Function(ctx);
                 }else{
                     code = STATUS_PRIVILIDGE_ERROR;
                 }
@@ -372,13 +380,17 @@ std::string Event_Layer::Deal_Card_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt
             {
                 if (j.contains("cid")&&j["cid"].is_number()&&j.contains("num")&&j["num"].is_number())
                 {
+                    std::string description;
+                    if(j.contains("description")&&j["description"].is_string()){
+                        description = j["description"];
+                    }
                     cid = j["cid"];
                     int num = j["num"];
                     if (obj.payload().has_claim("role") && obj.payload().get_claim_value<std::string>("role").compare("man") == 0 && obj.payload().has_claim("mid"))
                     { // manager
                         if(j.contains("uid")&&j["uid"].is_number()){
                             uid = j["uid"];
-                            Card_Upd_Context::Ptr card_upd_ctx = std::make_shared<Card_Upd_Context>(uid,cid,num);
+                            Card_Upd_Context::Ptr card_upd_ctx = std::make_shared<Card_Upd_Context>(MANAGER,uid,cid,num,description);
                             code = api_manager->Get_API(CARD_UPD_API)->Function(card_upd_ctx);    
                         }else{
                             code = STATUS_JSON_NO_NEC_MEM;
@@ -387,7 +399,7 @@ std::string Event_Layer::Deal_Card_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt
                     else if (obj.payload().has_claim("role") && obj.payload().get_claim_value<std::string>("role").compare("sim") == 0 && obj.payload().has_claim("uid"))
                     { // simple user
                         uid = atoi(obj.payload().get_claim_value<std::string>("uid").c_str());
-                        Card_Upd_Context::Ptr card_upd_ctx = std::make_shared<Card_Upd_Context>(uid,cid,num);
+                        Card_Upd_Context::Ptr card_upd_ctx = std::make_shared<Card_Upd_Context>(SIMPLE,uid,cid,num,description);
                         code = api_manager->Get_API(CARD_UPD_API)->Function(card_upd_ctx);
                     }
                     else
@@ -421,20 +433,20 @@ end:
     return j.dump();
 }
 
-std::string Event_Layer::Deal_Data_Card_Self_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt_object& obj)
+std::string Event_Layer::Deal_Data_Card_Concrete_Event(HTTP_NSP::HTTP::Ptr http,const jwt::jwt_object& obj)
 {
     if (obj.payload().has_claim("role") && obj.payload().get_claim_value<std::string>("role").compare("man") == 0 && obj.payload().has_claim("mid"))
     { // manager
-        Data_Card_Self_Context::Ptr data_card_self_ctx = std::make_shared<Data_Card_Self_Context>(MANAGER,0);
-        api_manager->Get_API(DATA_CARD_Self_API)->Function(data_card_self_ctx);
-        return data_card_self_ctx->j.dump();
+        Data_Card_Concrete_Context::Ptr data_card_concrete_ctx = std::make_shared<Data_Card_Concrete_Context>(MANAGER,0);
+        api_manager->Get_API(DATA_CARD_CONCRETE_API)->Function(data_card_concrete_ctx);
+        return data_card_concrete_ctx->j.dump();
     }
     else if (obj.payload().has_claim("role") && obj.payload().get_claim_value<std::string>("role").compare("sim") == 0 && obj.payload().has_claim("uid"))
     { // simple user
         int uid = atoi(obj.payload().get_claim_value<std::string>("uid").c_str());
-        Data_Card_Self_Context::Ptr data_card_self_ctx = std::make_shared<Data_Card_Self_Context>(SIMPLE, uid);
-        api_manager->Get_API(DATA_CARD_Self_API)->Function(data_card_self_ctx);
-        return data_card_self_ctx->j.dump();
+        Data_Card_Concrete_Context::Ptr data_card_concrete_ctx = std::make_shared<Data_Card_Concrete_Context>(SIMPLE, uid);
+        api_manager->Get_API(DATA_CARD_CONCRETE_API)->Function(data_card_concrete_ctx);
+        return data_card_concrete_ctx->j.dump();
     }
     return "null";
 }

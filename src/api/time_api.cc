@@ -11,27 +11,7 @@ int Time_API::Function(Context_Base::Ptr ctx)
     CacheConn* cache_conn = cachepool->GetCacheConn();
     if(time_ctx->role == SIMPLE)
     {
-        if (time_ctx->method == 1)
-        {
-            std::string tid = "time:";
-            tid += std::to_string(time_ctx->uid);
-            if (cache_conn->isExists(tid))
-            {
-                mysqlpool->Ret_Conn(mysql_conn);
-                cachepool->RelCacheConn(cache_conn);
-                return STATUS_REPEATEDLY_CLOCK;
-            }
-            auto now = std::chrono::system_clock::now();
-            time_t expire_time = Get_Expire_Time(now);
-            time_t now_time = std::chrono::system_clock::to_time_t(now);
-            if (cache_conn->setex(tid, expire_time, std::to_string(now_time)).empty())
-            {
-                mysqlpool->Ret_Conn(mysql_conn);
-                cachepool->RelCacheConn(cache_conn);
-                return STATUS_METHOD_OP_FAIL;
-            }
-        }
-        else if (time_ctx->method == 0)
+        if (time_ctx->method == 0)
         {
             std::string tid = "time:";
             tid += std::to_string(time_ctx->uid);
@@ -68,6 +48,43 @@ int Time_API::Function(Context_Base::Ptr ctx)
                 return STATUS_METHOD_OP_FAIL;
             }
         }
+        else if (time_ctx->method == 1)
+        {
+            std::string tid = "time:";
+            tid += std::to_string(time_ctx->uid);
+            if (cache_conn->isExists(tid))
+            {
+                mysqlpool->Ret_Conn(mysql_conn);
+                cachepool->RelCacheConn(cache_conn);
+                return STATUS_REPEATEDLY_CLOCK;
+            }
+            auto now = std::chrono::system_clock::now();
+            time_t expire_time = Get_Expire_Time(now);
+            time_t now_time = std::chrono::system_clock::to_time_t(now);
+            if (cache_conn->setex(tid, expire_time, std::to_string(now_time)).empty())
+            {
+                mysqlpool->Ret_Conn(mysql_conn);
+                cachepool->RelCacheConn(cache_conn);
+                return STATUS_METHOD_OP_FAIL;
+            }
+        }
+        else if(time_ctx->method == 2)
+        {
+            std::string value = std::to_string(time_ctx->settime);
+            std::string condition = "uid="+std::to_string(time_ctx->uid);
+            std::string query = mysql_conn->Update_Query("time",{"need_time"},{value},condition);
+            spdlog::info("time_api: {}",query);
+            mysql_conn->Update(query);
+            if(mysql_conn->Get_Errno()!=0){
+                mysqlpool->Ret_Conn(mysql_conn);
+                cachepool->RelCacheConn(cache_conn);
+                return STATUS_METHOD_OP_FAIL;
+            }
+        }else{
+            mysqlpool->Ret_Conn(mysql_conn);
+            cachepool->RelCacheConn(cache_conn);
+            return STATUS_METHOD_ERROR;
+        }
     }
     else if(time_ctx->role == MANAGER)
     {
@@ -82,7 +99,7 @@ int Time_API::Function(Context_Base::Ptr ctx)
                 return STATUS_METHOD_OP_FAIL;
             }
         }
-        else if(time_ctx->role == 1)
+        else if(time_ctx->method == 1)
         {
             std::string query = "update time set need_time=";
             query =query + std::to_string(time_ctx->settime) + ";";
@@ -93,6 +110,10 @@ int Time_API::Function(Context_Base::Ptr ctx)
                 cachepool->RelCacheConn(cache_conn);
                 return STATUS_METHOD_OP_FAIL;
             }
+        }else{
+            mysqlpool->Ret_Conn(mysql_conn);
+            cachepool->RelCacheConn(cache_conn);
+            return STATUS_METHOD_ERROR;
         }
     }
     mysqlpool->Ret_Conn(mysql_conn);

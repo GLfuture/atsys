@@ -14,7 +14,8 @@ create table user (
 
 create table card (
     cid         tinyint primary key AUTO_INCREMENT,
-    name        varchar(20)
+    cname       varchar(20),
+    description varchar(80)
 );
 
 
@@ -40,17 +41,24 @@ create table time (
 );
 
 DELIMITER //
-CREATE TRIGGER insert_time AFTER INSERT ON user FOR EACH ROW
+CREATE TRIGGER insert_user AFTER INSERT ON user FOR EACH ROW
 BEGIN 
 INSERT INTO time(uid) VALUES (NEW.uid); 
 END//
 DELIMITER ;
 
 DELIMITER //
-CREATE TRIGGER delete_time BEFORE DELETE ON user FOR EACH ROW
+CREATE TRIGGER delete_user BEFORE DELETE ON user FOR EACH ROW
 BEGIN
 DELETE FROM conn WHERE uid=OLD.uid;
 DELETE FROM time WHERE uid=OLD.uid;
+END//
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER delete_card BEFORE DELETE ON card FOR EACH ROW
+BEGIN
+DELETE FROM conn WHERE uid=OLD.cid;
 END//
 DELIMITER ;
 

@@ -75,6 +75,7 @@ public:
     
     int Get_Errno(){ return mysql_errno(handle); }
 
+    uint64_t Get_Affected_Rows() {  return mysql_affected_rows(handle);  }
 
     template<typename ...Str>
     static inline vector<string> Arg_List(Str...colmuns){

@@ -1,15 +1,15 @@
 #include "api/data_api.h"
 
 
-Data_Card_Self_API::Data_Card_Self_API(MySqlPool::Ptr mysqlpool,CachePool::Ptr cachepool):
+Data_Card_Concrete_API::Data_Card_Concrete_API(MySqlPool::Ptr mysqlpool,CachePool::Ptr cachepool):
     API_Base(mysqlpool,cachepool){}
 
-int Data_Card_Self_API::Function(Context_Base::Ptr ctx)
+int Data_Card_Concrete_API::Function(Context_Base::Ptr ctx)
 {
-    Data_Card_Self_Context::Ptr data_card_ctx = std::dynamic_pointer_cast<Data_Card_Self_Context>(ctx);
+    Data_Card_Concrete_Context::Ptr data_card_ctx = std::dynamic_pointer_cast<Data_Card_Concrete_Context>(ctx);
     MySqlConn* mysql_conn = mysqlpool->Get_Conn(0);
     if(data_card_ctx->role == MANAGER){
-        std::string query = "select A.uid,A.username,C.cid,C.name,B.num from user A right join conn B on A.uid=B.uid left join card C ON B.cid=C.cid;";
+        std::string query = "select A.uid,A.username,C.cid,C.cname,B.num from user A right join conn B on A.uid=B.uid left join card C ON B.cid=C.cid;";
         std::vector<std::vector<std::string>> res;
         spdlog::info("data_card_api: {}",query);
         mysql_conn->Select(query,res);
@@ -20,7 +20,7 @@ int Data_Card_Self_API::Function(Context_Base::Ptr ctx)
             data_card_ctx->j[res[i][0]][res[i][2]]["num"]       = atoi(res[i][4].c_str());
         }
     }else if(data_card_ctx->role == SIMPLE){
-        std::string query = "select conn.cid,name,conn.num from conn left join card on conn.cid=card.cid where uid=";
+        std::string query = "select conn.cid,cname,conn.num from conn left join card on conn.cid=card.cid where uid=";
         query=query+std::to_string(data_card_ctx->uid)+";";
         std::vector<std::vector<std::string>> res;
         spdlog::info("data_card_api: {}",query);
@@ -124,7 +124,7 @@ int Data_Card_API::Function(Context_Base::Ptr ctx)
 {
     Data_Card_Context::Ptr data_card_ctx = std::dynamic_pointer_cast<Data_Card_Context>(ctx);
     MySqlConn* conn = mysqlpool->Get_Conn(0);
-    std::string query = "select cid,name from card;";
+    std::string query = "select cid,cname,description from card;";
     std::vector<std::vector<std::string>> res;
     spdlog::info("data_card_api: {}",query);
     conn->Select(query,res);
@@ -135,7 +135,8 @@ int Data_Card_API::Function(Context_Base::Ptr ctx)
     }
     for(int i=1;i<res.size();i++)
     {
-        data_card_ctx->j[res[i][0]] = res[i][1];
+        data_card_ctx->j[res[i][0]]["cname"] = res[i][1];
+        data_card_ctx->j[res[i][0]]["description"] = res[i][2];
     }
     mysqlpool->Ret_Conn(conn);
     return STATUS_METHOD_OP_SUCCESS;

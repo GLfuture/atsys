@@ -16,7 +16,7 @@ int main()
     api_manager->Register_API(std::make_shared<Card_New_API>(data_layer->Get_Mysql_Pool(),data_layer->Get_Cache_Pool()),CARD_NEW_API);
     api_manager->Register_API(std::make_shared<Card_Del_API>(data_layer->Get_Mysql_Pool(),data_layer->Get_Cache_Pool()),CARD_DEL_API);
     api_manager->Register_API(std::make_shared<Card_Upd_API>(data_layer->Get_Mysql_Pool(),data_layer->Get_Cache_Pool()),CARD_UPD_API);
-    api_manager->Register_API(std::make_shared<Data_Card_Self_API>(data_layer->Get_Mysql_Pool(),data_layer->Get_Cache_Pool()),DATA_CARD_Self_API);
+    api_manager->Register_API(std::make_shared<Data_Card_Concrete_API>(data_layer->Get_Mysql_Pool(),data_layer->Get_Cache_Pool()),DATA_CARD_CONCRETE_API);
     api_manager->Register_API(std::make_shared<Data_User_API>(data_layer->Get_Mysql_Pool(),data_layer->Get_Cache_Pool()),DATA_USER_API);
     api_manager->Register_API(std::make_shared<User_Upd_API>(data_layer->Get_Mysql_Pool(),data_layer->Get_Cache_Pool()),USER_UPD_API);
     api_manager->Register_API(std::make_shared<Data_Time_API>(data_layer->Get_Mysql_Pool(),data_layer->Get_Cache_Pool()),DATA_TIME_API);

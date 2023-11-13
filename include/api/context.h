@@ -77,11 +77,13 @@ class Card_New_Context:public Context_Base
 {
 public:
     using Ptr = std::shared_ptr<Card_New_Context>;
-    Card_New_Context(std::string cname){
+    Card_New_Context(std::string cname,std::string description){
         this->cname = cname;
+        this->description = description;
     }
 public:
     std::string cname;
+    std::string description;
 };
 
 class Card_Del_Context: public Context_Base
@@ -103,22 +105,26 @@ class Card_Upd_Context: public Context_Base
 {
 public:
     using Ptr = std::shared_ptr<Card_Upd_Context>;
-    Card_Upd_Context(int uid,int cid,int num){
+    Card_Upd_Context(int role,int uid,int cid,int num,std::string description){
+        this->role = role;
         this->cid = cid;
         this->num = num;
         this->uid = uid;
+        this->description = description;
     }
 public:
+    int role;
     int uid;
     int cid;
     int num;
+    std::string description;
 };
 
-class Data_Card_Self_Context: public Context_Base
+class Data_Card_Concrete_Context: public Context_Base
 {
 public:
-    using Ptr = std::shared_ptr<Data_Card_Self_Context>;
-    Data_Card_Self_Context(int role,int uid)
+    using Ptr = std::shared_ptr<Data_Card_Concrete_Context>;
+    Data_Card_Concrete_Context(int role,int uid)
     {
         this->role = role;
         this->uid = uid;
