@@ -3,8 +3,108 @@
 Time_API::Time_API(MySqlPool::Ptr mysqlpool,CachePool::Ptr cachepool):
     API_Base(mysqlpool,cachepool){}
 
+std::string Time_API::Function(HTTP_NSP::HTTP::Ptr http)
+{
+    int code = 0;
+    json ret_j;
+    std::string token(http->Request_Get_Key_Value("Token"));
+    if (token.empty())
+    {
+        code = STATUS_TOKEN_NOT_IN_HEAD;
+        goto end;
+    }
+    else
+    {
+        jwt::jwt_object obj;
+        if (Token_Analyzer::Decode_Token(token, obj).value() == static_cast<int>(jwt::VerificationErrc::TokenExpired))
+        {
+            code = STATUS_TOKEN_EXPIRED;
+            goto end;
+        }
+        else
+        {
+            int method;
+            time_t time = 0;
+            if (obj.payload().has_claim("role") && obj.payload().get_claim_value<std::string>("role").compare("sim") == 0 && obj.payload().has_claim("uid"))
+            {
+                int uid = atoi(obj.payload().get_claim_value<std::string>("uid").c_str());
+                std::string body(http->Request_Get_Body());
+                if (json::accept(body))
+                {
+                    json j = json::parse(body);
+                    if (j.contains("method") && j["method"].is_number())
+                        method = j["method"];
+                    else
+                    {
+                        code = STATUS_JSON_NO_NEC_MEM;
+                        goto end;
+                    }
+                    if(method == 2){
+                        if (j.contains("time") && j["time"].is_number())
+                            time = j["time"];
+                        else
+                        {
+                            code = STATUS_JSON_NO_NEC_MEM;
+                            goto end;
+                        }
+                        if(j.contains("uid") && j["uid"].is_number()){
+                            uid = j ["uid"];
+                        }
+                    }
+                    Time_Context::Ptr time_ctx = std::make_shared<Time_Context>(SIMPLE, uid, method, time);
+                    code = Deal_Real_Event(time_ctx);
+                    if (time_ctx->_time != 0)
+                    {
+                        ret_j["time"] = time_ctx->_time;
+                    }
+                }
+                else
+                {
+                    code = STATUS_JSON_ERROR;
+                }
+            }
+            else if (obj.payload().has_claim("role") && obj.payload().get_claim_value<std::string>("role").compare("man") == 0 && obj.payload().has_claim("mid"))
+            {
+                std::string body(http->Request_Get_Body());
+                if (json::accept(body))
+                {
+                    json j = json::parse(body);
+                    if (j.contains("method") && j["method"].is_number())
+                        method = j["method"];
+                    else
+                    {
+                        code = STATUS_JSON_NO_NEC_MEM;
+                        goto end;
+                    }
+                    if(method == 1){
+                        if (j.contains("time") && j["time"].is_number())
+                            time = j["time"];
+                        else
+                        {
+                            code = STATUS_JSON_NO_NEC_MEM;
+                            goto end;
+                        }
+                    }
+                    Time_Context::Ptr time_ctx = std::make_shared<Time_Context>(MANAGER, 0, method, time);
+                    code = Deal_Real_Event(time_ctx);
+                }
+            }
+            else
+            {
+                code = STATUS_PRIVILIDGE_ERROR;
+            }
+        }
+        obj.remove_claim("exp");
+        obj.add_claim("exp", std::chrono::system_clock::now() + std::chrono::seconds(TOKEN_EXPIRE_TIME));
+        token = obj.signature();
+        http->Response_Set_Key_Value("Token", token);
+    }
+end:  
+    ret_j["code"] = code;
+    return ret_j.dump();
+}
 
-int Time_API::Function(Context_Base::Ptr ctx)
+int Time_API::Deal_Real_Event(Context_Base::Ptr ctx)
 {
     Time_Context::Ptr time_ctx = std::dynamic_pointer_cast<Time_Context>(ctx);
     MySqlConn* mysql_conn = mysqlpool->Get_Conn(0);
@@ -70,7 +170,8 @@ int Time_API::Function(Context_Base::Ptr ctx)
         }
         else if(time_ctx->method == 2)
         {
-            std::string value = std::to_string(time_ctx->settime);
+            std::string value = "need_time + ";
+            value = value + std::to_string(time_ctx->settime);
             std::string condition = "uid="+std::to_string(time_ctx->uid);
             std::string query = mysql_conn->Update_Query("time",{"need_time"},{value},condition);
             spdlog::info("time_api: {}",query);

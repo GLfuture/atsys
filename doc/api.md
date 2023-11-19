@@ -1,298 +1,430 @@
 # API
 
-return code type:
+## return code
 
-code: 0   //Login success
+code: 0 //Login success
 
-code: 1   //password error
+code: 1 //password error
 
-code: 2   //no user(maybe need to register?)
+code: 2 //no user(maybe need to register?)
 
-code: 3   //register success
+code: 3 //register success
 
-code: 4   //has repeated username
+code: 4 //has repeated username
 
-code: 5   //register failed
+code: 5 //register failed
 
-code: 6   //logout success
+code: 6 //logout success
 
-code: 7   //logout fail
+code: 7 //logout fail
 
-code: 8   //has no token in head
+code: 8 //has no token in head
 
-code: 9   //token expire 
+code: 9 //token expire
 
-code: 10  //json has errors
+code: 10 //json has errors
 
-code: 11  //json doesn't has necessary member
+code: 11 //json doesn't has necessary member
 
-code: 12  //method operates successfully
+code: 12 //method operates successfully
 
-code: 13  //method operates fail
+code: 13 //method operates fail
 
-code: 14  //method error
+code: 14 //method error
 
-code: 15  //privilidge error
+code: 15 //privilidge error
 
-code: 16  //clok reaptedly(already clocked)
+code: 16 //clok reaptedly(already clocked)
 
-code: 17  //didn't clock in(not ready to clock)
+code: 17 //didn't clock in(not ready to clock)
 
-#### login
+code: 18 //url error
 
-uri:/api/login
 
-need:
-{
-    "role":1,
-    "username":"",
-    "password":""
+
+## login
+
+url:/api/login
+
+(role: 0 //manager     1 //simple user)
+
+```json
+need: { 
+    	"role":1, 
+    	"username":"",
+    	"password":"" 
+	}
+```
+
+```json
+return: 
+	head: Token //http header中带有身份信息的token字段
+	{ 
+        "code": 
+    }
+```
+
+## register
+
+url:/api/register
+
+"only simple user can access"
+
+```json
+need: 
+{ 
+    "username": varchar(15) ,
+    "password": varchar(20),
+    "email": varchar(20),
+    "telphone": varchar(20),
+    "address": varchar(20),
+    "sex": int //0 女 1 男 
 }
+```
 
-role:
-0   //manager
-1   //simple user
+```json
+return : { "code": code }
+```
 
-return:
-head: Token
-{
-    "code":code
-}
+## change card's data(add/delete/update)
 
-uri:/api/register
+url:/api/card
 
-need:
-{
-    "username":  varchar(15)
-    "password":  varchar(20)
-    "email":     varchar(20)
-    "telphone":  varchar(20)
-    "address":   varchar(20)
-    "sex": int   //0 女 1 男
-}
+(method: 0 //new card need card's name(only manager can access)
 
-return :
-{
-    "code": code 
-}
+method: 1 //delete need uid and cid(simple user del his card record  ,   manager del one card (this card will be destoryed)) 
 
+method: 2 //update need uid and cid and num)
 
-//change card's data
+```json
+need: { 
+    	"method" :0,
+       	"cname"  :"",
+    	"description":"",//不超过80个字节
+      }
+```
 
-uri:/api/card
-
-method: 0 //new card need card's name
-method: 1 //delete need uid and cid(simple user del conn record(use uid and cid)     manager del card record(use cid))
-method: 2 //update need uid and cid and num
-
-need:
-{
-    method:0
-    cname:""
-}
-
-return:
-{
-    "code":
-}
+```json
+return: { "code": }
+```
 
 or
 
-need:
-{
-    method:1
-    cid:
-}
+(delete card(simple user delete his card		manager delete this card's type))
 
-return :
-{
-    "code":
+```json
+need: 
+{	
+    "method":1,
+	"cid": int 
 }
+```
+
+```json
+return : { "code": }
+```
 
 or
 
+(change user's card's num)
+
+ simple user:
+
+ ```json
 need:
+{ 
+    "method":2, 
+ 	"cid": int,
+    "num": int, //+为加,-为减 
+}
+ ```
+
+```json
+return: { "code": }
+```
+
+manager:
+
+```json
+need:
+{ 
+    "method":2 ,
+ 	"uid": int,
+    "cid": int,
+    "num": int,
+    "description": "" //不超过80个字节，如果没有该字段或者为空就不修改卡片描述
+}
+```
+
+```json
+return: { "code": }
+```
+
+
+
+## change user's data 
+
+url /api/user
+
+(only simple user can access)
+
+```json
+need: { //需要改哪些字段传哪些字段，也可以全传 
+    	"username": varchar(15) ,
+    	"password": varchar(20),
+    	"email": varchar(20),
+    	"telphone": varchar(20),
+    	"address": varchar(20),
+    	"sex": int //0 女 1 男
+	}
+```
+
+```
+return: { "code": }
+```
+
+
+
+## change time‘s data
+
+url /api/time
+
 simple user:
-{
-    method:2
-    cid:
-    num:        //+为加,-为减
+
+(打卡开始)
+
+```
+need: { "method":1 }
+```
+
+```json
+return: { "code": }
+```
+
+(打卡结束)
+
+```
+need: { "method":0 }
+```
+
+```json
+return: 
+{ 
+    "time":  int64_t,//时间戳 
+ 	"code":
 }
+```
 
-manager:
-{
-    method:2
-    uid:
-    cid:
-    num:
+修改需要打卡时间:
+
+```json
+need:{
+    "uid":		//可选字段,存在即修改该用户，不存在修改自己
+    "method":2,
+    "time":		//时间戳 +代表增加需要打卡时间，-代表减少需要打卡时间,秒级
 }
+```
 
-return:
-{
-    "code":
+```
+return:{
+	"code":
 }
-
-//change user's data
-uri /api/user
-
-need:
-{
-    //需要改哪个字段传哪个字段，也可以全传
-    "username":  varchar(15)
-    "password":  varchar(20)
-    "email":     varchar(20)
-    "telphone":  varchar(20)
-    "address":   varchar(20)
-    "sex": int   //0 女 1 男
-}
-
-return:
-{
-    code:
-}
-
-//clock in/off
-uri /api/time
-
-simple user
-
-need:
-{
-    method:1 //1为打卡开始,0为结束
-}
-
-return:
-{
-    code:
-}
-
-need:
-{
-    method:0
-}
-
-return:
-{
-    time:   //时间戳
-    code:
-}
+```
 
 manager:
 
+(method: 0 //清空所有人打卡时间 )
+
+```
+need:
+{
+	"method":
+}
+```
+
+```json
+return: 
+{ 
+    "code": 
+}
+```
+
+(method: 1//设置打卡时间)
+
+```
+need:
+{
+	"method":
+	"time":		int64_t(秒级时间戳)
+}
+```
+
+```
 return:
 {
-    code:
+	"code":
 }
+```
 
+## get user's cards
 
-//get one user's card
+url /api/data/card/concrete
 
-uri /api/data/card/self
+(attention: get your cards)
 
-return :
-simple:
-{
-    "cid":{
-        "cardname":
-        "num":
-    },
-    "cid":{
-        "cardname":
-        "num":
-    }
-    ...
-}
+simple user:
 
-no card return null
-
-manager:
-{
-    "uid":
-        "username":
-        "cid":{
-            "cardname" : 
-            "num" : num
-        },
-        "cid"：{
-            "cardname":
-            "num":num
-        },
-        ...
-    "uid":
-        "username":
-        "cidA":{
-            "cardname" : 
-            "num" : num
-        }
-        "cid"：{
-            "cardname":
-            "num":num
-        }
-        ...
-    ...
-}
-no card return null
-
-//get card data
-
-uri:/api/data/card?page=0
-
-return:
-{
+```json
+return : 
+{ 
     "cid1":
-    {
-        "cardname"
-    }
+    { 
+        "cardname": concrete_cardname,
+        "num": concrete_num(int)  
+    }, 
     "cid2":
-    {
-        "cardname"
-    }
-    ...
+    { 
+        "cardname": concrete_cardname,
+        "num": concrete_num(int)  
+    } 
+    ... 
 }
+no card return "null"
+other error situations return code
+```
 
-//get  user data
+manager: 
+
+(get all users' cards)
+
+```json
+return :
+{ 
+    "uid1": 
+    {
+        "username": 
+        "cid1":	{ 
+        			"cardname" : concrete_cardname,
+        			"num" : concrete_num(int) 
+				},
+     	"cid2"：{ 
+            		"cardname": concrete_cardname
+            		"num" : concrete_num(int)  
+        		}
+		...
+    },
+	"uid2": 
+    {
+        "username": 
+        "cid1":	{ 
+        			"cardname" : concrete_cardname,
+        			"num" : concrete_num(int) 
+				},
+     	"cid2"：{ 
+            		"cardname": concrete_cardname
+            		"num" : concrete_num(int)  
+        		}
+		...
+    },
+}
+no card return "null"
+other error situations return code
+```
+
+
+
+## get all cards' data
+
+url:/api/data/card?page=0
+
+(both simple user and manager can access)
+
+(attention:  cid1 representes concrete cid)
+
+```json
+return: 
+{ 
+    "cid1": 
+ 	{ 
+        "cardname": concrete_cardname,
+        "description":
+    } 
+    "cid2": 
+    { 
+        "cardname": concrete_cardname,
+    	"description":
+    } 
+    ... 
+}
+```
+
+
+
+## get user's data
 
 manager:/api/data/user?page=0
 
-need:
-return:
-{
-    "uid1":
-    {
-        "username":username
-        "email":
-        "telphone":
-        "address":
-        "sex":  //0 女  1 男
-    }
-    ...
-}
+(attention: get all users' data)
+
+(manager can access)   
+
+```json
+return: { 
+    		"concert_uid": { 
+     				"username":concert_username,
+     				"email": concert_eamil,
+     				"telphone": concert_telphone,
+     				"address": concert_address,
+     				"sex": //0 女 1 男 
+    			}  
+            ... 
+         }
+```
+
+
 
 user:api/data/user
 
+(expect sex is int ,others are string)
+
+(attention: get your data)
+
+(simple user can access)
+
+```json
+return: 
+{ 
+   "concrete_uid": 
+   { 
+     "username":concert_username,
+     "email": concert_eamil,
+     "telphone": concert_telphone,
+     "address": concert_address,
+     "sex": //0 女 1 男 
+    } 
+}
+```
+
+
+
+## get time's data(get all users' time data)
+
+api/data/time 
+
+(both simple user and manager can access)
+
+```json
 return:
-{
-    "uid":
-    {
-        "username":username
-        "email":
-        "telphone":
-        "address":
-        "sex":  //0 女  1 男
+{ 
+    "uid1": {
+        "username": "",
+        "sex": int ,
+        "total_time":int64_t ,  //秒级
+        "need_time":int64_t
     }
 }
+```
 
-manager and user:
 
-//get time data
 
-api/data/time
-
-return:
-{
-    "username1":
-}
-
-attention:
-username+data       代表真实用户名
-username不加data    代表“username”这个key
+attention: username+data 代表真实用户名 username不加data 代表“username”这个key

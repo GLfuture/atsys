@@ -7,7 +7,8 @@ class Register_API : public API_Base
 {
 public:
     Register_API(MySqlPool::Ptr mysqlpool,CachePool::Ptr cachepool);
-    int Function(Context_Base::Ptr ctx_ptr) override;
+    virtual std::string Function(HTTP_NSP::HTTP::Ptr http) override;
+    virtual int Deal_Real_Event(Context_Base::Ptr ctx) override;
 };
 
 

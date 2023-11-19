@@ -15,6 +15,7 @@
 #include <string.h>
 #include <string_view>
 #include <memory>
+#include "net_interface.h"
 using std::string;
 using std::string_view;
 class Tcp_Conn_Base
@@ -23,6 +24,10 @@ public:
     using Ptr = std::shared_ptr<Tcp_Conn_Base>;
     Tcp_Conn_Base(uint32_t conn_fd);
 
+    Net_Interface_Base::SSL_Tup SSL_Get_Tup() {    return ssl_tup;    }
+
+    void SSL_Set_Tup(Net_Interface_Base::SSL_Tup ssl_tup){  this->ssl_tup = ssl_tup ;}
+
     size_t Get_Rbuffer_Length() { return _rbuffer.length(); }
 
     size_t Get_Wbuffer_Length() { return _wbuffer.length(); }
@@ -30,6 +35,7 @@ public:
     void Appand_Rbuffer(string rbuffer) { this->_rbuffer.append(rbuffer); }
 
     void Appand_Wbuffer(string wbuffer) { this->_wbuffer.append(wbuffer); }
+
 
     // 只提供视图，以方便粘包拷贝不丢失数据
     string_view Get_Rbuffer() { return _rbuffer; }
@@ -42,11 +48,12 @@ public:
 
     uint32_t Get_Conn_fd() { return _fd; }
 
-    virtual ~Tcp_Conn_Base(){
-        
-    }
+    virtual ~Tcp_Conn_Base(){}
+
+
 protected:
     uint32_t _fd;
+    Net_Interface_Base::SSL_Tup ssl_tup;
     string _rbuffer;
     string _wbuffer;
 };

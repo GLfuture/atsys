@@ -17,8 +17,6 @@
 #include "net_interface.h"
 #include "timermanager.hpp"
 
-
-
 using std::map;
 using std::shared_ptr;
 class Callback
@@ -52,13 +50,40 @@ public:
 
     Server_Base(int fd , Net_Interface_Base::Ptr& interface);
 
+    //初始化epoll
     int Init_Epoll_Fd();
+    //初始化SSL环境
+
+    void SSL_Env_Init();
+
+    //初始化SSL
+    Net_Interface_Base::SSL_Tup SSL_Init(long min_version,long max_version);
+
+    //销毁SSL
+    void SSL_Destory(Net_Interface_Base::SSL_Tup);
+
+    //销毁SSL环境
+    void SSL_Env_Destory();
+
+    void SSL_Set_Fd(SSL* ssl,int fd);
 
     int Accept();
 
+    //accept之后进行ssl握手
+    int SSL_Accept(SSL* ssl);
+
     ssize_t Recv(Tcp_Conn_Base::Ptr& conn_ptr,uint32_t len);
 
+    //ssl_recv，无需再调用recv
+    ssize_t SSL_Recv(SSL* ssl, Tcp_Conn_Base::Ptr& conn_ptr,uint32_t len);
+
     ssize_t Send(const Tcp_Conn_Base::Ptr& conn_ptr,uint32_t len);
+
+    ssize_t SSL_Send(SSL* ssl, const Tcp_Conn_Base::Ptr& conn_ptr,uint32_t len);
+
+    Tcp_Conn_Base::Ptr Connect(std::string sip,uint32_t s_port);
+
+    int SSL_Connect(SSL *ssl);
 
     Tcp_Conn_Base::Ptr Get_Conn(int fd) ;
 
@@ -74,17 +99,9 @@ public:
 
     void Clean_Conns();
 
-    const char* Get_Ret_Str(Error_Code code){
-        const char *arr[] =
-            {
-                "successful",
-                "socket function is failed",
-                "connect function is failed",
-            };
-        return arr[code];
-    }
-
     int Get_Sock() { return _fd; }
+
+    Net_Interface_Base::SSL_Tup Get_SSL_Union(){  return this->_ssl_tup; }
 
 #if ENABLE_RBTREE_TIMER | ENABLE_MINHEAP_TIMER
     Timer::Ptr Set_Timeout_cb(uint16_t timerid, uint64_t interval_time, Timer::TimerType type, std::function<void()> &&timeout_cb)
@@ -112,6 +129,7 @@ private:
     Net_Interface_Base::Ptr interface;
     int _fd;
     map<uint32_t,Tcp_Conn_Base::Ptr> connections;
+    Net_Interface_Base::SSL_Tup _ssl_tup;
 };
 
 

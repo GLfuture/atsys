@@ -59,6 +59,7 @@ enum RET_CODE{
     STATUS_PRIVILIDGE_ERROR,            //incorrect privilidge
     STATUS_REPEATEDLY_CLOCK,            //clock repedtedly
     STATUS_NOT_CLOCK_IN,                //didn't clock in
+    STATUS_URL_ERROR,                   //url error
 };
 
 enum ROLE_TYPE{
@@ -76,24 +77,6 @@ enum OP_CARD_METHOD{
     OP_NEW_CARD,
     OP_DEL_CARD,
     OP_UPD_CARD,
-};
-
-//apis
-enum API_TYPE
-{
-    LOGIN_API,
-    REGISTER_API,
-    LOGOUT_API,
-    TIME_API,
-    CARD_NEW_API,
-    CARD_DEL_API,
-    CARD_UPD_API,
-    DATA_CARD_API,
-    DATA_CARD_CONCRETE_API,
-    DATA_USER_API,
-    DATA_TIME_API,
-    USER_UPD_API,
-    TATOL_API_NUM
 };
 
 

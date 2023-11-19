@@ -7,7 +7,72 @@ Register_API::Register_API(MySqlPool::Ptr mysqlpool,CachePool::Ptr cachepool):
 
 }
 
-int Register_API::Function(Context_Base::Ptr ctx_ptr)
+std::string Register_API::Function(HTTP_NSP::HTTP::Ptr http)
+{
+    int code = 0;
+    std::string body(http->Request_Get_Body());
+    if (json::accept(body))
+    {
+        json j = json::parse(body);
+        std::string username, password, email, phone, address;
+        int sex = -1;
+        if (j.contains("username") && j["username"].is_string())
+            username = j["username"];
+        else
+        {
+            code = STATUS_JSON_NO_NEC_MEM;
+            goto end;
+        }
+        if (j.contains("password") && j["password"].is_string())
+            password = j["password"];
+        else
+        {
+            code = STATUS_JSON_NO_NEC_MEM;
+            goto end;
+        }
+        if (j.contains("email") && j["email"].is_string())
+            email = j["email"];
+        else
+        {
+            code = STATUS_JSON_NO_NEC_MEM;
+            goto end;
+        }
+        if (j.contains("phone") && j["phone"].is_string())
+            phone = j["phone"];
+        else
+        {
+            code = STATUS_JSON_NO_NEC_MEM;
+            goto end;
+        }
+        if (j.contains("address") && j["address"].is_string())
+            address = j["address"];
+        else
+        {
+            code = STATUS_JSON_NO_NEC_MEM;
+            goto end;
+        }
+        if (j.contains("sex") && j["sex"].is_number())
+            sex = j["sex"];
+        else
+        {
+            code = STATUS_JSON_NO_NEC_MEM;
+            goto end;
+        }
+        Register_Context::Ptr register_ctx = std::make_shared<Register_Context>(username, password, email, phone, address,sex);
+        code = Deal_Real_Event(register_ctx);
+    }else{
+        code = STATUS_JSON_ERROR;
+    }
+end:
+    json j;
+    j["code"] = code;
+    return j.dump();
+}
+
+
+
+
+int Register_API::Deal_Real_Event(Context_Base::Ptr ctx_ptr)
 {
     Register_Context::Ptr register_ctx = std::dynamic_pointer_cast<Register_Context>(ctx_ptr);
     

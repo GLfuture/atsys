@@ -73,46 +73,23 @@ public:
     int id;
 };
 
-class Card_New_Context:public Context_Base
+class Card_Context: public Context_Base
 {
 public:
-    using Ptr = std::shared_ptr<Card_New_Context>;
-    Card_New_Context(std::string cname,std::string description){
+    using Ptr = std::shared_ptr<Card_Context>;
+    Card_Context(int method,std::string cname,int role,int uid,int cid,int num,std::string description)
+    {
+        this->method = method;
         this->cname = cname;
-        this->description = description;
-    }
-public:
-    std::string cname;
-    std::string description;
-};
-
-class Card_Del_Context: public Context_Base
-{
-public:
-    using Ptr = std::shared_ptr<Card_Del_Context>;
-    Card_Del_Context(int role,int cid,int uid = 0){
         this->role = role;
-        this->cid = cid;
         this->uid = uid;
-    }
-public:
-    int role;
-    int uid;
-    int cid;
-};
-
-class Card_Upd_Context: public Context_Base
-{
-public:
-    using Ptr = std::shared_ptr<Card_Upd_Context>;
-    Card_Upd_Context(int role,int uid,int cid,int num,std::string description){
-        this->role = role;
         this->cid = cid;
         this->num = num;
-        this->uid = uid;
         this->description = description;
     }
 public:
+    int method;
+    std::string cname;
     int role;
     int uid;
     int cid;
@@ -179,11 +156,11 @@ public:
 };
 
 
-class User_Upd_Context:public Context_Base
+class User_Context:public Context_Base
 {
 public:
-    using Ptr = std::shared_ptr<User_Upd_Context>;
-    User_Upd_Context(int uid,std::string username,std::string password,std::string email,
+    using Ptr = std::shared_ptr<User_Context>;
+    User_Context(int uid,std::string username,std::string password,std::string email,
     std::string phone,std::string address,int sex)
     {
         this->uid = uid;

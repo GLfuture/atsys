@@ -22,7 +22,10 @@ public:
         this->cachepool = cachepool;
     }
     using Ptr = std::shared_ptr<API_Base>;
-    virtual int Function(Context_Base::Ptr ctx_ptr) = 0;
+
+    //virtual bool Check_Token(const std::string& token) = 0;
+    virtual std::string Function(HTTP_NSP::HTTP::Ptr http) = 0;
+    virtual int Deal_Real_Event(Context_Base::Ptr ctx) = 0;
     virtual ~API_Base() {}
 protected:
     MySqlPool::Ptr mysqlpool;

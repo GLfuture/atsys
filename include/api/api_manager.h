@@ -7,25 +7,23 @@
 #include "api/logout_api.h"
 #include "api/user_api.h"
 #include "api/time_api.h"
+#include <map>
 
 class API_Manager
 {
 public:
     using Ptr = std::shared_ptr<API_Manager>;
-    API_Manager(int num){
-        _apis.assign(num,nullptr);
-    }
-    //注册api并返回该api的下标
-    int Register_API(API_Base::Ptr api,int indx);
 
-    int Register_APIs(std::vector<API_Base::Ptr> apis);
+    void Register_GET_API(std::string url , API_Base::Ptr api);
 
-    API_Base::Ptr Get_API(int i){
-        return _apis[i];
-    }
+    void Register_POST_API(std::string url , API_Base::Ptr api);
 
+    API_Base::Ptr Get_GET_API(std::string url);
+
+    API_Base::Ptr Get_POST_API(std::string url);
 private:
-    std::vector<API_Base::Ptr> _apis;
+    std::map<std::string,API_Base::Ptr> get_apis;
+    std::map<std::string,API_Base::Ptr> post_apis;
 };
 
 

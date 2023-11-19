@@ -8,7 +8,8 @@ class Logout_API:public API_Base
 public:
     
     Logout_API(MySqlPool::Ptr mysqlpool,CachePool::Ptr cachepool);
-    int Function(Context_Base::Ptr ctx) override;
+    std::string Function(HTTP_NSP::HTTP::Ptr http) override;
+    int Deal_Real_Event(Context_Base::Ptr ctx) override;
 
 };
 

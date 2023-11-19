@@ -1,0 +1,17 @@
+syntax = "proto3";
+package SMTP.Captcha;
+option optimize_for = LITE_RUNTIME;
+
+service Send_Captcha {
+    rpc SendCaptcha(SMTP_Captcha_Req) returns (SMTP_Captcha_Rsp) {}
+}
+
+message SMTP_Captcha_Req{
+    repeated string emails = 1;
+    string captcha = 2;
+}
+
+message SMTP_Captcha_Rsp
+{
+    uint32 code = 1;
+};

@@ -3,24 +3,17 @@
 
 #include "api_base.h"
 
-class Card_New_API: public API_Base
+class Card_API: public API_Base
 {
 public:
-    Card_New_API(MySqlPool::Ptr mysqlpool,CachePool::Ptr cachepool);
-    int Function(Context_Base::Ptr ctx) override;
+    Card_API(MySqlPool::Ptr mysqlpool,CachePool::Ptr cachepool);
+    virtual std::string Function(HTTP_NSP::HTTP::Ptr http) override;
+    virtual int Deal_Real_Event(Context_Base::Ptr ctx) override;
+
+private:
+    int Deal_New_Card_Event(Context_Base::Ptr ctx);
+    int Deal_Del_Card_Event(Context_Base::Ptr ctx);
+    int Deal_Upd_Card_Event(Context_Base::Ptr ctx);
 };
 
-class Card_Del_API: public API_Base
-{
-public:
-    Card_Del_API(MySqlPool::Ptr mysqlpool,CachePool::Ptr cachepool);
-    int Function(Context_Base::Ptr ctx) override;
-};
-
-class Card_Upd_API:public API_Base
-{
-public:
-    Card_Upd_API(MySqlPool::Ptr mysqlpool,CachePool::Ptr cachepool);
-    int Function(Context_Base::Ptr ctx) override;
-};
 #endif
