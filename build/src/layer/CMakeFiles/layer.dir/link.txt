@@ -1,2 +1,0 @@
-/usr/bin/ar qc liblayer.a  CMakeFiles/layer.dir/event_layer.cc.o CMakeFiles/layer.dir/net_layer.cc.o
-/usr/bin/ranlib liblayer.a
