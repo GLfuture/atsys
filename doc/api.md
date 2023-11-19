@@ -2,43 +2,110 @@
 
 ## return code
 
+//login
+
 code: 0 //Login success
 
 code: 1 //password error
 
 code: 2 //no user(maybe need to register?)
 
-code: 3 //register success
+code: 3 //captcha  error(expire or error)
 
-code: 4 //has repeated username
+//register
 
-code: 5 //register failed
+code: 4 //register success
 
-code: 6 //logout success
+code: 5 //has repeated username
 
-code: 7 //logout fail
+code: 6 //register failed
 
-code: 8 //has no token in head
+code: 7 //captcha  error(expire or error)
 
-code: 9 //token expire
+//logout
 
-code: 10 //json has errors
+code: 8 //logout success
 
-code: 11 //json doesn't has necessary member
+code: 9 //logout fail
 
-code: 12 //method operates successfully
 
-code: 13 //method operates fail
 
-code: 14 //method error
+//others
 
-code: 15 //privilidge error
+code: 10 //has no token in head
 
-code: 16 //clok reaptedly(already clocked)
+code: 11 //token expire
 
-code: 17 //didn't clock in(not ready to clock)
+code: 12 //json has errors
 
-code: 18 //url error
+code: 13 //json doesn't has necessary member
+
+code: 14 //method operates successfully
+
+code: 15 //method operates fail
+
+code: 16 //method error
+
+code: 17 //privilidge error
+
+code: 18 //clok reaptedly(already clocked)
+
+code: 19 //didn't clock in(not ready to clock)
+
+code: 20 //url error
+
+code: 21 //email send successfully
+
+code: 22 //email send error
+
+code: 23 //some  unkown error
+
+## smtp
+
+(支持多邮件发送)
+
+url: /api/smtp
+
+//method : 0 (发送验证码)
+
+```
+need:
+{
+	"method": 0  //send captcha
+	"email": ""
+}
+```
+
+```
+return:
+{
+	"code":
+}
+```
+
+//method : 1 (发送邮件)
+
+only manager can send
+
+```
+need:
+	head:token 
+{
+	"method": 1,
+	"emails": ["","",""],
+	"subject":	"",//主题
+	"content_type":	"", //such as text/html
+	"charset":"",		//such as utf8mb4
+	"content": 	""
+}
+```
+
+```
+return :
+{
+	"code": 
+}
+```
 
 
 
@@ -48,8 +115,11 @@ url:/api/login
 
 (role: 0 //manager     1 //simple user)
 
+manager can only use username and password to login
+
 ```json
 need: { 
+    	"method":0,   //add
     	"role":1, 
     	"username":"",
     	"password":"" 
@@ -64,11 +134,37 @@ return:
     }
 ```
 
+add:
+
+邮箱登录:
+
+simple user can use this method
+
+```
+need: 
+{
+	"method" : 1,
+	"email": ""
+	"captcha": ""
+}
+```
+
+```
+return:
+{
+	"code":
+}
+```
+
+
+
 ## register
 
 url:/api/register
 
 "only simple user can access"
+
+doesn't  allow  repeated  username,email,telphone 
 
 ```json
 need: 
@@ -76,9 +172,10 @@ need:
     "username": varchar(15) ,
     "password": varchar(20),
     "email": varchar(20),
-    "telphone": varchar(20),
+    "phone": varchar(20),
     "address": varchar(20),
-    "sex": int //0 女 1 男 
+    "sex": int ,//0 女 1 男
+    "captcha": "",
 }
 ```
 
