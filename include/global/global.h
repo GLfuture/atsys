@@ -3,12 +3,15 @@
 #include <functional>
 #include <iostream>
 #include <atomic>
+#include "../Grpc/smtp_client.h"
 
 #define MYSQL_MIN_CONN              4
 #define MYSQL_MAX_CONN              6
 #define MYSQL_MAX_PAGE_SZIE         50
 
 #define REDIS_MAX_CONN              8
+
+#define CAPTCHA_LEN                 6
 
 
 extern int global_port;
@@ -31,7 +34,9 @@ extern std::string global_redis_password;
 extern int global_redis_port;
 extern int global_redis_expire_time;
 
-extern std::atomic<uint64_t> global_uid;
+//smtp
+extern std::string global_smtp_addr;
+extern SendEmailMsgImplClient::Ptr global_smtp_client;
 
 
 extern std::function<void(int)> global_accept_cb;
@@ -44,9 +49,11 @@ enum RET_CODE{
     STATUS_LOGIN_SUCCESS,               //login success
     STATUS_LOGIN_PASSWORD_ERROR,        //login password failed
     STATUS_LOGIN_NO_USER_ERROR,         //login no user
+    STATUS_LOGIN_CAPTCHA_ERROR,         //captcha expired or mistake
     STATUS_REGISTER_SUCCESS,            //register success
     STATUS_REGISTER_REPEAT_USER,        //register repeat user
     STATUS_REGISTER_FAILED,             //register fail
+    STATUS_REGISTER_CAPTCHA_ERROR,      //captcha expired or mistake
     STATUS_LOGOUT_SUCCESS,              //logout success
     STATUS_LOGOUT_FAILED,               //logout fail
     STATUS_TOKEN_NOT_IN_HEAD,           //token is not in head
@@ -60,6 +67,9 @@ enum RET_CODE{
     STATUS_REPEATEDLY_CLOCK,            //clock repedtedly
     STATUS_NOT_CLOCK_IN,                //didn't clock in
     STATUS_URL_ERROR,                   //url error
+    STATUS_SEND_EMAIL_SUCCESS,          //email send success
+    STATUS_SEND_EMAIL_ERROR,            //email send error
+    STATUS_UNKOWN_ERROR,                //some unkown error
 };
 
 enum ROLE_TYPE{

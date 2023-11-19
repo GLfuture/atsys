@@ -26,51 +26,51 @@
 #include <grpcpp/impl/codegen/sync_stream.h>
 
 namespace SMTP {
-namespace Captcha {
+namespace Email_Msg {
 
-class Send_Captcha final {
+class Send_Email_Msg final {
  public:
   static constexpr char const* service_full_name() {
-    return "SMTP.Captcha.Send_Captcha";
+    return "SMTP.Email_Msg.Send_Email_Msg";
   }
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    virtual ::grpc::Status SendCaptcha(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req& request, ::SMTP::Captcha::SMTP_Captcha_Rsp* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::SMTP::Captcha::SMTP_Captcha_Rsp>> AsyncSendCaptcha(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::SMTP::Captcha::SMTP_Captcha_Rsp>>(AsyncSendCaptchaRaw(context, request, cq));
+    virtual ::grpc::Status Send_Msg(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req& request, ::SMTP::Email_Msg::SMTP_Rsp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::SMTP::Email_Msg::SMTP_Rsp>> AsyncSend_Msg(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::SMTP::Email_Msg::SMTP_Rsp>>(AsyncSend_MsgRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::SMTP::Captcha::SMTP_Captcha_Rsp>> PrepareAsyncSendCaptcha(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::SMTP::Captcha::SMTP_Captcha_Rsp>>(PrepareAsyncSendCaptchaRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::SMTP::Email_Msg::SMTP_Rsp>> PrepareAsyncSend_Msg(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::SMTP::Email_Msg::SMTP_Rsp>>(PrepareAsyncSend_MsgRaw(context, request, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
-      virtual void SendCaptcha(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req* request, ::SMTP::Captcha::SMTP_Captcha_Rsp* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void SendCaptcha(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req* request, ::SMTP::Captcha::SMTP_Captcha_Rsp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Send_Msg(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req* request, ::SMTP::Email_Msg::SMTP_Rsp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Send_Msg(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req* request, ::SMTP::Email_Msg::SMTP_Rsp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::SMTP::Captcha::SMTP_Captcha_Rsp>* AsyncSendCaptchaRaw(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::SMTP::Captcha::SMTP_Captcha_Rsp>* PrepareAsyncSendCaptchaRaw(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::SMTP::Email_Msg::SMTP_Rsp>* AsyncSend_MsgRaw(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::SMTP::Email_Msg::SMTP_Rsp>* PrepareAsyncSend_MsgRaw(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status SendCaptcha(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req& request, ::SMTP::Captcha::SMTP_Captcha_Rsp* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::SMTP::Captcha::SMTP_Captcha_Rsp>> AsyncSendCaptcha(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::SMTP::Captcha::SMTP_Captcha_Rsp>>(AsyncSendCaptchaRaw(context, request, cq));
+    ::grpc::Status Send_Msg(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req& request, ::SMTP::Email_Msg::SMTP_Rsp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::SMTP::Email_Msg::SMTP_Rsp>> AsyncSend_Msg(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::SMTP::Email_Msg::SMTP_Rsp>>(AsyncSend_MsgRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::SMTP::Captcha::SMTP_Captcha_Rsp>> PrepareAsyncSendCaptcha(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::SMTP::Captcha::SMTP_Captcha_Rsp>>(PrepareAsyncSendCaptchaRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::SMTP::Email_Msg::SMTP_Rsp>> PrepareAsyncSend_Msg(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::SMTP::Email_Msg::SMTP_Rsp>>(PrepareAsyncSend_MsgRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
-      void SendCaptcha(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req* request, ::SMTP::Captcha::SMTP_Captcha_Rsp* response, std::function<void(::grpc::Status)>) override;
-      void SendCaptcha(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req* request, ::SMTP::Captcha::SMTP_Captcha_Rsp* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Send_Msg(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req* request, ::SMTP::Email_Msg::SMTP_Rsp* response, std::function<void(::grpc::Status)>) override;
+      void Send_Msg(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req* request, ::SMTP::Email_Msg::SMTP_Rsp* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -82,9 +82,9 @@ class Send_Captcha final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::SMTP::Captcha::SMTP_Captcha_Rsp>* AsyncSendCaptchaRaw(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::SMTP::Captcha::SMTP_Captcha_Rsp>* PrepareAsyncSendCaptchaRaw(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req& request, ::grpc::CompletionQueue* cq) override;
-    const ::grpc::internal::RpcMethod rpcmethod_SendCaptcha_;
+    ::grpc::ClientAsyncResponseReader< ::SMTP::Email_Msg::SMTP_Rsp>* AsyncSend_MsgRaw(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::SMTP::Email_Msg::SMTP_Rsp>* PrepareAsyncSend_MsgRaw(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_Send_Msg_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -92,150 +92,150 @@ class Send_Captcha final {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status SendCaptcha(::grpc::ServerContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req* request, ::SMTP::Captcha::SMTP_Captcha_Rsp* response);
+    virtual ::grpc::Status Send_Msg(::grpc::ServerContext* context, const ::SMTP::Email_Msg::SMTP_Req* request, ::SMTP::Email_Msg::SMTP_Rsp* response);
   };
   template <class BaseClass>
-  class WithAsyncMethod_SendCaptcha : public BaseClass {
+  class WithAsyncMethod_Send_Msg : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_SendCaptcha() {
+    WithAsyncMethod_Send_Msg() {
       ::grpc::Service::MarkMethodAsync(0);
     }
-    ~WithAsyncMethod_SendCaptcha() override {
+    ~WithAsyncMethod_Send_Msg() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SendCaptcha(::grpc::ServerContext* /*context*/, const ::SMTP::Captcha::SMTP_Captcha_Req* /*request*/, ::SMTP::Captcha::SMTP_Captcha_Rsp* /*response*/) override {
+    ::grpc::Status Send_Msg(::grpc::ServerContext* /*context*/, const ::SMTP::Email_Msg::SMTP_Req* /*request*/, ::SMTP::Email_Msg::SMTP_Rsp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestSendCaptcha(::grpc::ServerContext* context, ::SMTP::Captcha::SMTP_Captcha_Req* request, ::grpc::ServerAsyncResponseWriter< ::SMTP::Captcha::SMTP_Captcha_Rsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestSend_Msg(::grpc::ServerContext* context, ::SMTP::Email_Msg::SMTP_Req* request, ::grpc::ServerAsyncResponseWriter< ::SMTP::Email_Msg::SMTP_Rsp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SendCaptcha<Service > AsyncService;
+  typedef WithAsyncMethod_Send_Msg<Service > AsyncService;
   template <class BaseClass>
-  class WithCallbackMethod_SendCaptcha : public BaseClass {
+  class WithCallbackMethod_Send_Msg : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_SendCaptcha() {
+    WithCallbackMethod_Send_Msg() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::SMTP::Captcha::SMTP_Captcha_Req, ::SMTP::Captcha::SMTP_Captcha_Rsp>(
+          new ::grpc::internal::CallbackUnaryHandler< ::SMTP::Email_Msg::SMTP_Req, ::SMTP::Email_Msg::SMTP_Rsp>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req* request, ::SMTP::Captcha::SMTP_Captcha_Rsp* response) { return this->SendCaptcha(context, request, response); }));}
-    void SetMessageAllocatorFor_SendCaptcha(
-        ::grpc::MessageAllocator< ::SMTP::Captcha::SMTP_Captcha_Req, ::SMTP::Captcha::SMTP_Captcha_Rsp>* allocator) {
+                   ::grpc::CallbackServerContext* context, const ::SMTP::Email_Msg::SMTP_Req* request, ::SMTP::Email_Msg::SMTP_Rsp* response) { return this->Send_Msg(context, request, response); }));}
+    void SetMessageAllocatorFor_Send_Msg(
+        ::grpc::MessageAllocator< ::SMTP::Email_Msg::SMTP_Req, ::SMTP::Email_Msg::SMTP_Rsp>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::SMTP::Captcha::SMTP_Captcha_Req, ::SMTP::Captcha::SMTP_Captcha_Rsp>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::SMTP::Email_Msg::SMTP_Req, ::SMTP::Email_Msg::SMTP_Rsp>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_SendCaptcha() override {
+    ~WithCallbackMethod_Send_Msg() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SendCaptcha(::grpc::ServerContext* /*context*/, const ::SMTP::Captcha::SMTP_Captcha_Req* /*request*/, ::SMTP::Captcha::SMTP_Captcha_Rsp* /*response*/) override {
+    ::grpc::Status Send_Msg(::grpc::ServerContext* /*context*/, const ::SMTP::Email_Msg::SMTP_Req* /*request*/, ::SMTP::Email_Msg::SMTP_Rsp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* SendCaptcha(
-      ::grpc::CallbackServerContext* /*context*/, const ::SMTP::Captcha::SMTP_Captcha_Req* /*request*/, ::SMTP::Captcha::SMTP_Captcha_Rsp* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerUnaryReactor* Send_Msg(
+      ::grpc::CallbackServerContext* /*context*/, const ::SMTP::Email_Msg::SMTP_Req* /*request*/, ::SMTP::Email_Msg::SMTP_Rsp* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_SendCaptcha<Service > CallbackService;
+  typedef WithCallbackMethod_Send_Msg<Service > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
-  class WithGenericMethod_SendCaptcha : public BaseClass {
+  class WithGenericMethod_Send_Msg : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_SendCaptcha() {
+    WithGenericMethod_Send_Msg() {
       ::grpc::Service::MarkMethodGeneric(0);
     }
-    ~WithGenericMethod_SendCaptcha() override {
+    ~WithGenericMethod_Send_Msg() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SendCaptcha(::grpc::ServerContext* /*context*/, const ::SMTP::Captcha::SMTP_Captcha_Req* /*request*/, ::SMTP::Captcha::SMTP_Captcha_Rsp* /*response*/) override {
+    ::grpc::Status Send_Msg(::grpc::ServerContext* /*context*/, const ::SMTP::Email_Msg::SMTP_Req* /*request*/, ::SMTP::Email_Msg::SMTP_Rsp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithRawMethod_SendCaptcha : public BaseClass {
+  class WithRawMethod_Send_Msg : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_SendCaptcha() {
+    WithRawMethod_Send_Msg() {
       ::grpc::Service::MarkMethodRaw(0);
     }
-    ~WithRawMethod_SendCaptcha() override {
+    ~WithRawMethod_Send_Msg() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SendCaptcha(::grpc::ServerContext* /*context*/, const ::SMTP::Captcha::SMTP_Captcha_Req* /*request*/, ::SMTP::Captcha::SMTP_Captcha_Rsp* /*response*/) override {
+    ::grpc::Status Send_Msg(::grpc::ServerContext* /*context*/, const ::SMTP::Email_Msg::SMTP_Req* /*request*/, ::SMTP::Email_Msg::SMTP_Rsp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestSendCaptcha(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestSend_Msg(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_SendCaptcha : public BaseClass {
+  class WithRawCallbackMethod_Send_Msg : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_SendCaptcha() {
+    WithRawCallbackMethod_Send_Msg() {
       ::grpc::Service::MarkMethodRawCallback(0,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SendCaptcha(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Send_Msg(context, request, response); }));
     }
-    ~WithRawCallbackMethod_SendCaptcha() override {
+    ~WithRawCallbackMethod_Send_Msg() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SendCaptcha(::grpc::ServerContext* /*context*/, const ::SMTP::Captcha::SMTP_Captcha_Req* /*request*/, ::SMTP::Captcha::SMTP_Captcha_Rsp* /*response*/) override {
+    ::grpc::Status Send_Msg(::grpc::ServerContext* /*context*/, const ::SMTP::Email_Msg::SMTP_Req* /*request*/, ::SMTP::Email_Msg::SMTP_Rsp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* SendCaptcha(
+    virtual ::grpc::ServerUnaryReactor* Send_Msg(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_SendCaptcha : public BaseClass {
+  class WithStreamedUnaryMethod_Send_Msg : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_SendCaptcha() {
+    WithStreamedUnaryMethod_Send_Msg() {
       ::grpc::Service::MarkMethodStreamed(0,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::SMTP::Captcha::SMTP_Captcha_Req, ::SMTP::Captcha::SMTP_Captcha_Rsp>(
+          ::SMTP::Email_Msg::SMTP_Req, ::SMTP::Email_Msg::SMTP_Rsp>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::SMTP::Captcha::SMTP_Captcha_Req, ::SMTP::Captcha::SMTP_Captcha_Rsp>* streamer) {
-                       return this->StreamedSendCaptcha(context,
+                     ::SMTP::Email_Msg::SMTP_Req, ::SMTP::Email_Msg::SMTP_Rsp>* streamer) {
+                       return this->StreamedSend_Msg(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_SendCaptcha() override {
+    ~WithStreamedUnaryMethod_Send_Msg() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status SendCaptcha(::grpc::ServerContext* /*context*/, const ::SMTP::Captcha::SMTP_Captcha_Req* /*request*/, ::SMTP::Captcha::SMTP_Captcha_Rsp* /*response*/) override {
+    ::grpc::Status Send_Msg(::grpc::ServerContext* /*context*/, const ::SMTP::Email_Msg::SMTP_Req* /*request*/, ::SMTP::Email_Msg::SMTP_Rsp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedSendCaptcha(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::SMTP::Captcha::SMTP_Captcha_Req,::SMTP::Captcha::SMTP_Captcha_Rsp>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedSend_Msg(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::SMTP::Email_Msg::SMTP_Req,::SMTP::Email_Msg::SMTP_Rsp>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_SendCaptcha<Service > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_Send_Msg<Service > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_SendCaptcha<Service > StreamedService;
+  typedef WithStreamedUnaryMethod_Send_Msg<Service > StreamedService;
 };
 
-}  // namespace Captcha
+}  // namespace Email_Msg
 }  // namespace SMTP
 
 

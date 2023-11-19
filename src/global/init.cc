@@ -121,6 +121,13 @@ int init_conf(const std::string& filename)
         global_redis_expire_time = atoi(temp.c_str());
         temp.clear();
     }
+    parser->Get_Value("smtp_addr",temp);
+    if(temp.empty()){
+        return -1;
+    }else{
+        global_smtp_addr = temp;
+        temp.clear();
+    }
     return 0;
 }
 
@@ -199,4 +206,9 @@ void Exit_cb(int workerid,Net_Layer::Ptr net_layer)
     int cfd = R->Get_Now_Event().data.fd;
     R->Del_Reactor(worker->Get_Epoll_Fd(),cfd,EPOLLIN);
     worker->Close(cfd);
+}
+
+void  init_smtp()
+{
+    global_smtp_client = std::make_shared<SendEmailMsgImplClient>(grpc::CreateChannel(global_smtp_addr,grpc::InsecureChannelCredentials()));
 }

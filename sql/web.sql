@@ -7,15 +7,15 @@ create table user (
     sex         tinyint,
     username    varchar(20),
     password    varchar(20),
-    email       varchar(20),
-    phone       varchar(20),
-    address     varchar(20)
+    email       varchar(40),
+    phone       varchar(11),
+    address     varchar(40)
 );
 
 create table card (
     cid         tinyint primary key AUTO_INCREMENT,
     cname       varchar(20),
-    description varchar(80)
+    description varchar(100)
 );
 
 

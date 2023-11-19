@@ -51,42 +51,42 @@ struct TableStruct_smtp_2eproto {
   static const uint32_t offsets[];
 };
 namespace SMTP {
-namespace Captcha {
-class SMTP_Captcha_Req;
-struct SMTP_Captcha_ReqDefaultTypeInternal;
-extern SMTP_Captcha_ReqDefaultTypeInternal _SMTP_Captcha_Req_default_instance_;
-class SMTP_Captcha_Rsp;
-struct SMTP_Captcha_RspDefaultTypeInternal;
-extern SMTP_Captcha_RspDefaultTypeInternal _SMTP_Captcha_Rsp_default_instance_;
-}  // namespace Captcha
+namespace Email_Msg {
+class SMTP_Req;
+struct SMTP_ReqDefaultTypeInternal;
+extern SMTP_ReqDefaultTypeInternal _SMTP_Req_default_instance_;
+class SMTP_Rsp;
+struct SMTP_RspDefaultTypeInternal;
+extern SMTP_RspDefaultTypeInternal _SMTP_Rsp_default_instance_;
+}  // namespace Email_Msg
 }  // namespace SMTP
 PROTOBUF_NAMESPACE_OPEN
-template<> ::SMTP::Captcha::SMTP_Captcha_Req* Arena::CreateMaybeMessage<::SMTP::Captcha::SMTP_Captcha_Req>(Arena*);
-template<> ::SMTP::Captcha::SMTP_Captcha_Rsp* Arena::CreateMaybeMessage<::SMTP::Captcha::SMTP_Captcha_Rsp>(Arena*);
+template<> ::SMTP::Email_Msg::SMTP_Req* Arena::CreateMaybeMessage<::SMTP::Email_Msg::SMTP_Req>(Arena*);
+template<> ::SMTP::Email_Msg::SMTP_Rsp* Arena::CreateMaybeMessage<::SMTP::Email_Msg::SMTP_Rsp>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace SMTP {
-namespace Captcha {
+namespace Email_Msg {
 
 // ===================================================================
 
-class SMTP_Captcha_Req final :
-    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:SMTP.Captcha.SMTP_Captcha_Req) */ {
+class SMTP_Req final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:SMTP.Email_Msg.SMTP_Req) */ {
  public:
-  inline SMTP_Captcha_Req() : SMTP_Captcha_Req(nullptr) {}
-  ~SMTP_Captcha_Req() override;
-  explicit constexpr SMTP_Captcha_Req(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline SMTP_Req() : SMTP_Req(nullptr) {}
+  ~SMTP_Req() override;
+  explicit constexpr SMTP_Req(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  SMTP_Captcha_Req(const SMTP_Captcha_Req& from);
-  SMTP_Captcha_Req(SMTP_Captcha_Req&& from) noexcept
-    : SMTP_Captcha_Req() {
+  SMTP_Req(const SMTP_Req& from);
+  SMTP_Req(SMTP_Req&& from) noexcept
+    : SMTP_Req() {
     *this = ::std::move(from);
   }
 
-  inline SMTP_Captcha_Req& operator=(const SMTP_Captcha_Req& from) {
+  inline SMTP_Req& operator=(const SMTP_Req& from) {
     CopyFrom(from);
     return *this;
   }
-  inline SMTP_Captcha_Req& operator=(SMTP_Captcha_Req&& from) noexcept {
+  inline SMTP_Req& operator=(SMTP_Req&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -100,20 +100,20 @@ class SMTP_Captcha_Req final :
     return *this;
   }
 
-  static const SMTP_Captcha_Req& default_instance() {
+  static const SMTP_Req& default_instance() {
     return *internal_default_instance();
   }
-  static inline const SMTP_Captcha_Req* internal_default_instance() {
-    return reinterpret_cast<const SMTP_Captcha_Req*>(
-               &_SMTP_Captcha_Req_default_instance_);
+  static inline const SMTP_Req* internal_default_instance() {
+    return reinterpret_cast<const SMTP_Req*>(
+               &_SMTP_Req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  friend void swap(SMTP_Captcha_Req& a, SMTP_Captcha_Req& b) {
+  friend void swap(SMTP_Req& a, SMTP_Req& b) {
     a.Swap(&b);
   }
-  inline void Swap(SMTP_Captcha_Req* other) {
+  inline void Swap(SMTP_Req* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -126,7 +126,7 @@ class SMTP_Captcha_Req final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(SMTP_Captcha_Req* other) {
+  void UnsafeArenaSwap(SMTP_Req* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -134,12 +134,12 @@ class SMTP_Captcha_Req final :
 
   // implements Message ----------------------------------------------
 
-  SMTP_Captcha_Req* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<SMTP_Captcha_Req>(arena);
+  SMTP_Req* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SMTP_Req>(arena);
   }
   void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
-  void CopyFrom(const SMTP_Captcha_Req& from);
-  void MergeFrom(const SMTP_Captcha_Req& from);
+  void CopyFrom(const SMTP_Req& from);
+  void MergeFrom(const SMTP_Req& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -153,15 +153,15 @@ class SMTP_Captcha_Req final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const;
-  void InternalSwap(SMTP_Captcha_Req* other);
+  void InternalSwap(SMTP_Req* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SMTP.Captcha.SMTP_Captcha_Req";
+    return "SMTP.Email_Msg.SMTP_Req";
   }
   protected:
-  explicit SMTP_Captcha_Req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit SMTP_Req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -176,7 +176,10 @@ class SMTP_Captcha_Req final :
 
   enum : int {
     kEmailsFieldNumber = 1,
-    kCaptchaFieldNumber = 2,
+    kContentFieldNumber = 2,
+    kSubjectFieldNumber = 3,
+    kContentTypeFieldNumber = 4,
+    kCharsetFieldNumber = 5,
   };
   // repeated string emails = 1;
   int emails_size() const;
@@ -202,21 +205,63 @@ class SMTP_Captcha_Req final :
   std::string* _internal_add_emails();
   public:
 
-  // string captcha = 2;
-  void clear_captcha();
-  const std::string& captcha() const;
+  // string content = 2;
+  void clear_content();
+  const std::string& content() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_captcha(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_captcha();
-  PROTOBUF_NODISCARD std::string* release_captcha();
-  void set_allocated_captcha(std::string* captcha);
+  void set_content(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_content();
+  PROTOBUF_NODISCARD std::string* release_content();
+  void set_allocated_content(std::string* content);
   private:
-  const std::string& _internal_captcha() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_captcha(const std::string& value);
-  std::string* _internal_mutable_captcha();
+  const std::string& _internal_content() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_content(const std::string& value);
+  std::string* _internal_mutable_content();
   public:
 
-  // @@protoc_insertion_point(class_scope:SMTP.Captcha.SMTP_Captcha_Req)
+  // string subject = 3;
+  void clear_subject();
+  const std::string& subject() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_subject(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_subject();
+  PROTOBUF_NODISCARD std::string* release_subject();
+  void set_allocated_subject(std::string* subject);
+  private:
+  const std::string& _internal_subject() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_subject(const std::string& value);
+  std::string* _internal_mutable_subject();
+  public:
+
+  // string content_type = 4;
+  void clear_content_type();
+  const std::string& content_type() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_content_type(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_content_type();
+  PROTOBUF_NODISCARD std::string* release_content_type();
+  void set_allocated_content_type(std::string* content_type);
+  private:
+  const std::string& _internal_content_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_content_type(const std::string& value);
+  std::string* _internal_mutable_content_type();
+  public:
+
+  // string charset = 5;
+  void clear_charset();
+  const std::string& charset() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_charset(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_charset();
+  PROTOBUF_NODISCARD std::string* release_charset();
+  void set_allocated_charset(std::string* charset);
+  private:
+  const std::string& _internal_charset() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_charset(const std::string& value);
+  std::string* _internal_mutable_charset();
+  public:
+
+  // @@protoc_insertion_point(class_scope:SMTP.Email_Msg.SMTP_Req)
  private:
   class _Internal;
 
@@ -224,30 +269,33 @@ class SMTP_Captcha_Req final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> emails_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr captcha_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr content_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr subject_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr content_type_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr charset_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_smtp_2eproto;
 };
 // -------------------------------------------------------------------
 
-class SMTP_Captcha_Rsp final :
-    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:SMTP.Captcha.SMTP_Captcha_Rsp) */ {
+class SMTP_Rsp final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:SMTP.Email_Msg.SMTP_Rsp) */ {
  public:
-  inline SMTP_Captcha_Rsp() : SMTP_Captcha_Rsp(nullptr) {}
-  ~SMTP_Captcha_Rsp() override;
-  explicit constexpr SMTP_Captcha_Rsp(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline SMTP_Rsp() : SMTP_Rsp(nullptr) {}
+  ~SMTP_Rsp() override;
+  explicit constexpr SMTP_Rsp(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  SMTP_Captcha_Rsp(const SMTP_Captcha_Rsp& from);
-  SMTP_Captcha_Rsp(SMTP_Captcha_Rsp&& from) noexcept
-    : SMTP_Captcha_Rsp() {
+  SMTP_Rsp(const SMTP_Rsp& from);
+  SMTP_Rsp(SMTP_Rsp&& from) noexcept
+    : SMTP_Rsp() {
     *this = ::std::move(from);
   }
 
-  inline SMTP_Captcha_Rsp& operator=(const SMTP_Captcha_Rsp& from) {
+  inline SMTP_Rsp& operator=(const SMTP_Rsp& from) {
     CopyFrom(from);
     return *this;
   }
-  inline SMTP_Captcha_Rsp& operator=(SMTP_Captcha_Rsp&& from) noexcept {
+  inline SMTP_Rsp& operator=(SMTP_Rsp&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -261,20 +309,20 @@ class SMTP_Captcha_Rsp final :
     return *this;
   }
 
-  static const SMTP_Captcha_Rsp& default_instance() {
+  static const SMTP_Rsp& default_instance() {
     return *internal_default_instance();
   }
-  static inline const SMTP_Captcha_Rsp* internal_default_instance() {
-    return reinterpret_cast<const SMTP_Captcha_Rsp*>(
-               &_SMTP_Captcha_Rsp_default_instance_);
+  static inline const SMTP_Rsp* internal_default_instance() {
+    return reinterpret_cast<const SMTP_Rsp*>(
+               &_SMTP_Rsp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     1;
 
-  friend void swap(SMTP_Captcha_Rsp& a, SMTP_Captcha_Rsp& b) {
+  friend void swap(SMTP_Rsp& a, SMTP_Rsp& b) {
     a.Swap(&b);
   }
-  inline void Swap(SMTP_Captcha_Rsp* other) {
+  inline void Swap(SMTP_Rsp* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -287,7 +335,7 @@ class SMTP_Captcha_Rsp final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(SMTP_Captcha_Rsp* other) {
+  void UnsafeArenaSwap(SMTP_Rsp* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -295,12 +343,12 @@ class SMTP_Captcha_Rsp final :
 
   // implements Message ----------------------------------------------
 
-  SMTP_Captcha_Rsp* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<SMTP_Captcha_Rsp>(arena);
+  SMTP_Rsp* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SMTP_Rsp>(arena);
   }
   void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
-  void CopyFrom(const SMTP_Captcha_Rsp& from);
-  void MergeFrom(const SMTP_Captcha_Rsp& from);
+  void CopyFrom(const SMTP_Rsp& from);
+  void MergeFrom(const SMTP_Rsp& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -314,15 +362,15 @@ class SMTP_Captcha_Rsp final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const;
-  void InternalSwap(SMTP_Captcha_Rsp* other);
+  void InternalSwap(SMTP_Rsp* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SMTP.Captcha.SMTP_Captcha_Rsp";
+    return "SMTP.Email_Msg.SMTP_Rsp";
   }
   protected:
-  explicit SMTP_Captcha_Rsp(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit SMTP_Rsp(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -347,7 +395,7 @@ class SMTP_Captcha_Rsp final :
   void _internal_set_code(uint32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:SMTP.Captcha.SMTP_Captcha_Rsp)
+  // @@protoc_insertion_point(class_scope:SMTP.Email_Msg.SMTP_Rsp)
  private:
   class _Internal;
 
@@ -367,156 +415,309 @@ class SMTP_Captcha_Rsp final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// SMTP_Captcha_Req
+// SMTP_Req
 
 // repeated string emails = 1;
-inline int SMTP_Captcha_Req::_internal_emails_size() const {
+inline int SMTP_Req::_internal_emails_size() const {
   return emails_.size();
 }
-inline int SMTP_Captcha_Req::emails_size() const {
+inline int SMTP_Req::emails_size() const {
   return _internal_emails_size();
 }
-inline void SMTP_Captcha_Req::clear_emails() {
+inline void SMTP_Req::clear_emails() {
   emails_.Clear();
 }
-inline std::string* SMTP_Captcha_Req::add_emails() {
+inline std::string* SMTP_Req::add_emails() {
   std::string* _s = _internal_add_emails();
-  // @@protoc_insertion_point(field_add_mutable:SMTP.Captcha.SMTP_Captcha_Req.emails)
+  // @@protoc_insertion_point(field_add_mutable:SMTP.Email_Msg.SMTP_Req.emails)
   return _s;
 }
-inline const std::string& SMTP_Captcha_Req::_internal_emails(int index) const {
+inline const std::string& SMTP_Req::_internal_emails(int index) const {
   return emails_.Get(index);
 }
-inline const std::string& SMTP_Captcha_Req::emails(int index) const {
-  // @@protoc_insertion_point(field_get:SMTP.Captcha.SMTP_Captcha_Req.emails)
+inline const std::string& SMTP_Req::emails(int index) const {
+  // @@protoc_insertion_point(field_get:SMTP.Email_Msg.SMTP_Req.emails)
   return _internal_emails(index);
 }
-inline std::string* SMTP_Captcha_Req::mutable_emails(int index) {
-  // @@protoc_insertion_point(field_mutable:SMTP.Captcha.SMTP_Captcha_Req.emails)
+inline std::string* SMTP_Req::mutable_emails(int index) {
+  // @@protoc_insertion_point(field_mutable:SMTP.Email_Msg.SMTP_Req.emails)
   return emails_.Mutable(index);
 }
-inline void SMTP_Captcha_Req::set_emails(int index, const std::string& value) {
+inline void SMTP_Req::set_emails(int index, const std::string& value) {
   emails_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:SMTP.Captcha.SMTP_Captcha_Req.emails)
+  // @@protoc_insertion_point(field_set:SMTP.Email_Msg.SMTP_Req.emails)
 }
-inline void SMTP_Captcha_Req::set_emails(int index, std::string&& value) {
+inline void SMTP_Req::set_emails(int index, std::string&& value) {
   emails_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:SMTP.Captcha.SMTP_Captcha_Req.emails)
+  // @@protoc_insertion_point(field_set:SMTP.Email_Msg.SMTP_Req.emails)
 }
-inline void SMTP_Captcha_Req::set_emails(int index, const char* value) {
+inline void SMTP_Req::set_emails(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   emails_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:SMTP.Captcha.SMTP_Captcha_Req.emails)
+  // @@protoc_insertion_point(field_set_char:SMTP.Email_Msg.SMTP_Req.emails)
 }
-inline void SMTP_Captcha_Req::set_emails(int index, const char* value, size_t size) {
+inline void SMTP_Req::set_emails(int index, const char* value, size_t size) {
   emails_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:SMTP.Captcha.SMTP_Captcha_Req.emails)
+  // @@protoc_insertion_point(field_set_pointer:SMTP.Email_Msg.SMTP_Req.emails)
 }
-inline std::string* SMTP_Captcha_Req::_internal_add_emails() {
+inline std::string* SMTP_Req::_internal_add_emails() {
   return emails_.Add();
 }
-inline void SMTP_Captcha_Req::add_emails(const std::string& value) {
+inline void SMTP_Req::add_emails(const std::string& value) {
   emails_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:SMTP.Captcha.SMTP_Captcha_Req.emails)
+  // @@protoc_insertion_point(field_add:SMTP.Email_Msg.SMTP_Req.emails)
 }
-inline void SMTP_Captcha_Req::add_emails(std::string&& value) {
+inline void SMTP_Req::add_emails(std::string&& value) {
   emails_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:SMTP.Captcha.SMTP_Captcha_Req.emails)
+  // @@protoc_insertion_point(field_add:SMTP.Email_Msg.SMTP_Req.emails)
 }
-inline void SMTP_Captcha_Req::add_emails(const char* value) {
+inline void SMTP_Req::add_emails(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   emails_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:SMTP.Captcha.SMTP_Captcha_Req.emails)
+  // @@protoc_insertion_point(field_add_char:SMTP.Email_Msg.SMTP_Req.emails)
 }
-inline void SMTP_Captcha_Req::add_emails(const char* value, size_t size) {
+inline void SMTP_Req::add_emails(const char* value, size_t size) {
   emails_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:SMTP.Captcha.SMTP_Captcha_Req.emails)
+  // @@protoc_insertion_point(field_add_pointer:SMTP.Email_Msg.SMTP_Req.emails)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
-SMTP_Captcha_Req::emails() const {
-  // @@protoc_insertion_point(field_list:SMTP.Captcha.SMTP_Captcha_Req.emails)
+SMTP_Req::emails() const {
+  // @@protoc_insertion_point(field_list:SMTP.Email_Msg.SMTP_Req.emails)
   return emails_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
-SMTP_Captcha_Req::mutable_emails() {
-  // @@protoc_insertion_point(field_mutable_list:SMTP.Captcha.SMTP_Captcha_Req.emails)
+SMTP_Req::mutable_emails() {
+  // @@protoc_insertion_point(field_mutable_list:SMTP.Email_Msg.SMTP_Req.emails)
   return &emails_;
 }
 
-// string captcha = 2;
-inline void SMTP_Captcha_Req::clear_captcha() {
-  captcha_.ClearToEmpty();
+// string content = 2;
+inline void SMTP_Req::clear_content() {
+  content_.ClearToEmpty();
 }
-inline const std::string& SMTP_Captcha_Req::captcha() const {
-  // @@protoc_insertion_point(field_get:SMTP.Captcha.SMTP_Captcha_Req.captcha)
-  return _internal_captcha();
+inline const std::string& SMTP_Req::content() const {
+  // @@protoc_insertion_point(field_get:SMTP.Email_Msg.SMTP_Req.content)
+  return _internal_content();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void SMTP_Captcha_Req::set_captcha(ArgT0&& arg0, ArgT... args) {
+void SMTP_Req::set_content(ArgT0&& arg0, ArgT... args) {
  
- captcha_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:SMTP.Captcha.SMTP_Captcha_Req.captcha)
+ content_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:SMTP.Email_Msg.SMTP_Req.content)
 }
-inline std::string* SMTP_Captcha_Req::mutable_captcha() {
-  std::string* _s = _internal_mutable_captcha();
-  // @@protoc_insertion_point(field_mutable:SMTP.Captcha.SMTP_Captcha_Req.captcha)
+inline std::string* SMTP_Req::mutable_content() {
+  std::string* _s = _internal_mutable_content();
+  // @@protoc_insertion_point(field_mutable:SMTP.Email_Msg.SMTP_Req.content)
   return _s;
 }
-inline const std::string& SMTP_Captcha_Req::_internal_captcha() const {
-  return captcha_.Get();
+inline const std::string& SMTP_Req::_internal_content() const {
+  return content_.Get();
 }
-inline void SMTP_Captcha_Req::_internal_set_captcha(const std::string& value) {
+inline void SMTP_Req::_internal_set_content(const std::string& value) {
   
-  captcha_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  content_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* SMTP_Captcha_Req::_internal_mutable_captcha() {
+inline std::string* SMTP_Req::_internal_mutable_content() {
   
-  return captcha_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+  return content_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* SMTP_Captcha_Req::release_captcha() {
-  // @@protoc_insertion_point(field_release:SMTP.Captcha.SMTP_Captcha_Req.captcha)
-  return captcha_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline std::string* SMTP_Req::release_content() {
+  // @@protoc_insertion_point(field_release:SMTP.Email_Msg.SMTP_Req.content)
+  return content_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void SMTP_Captcha_Req::set_allocated_captcha(std::string* captcha) {
-  if (captcha != nullptr) {
+inline void SMTP_Req::set_allocated_content(std::string* content) {
+  if (content != nullptr) {
     
   } else {
     
   }
-  captcha_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), captcha,
+  content_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), content,
       GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (captcha_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    captcha_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  if (content_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    content_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:SMTP.Captcha.SMTP_Captcha_Req.captcha)
+  // @@protoc_insertion_point(field_set_allocated:SMTP.Email_Msg.SMTP_Req.content)
+}
+
+// string subject = 3;
+inline void SMTP_Req::clear_subject() {
+  subject_.ClearToEmpty();
+}
+inline const std::string& SMTP_Req::subject() const {
+  // @@protoc_insertion_point(field_get:SMTP.Email_Msg.SMTP_Req.subject)
+  return _internal_subject();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SMTP_Req::set_subject(ArgT0&& arg0, ArgT... args) {
+ 
+ subject_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:SMTP.Email_Msg.SMTP_Req.subject)
+}
+inline std::string* SMTP_Req::mutable_subject() {
+  std::string* _s = _internal_mutable_subject();
+  // @@protoc_insertion_point(field_mutable:SMTP.Email_Msg.SMTP_Req.subject)
+  return _s;
+}
+inline const std::string& SMTP_Req::_internal_subject() const {
+  return subject_.Get();
+}
+inline void SMTP_Req::_internal_set_subject(const std::string& value) {
+  
+  subject_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* SMTP_Req::_internal_mutable_subject() {
+  
+  return subject_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* SMTP_Req::release_subject() {
+  // @@protoc_insertion_point(field_release:SMTP.Email_Msg.SMTP_Req.subject)
+  return subject_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void SMTP_Req::set_allocated_subject(std::string* subject) {
+  if (subject != nullptr) {
+    
+  } else {
+    
+  }
+  subject_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), subject,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (subject_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    subject_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:SMTP.Email_Msg.SMTP_Req.subject)
+}
+
+// string content_type = 4;
+inline void SMTP_Req::clear_content_type() {
+  content_type_.ClearToEmpty();
+}
+inline const std::string& SMTP_Req::content_type() const {
+  // @@protoc_insertion_point(field_get:SMTP.Email_Msg.SMTP_Req.content_type)
+  return _internal_content_type();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SMTP_Req::set_content_type(ArgT0&& arg0, ArgT... args) {
+ 
+ content_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:SMTP.Email_Msg.SMTP_Req.content_type)
+}
+inline std::string* SMTP_Req::mutable_content_type() {
+  std::string* _s = _internal_mutable_content_type();
+  // @@protoc_insertion_point(field_mutable:SMTP.Email_Msg.SMTP_Req.content_type)
+  return _s;
+}
+inline const std::string& SMTP_Req::_internal_content_type() const {
+  return content_type_.Get();
+}
+inline void SMTP_Req::_internal_set_content_type(const std::string& value) {
+  
+  content_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* SMTP_Req::_internal_mutable_content_type() {
+  
+  return content_type_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* SMTP_Req::release_content_type() {
+  // @@protoc_insertion_point(field_release:SMTP.Email_Msg.SMTP_Req.content_type)
+  return content_type_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void SMTP_Req::set_allocated_content_type(std::string* content_type) {
+  if (content_type != nullptr) {
+    
+  } else {
+    
+  }
+  content_type_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), content_type,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (content_type_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    content_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:SMTP.Email_Msg.SMTP_Req.content_type)
+}
+
+// string charset = 5;
+inline void SMTP_Req::clear_charset() {
+  charset_.ClearToEmpty();
+}
+inline const std::string& SMTP_Req::charset() const {
+  // @@protoc_insertion_point(field_get:SMTP.Email_Msg.SMTP_Req.charset)
+  return _internal_charset();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SMTP_Req::set_charset(ArgT0&& arg0, ArgT... args) {
+ 
+ charset_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:SMTP.Email_Msg.SMTP_Req.charset)
+}
+inline std::string* SMTP_Req::mutable_charset() {
+  std::string* _s = _internal_mutable_charset();
+  // @@protoc_insertion_point(field_mutable:SMTP.Email_Msg.SMTP_Req.charset)
+  return _s;
+}
+inline const std::string& SMTP_Req::_internal_charset() const {
+  return charset_.Get();
+}
+inline void SMTP_Req::_internal_set_charset(const std::string& value) {
+  
+  charset_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* SMTP_Req::_internal_mutable_charset() {
+  
+  return charset_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* SMTP_Req::release_charset() {
+  // @@protoc_insertion_point(field_release:SMTP.Email_Msg.SMTP_Req.charset)
+  return charset_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void SMTP_Req::set_allocated_charset(std::string* charset) {
+  if (charset != nullptr) {
+    
+  } else {
+    
+  }
+  charset_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), charset,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (charset_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    charset_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:SMTP.Email_Msg.SMTP_Req.charset)
 }
 
 // -------------------------------------------------------------------
 
-// SMTP_Captcha_Rsp
+// SMTP_Rsp
 
 // uint32 code = 1;
-inline void SMTP_Captcha_Rsp::clear_code() {
+inline void SMTP_Rsp::clear_code() {
   code_ = 0u;
 }
-inline uint32_t SMTP_Captcha_Rsp::_internal_code() const {
+inline uint32_t SMTP_Rsp::_internal_code() const {
   return code_;
 }
-inline uint32_t SMTP_Captcha_Rsp::code() const {
-  // @@protoc_insertion_point(field_get:SMTP.Captcha.SMTP_Captcha_Rsp.code)
+inline uint32_t SMTP_Rsp::code() const {
+  // @@protoc_insertion_point(field_get:SMTP.Email_Msg.SMTP_Rsp.code)
   return _internal_code();
 }
-inline void SMTP_Captcha_Rsp::_internal_set_code(uint32_t value) {
+inline void SMTP_Rsp::_internal_set_code(uint32_t value) {
   
   code_ = value;
 }
-inline void SMTP_Captcha_Rsp::set_code(uint32_t value) {
+inline void SMTP_Rsp::set_code(uint32_t value) {
   _internal_set_code(value);
-  // @@protoc_insertion_point(field_set:SMTP.Captcha.SMTP_Captcha_Rsp.code)
+  // @@protoc_insertion_point(field_set:SMTP.Email_Msg.SMTP_Rsp.code)
 }
 
 #ifdef __GNUC__
@@ -527,7 +728,7 @@ inline void SMTP_Captcha_Rsp::set_code(uint32_t value) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace Captcha
+}  // namespace Email_Msg
 }  // namespace SMTP
 
 // @@protoc_insertion_point(global_scope)

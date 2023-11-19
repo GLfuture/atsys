@@ -32,7 +32,8 @@ target_link_libraries(smtp_grpc_proto
 add_executable(smtp_server smtp_server.cc base64.cc)
 target_link_libraries(smtp_server
     smtp_grpc_proto
-    spdlog
+    ssl
+    crypto
     base
     ${_REFLECTION}
     ${_GRPC_GRPCPP}

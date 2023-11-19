@@ -20,18 +20,25 @@ public:
     //     LOGIN_WITHOUT_TOKEN,
     //     LOGIN_WITH_TOKEN,
     // };
-    Login_Context(HTTP_NSP::HTTP::Ptr http,int role,std::string username,std::string password){
+    Login_Context(HTTP_NSP::HTTP::Ptr http,int method,int role,std::string username,std::string password,std::string email,
+        std::string captcha){
         this->http = http;
         this->role = role;
         this->username = username;
         this->password = password;
+        this->method = method;
+        this->email = email;
+        this->captcha = captcha;
     }
 
 public:
     int role;
+    int method;
     HTTP_NSP::HTTP::Ptr http;
     std::string username;
     std::string password;
+    std::string email;
+    std::string captcha;
     // STATUS status;
 };
 
@@ -41,15 +48,17 @@ class Register_Context: public Context_Base
 public:
     using Ptr = std::shared_ptr<Register_Context>;
     Register_Context(std::string username,std::string password,std::string email,
-    std::string phone,std::string address,int sex){
+    std::string phone,std::string address,int sex,std::string captcha){
         this->username = username;
         this->password = password;
         this->sex = sex;
         this->email = email;
         this->phone = phone;
         this->address = address;
+        this->captcha = captcha;
     }   
 public:
+    std::string captcha;
     std::string username;
     std::string password;
     std::string email;
@@ -201,5 +210,27 @@ public:
     int role;
 };
 
+class Smtp_Context:public Context_Base
+{
+public:
+    using Ptr = std::shared_ptr<Smtp_Context>;
+    Smtp_Context(int method , const std::vector<std::string>&& emails,std::string content,
+        std::string subject,std::string content_type,std::string charset)
+    {
+        this->method = method;
+        this->emails = emails;
+        this->content = content;
+        this->subject = subject;
+        this->content_type = content_type;
+        this->charset = charset;
+    }
+public:
+    int method;
+    std::vector<std::string> emails;
+    std::string content;
+    std::string subject;
+    std::string content_type;
+    std::string charset;
+};
 
 #endif

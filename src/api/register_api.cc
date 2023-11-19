@@ -14,7 +14,7 @@ std::string Register_API::Function(HTTP_NSP::HTTP::Ptr http)
     if (json::accept(body))
     {
         json j = json::parse(body);
-        std::string username, password, email, phone, address;
+        std::string username, password, email, phone, address,captcha;
         int sex = -1;
         if (j.contains("username") && j["username"].is_string())
             username = j["username"];
@@ -58,7 +58,14 @@ std::string Register_API::Function(HTTP_NSP::HTTP::Ptr http)
             code = STATUS_JSON_NO_NEC_MEM;
             goto end;
         }
-        Register_Context::Ptr register_ctx = std::make_shared<Register_Context>(username, password, email, phone, address,sex);
+        if(j.contains("captcha") && j["captcha"].is_string())
+            captcha = j["captcha"];
+        else
+          {
+            code = STATUS_JSON_NO_NEC_MEM;
+            goto end;
+        }
+        Register_Context::Ptr register_ctx = std::make_shared<Register_Context>(username, password, email, phone, address,sex,captcha);
         code = Deal_Real_Event(register_ctx);
     }else{
         code = STATUS_JSON_ERROR;
@@ -75,11 +82,18 @@ end:
 int Register_API::Deal_Real_Event(Context_Base::Ptr ctx_ptr)
 {
     Register_Context::Ptr register_ctx = std::dynamic_pointer_cast<Register_Context>(ctx_ptr);
-    
+    CacheConn* cache_conn = cachepool->GetCacheConn();
+    std::string captcha =  cache_conn->get(register_ctx->email);
+    if(captcha.empty() || captcha.compare(register_ctx->captcha)!=0){
+        cachepool->RelCacheConn(cache_conn);
+        return STATUS_REGISTER_CAPTCHA_ERROR;
+    }
+
     MySqlConn *mysql_conn = mysqlpool->Get_Conn(0);
-    
     std::string condition = "username = '";
-    condition = condition + register_ctx->username + "'";
+    condition = condition + register_ctx->username + "' or email = '";
+    condition = condition + register_ctx->email + "' or phone = '";
+    condition = condition + register_ctx->phone + "'";
     std::string query = mysql_conn->Select_Query(mysql_conn->Arg_List("uid"), "user", condition);
     std::vector<std::vector<std::string>> res;
     spdlog::info("register: {}",query);
@@ -87,7 +101,7 @@ int Register_API::Deal_Real_Event(Context_Base::Ptr ctx_ptr)
     if (res.size() > 1)
     {
         mysqlpool->Ret_Conn(mysql_conn);
-        spdlog::info("has repeated username:{}", register_ctx->username);
+        spdlog::info("has repeated user:{}  {}  {}", register_ctx->username ,register_ctx->email,register_ctx->phone);
         return STATUS_REGISTER_REPEAT_USER;
     }
     std::vector<std::string> info{register_ctx->username, register_ctx->password, register_ctx->email, register_ctx->phone, register_ctx->address,std::to_string(register_ctx->sex)};
@@ -109,7 +123,6 @@ int Register_API::Deal_Real_Event(Context_Base::Ptr ctx_ptr)
     spdlog::info("register: {}",query);
     mysql_conn->Select(query, res);
     mysqlpool->Ret_Conn(mysql_conn);
-    CacheConn *cache_conn = cachepool->GetCacheConn();
     std::map<std::string, std::string> hash;
     hash["username"] = register_ctx->username;
     hash["email"] = register_ctx->email;

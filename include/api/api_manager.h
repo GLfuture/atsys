@@ -7,6 +7,7 @@
 #include "api/logout_api.h"
 #include "api/user_api.h"
 #include "api/time_api.h"
+#include "api/smtp_api.h"
 #include <map>
 
 class API_Manager

@@ -5,10 +5,9 @@
 #include "../app/app.h"
 #include "global.h"
 
-
-extern int init_conf(const std::string& filename);
+extern int  init_conf(const std::string& filename);
 extern void init_callback(App::Ptr app);
-
+extern void init_smtp();
 
 void Accept_cb(int workerid,Net_Layer::Ptr net_layer);
 void Read_cb(int workerid,App::Ptr app_ptr);

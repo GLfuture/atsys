@@ -22,7 +22,9 @@ std::string global_redis_password = "";
 int global_redis_port = 6379;
 int global_redis_expire_time = 0;
 
-std::atomic<uint64_t> global_uid = 0;
+//smtp
+std::string global_smtp_addr = "";
+SendEmailMsgImplClient::Ptr global_smtp_client = nullptr;
 
 std::function<void(int)> global_accept_cb = NULL;
 std::function<void(int)> global_read_cb = NULL;

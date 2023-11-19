@@ -14,44 +14,47 @@
 
 PROTOBUF_PRAGMA_INIT_SEG
 namespace SMTP {
-namespace Captcha {
-constexpr SMTP_Captcha_Req::SMTP_Captcha_Req(
+namespace Email_Msg {
+constexpr SMTP_Req::SMTP_Req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : emails_()
-  , captcha_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
-struct SMTP_Captcha_ReqDefaultTypeInternal {
-  constexpr SMTP_Captcha_ReqDefaultTypeInternal()
+  , content_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , subject_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , content_type_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , charset_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+struct SMTP_ReqDefaultTypeInternal {
+  constexpr SMTP_ReqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~SMTP_Captcha_ReqDefaultTypeInternal() {}
+  ~SMTP_ReqDefaultTypeInternal() {}
   union {
-    SMTP_Captcha_Req _instance;
+    SMTP_Req _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SMTP_Captcha_ReqDefaultTypeInternal _SMTP_Captcha_Req_default_instance_;
-constexpr SMTP_Captcha_Rsp::SMTP_Captcha_Rsp(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SMTP_ReqDefaultTypeInternal _SMTP_Req_default_instance_;
+constexpr SMTP_Rsp::SMTP_Rsp(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : code_(0u){}
-struct SMTP_Captcha_RspDefaultTypeInternal {
-  constexpr SMTP_Captcha_RspDefaultTypeInternal()
+struct SMTP_RspDefaultTypeInternal {
+  constexpr SMTP_RspDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~SMTP_Captcha_RspDefaultTypeInternal() {}
+  ~SMTP_RspDefaultTypeInternal() {}
   union {
-    SMTP_Captcha_Rsp _instance;
+    SMTP_Rsp _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SMTP_Captcha_RspDefaultTypeInternal _SMTP_Captcha_Rsp_default_instance_;
-}  // namespace Captcha
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SMTP_RspDefaultTypeInternal _SMTP_Rsp_default_instance_;
+}  // namespace Email_Msg
 }  // namespace SMTP
 namespace SMTP {
-namespace Captcha {
+namespace Email_Msg {
 
 // ===================================================================
 
-class SMTP_Captcha_Req::_Internal {
+class SMTP_Req::_Internal {
  public:
 };
 
-SMTP_Captcha_Req::SMTP_Captcha_Req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+SMTP_Req::SMTP_Req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena, is_message_owned),
   emails_(arena) {
@@ -59,64 +62,106 @@ SMTP_Captcha_Req::SMTP_Captcha_Req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:SMTP.Captcha.SMTP_Captcha_Req)
+  // @@protoc_insertion_point(arena_constructor:SMTP.Email_Msg.SMTP_Req)
 }
-SMTP_Captcha_Req::SMTP_Captcha_Req(const SMTP_Captcha_Req& from)
+SMTP_Req::SMTP_Req(const SMTP_Req& from)
   : ::PROTOBUF_NAMESPACE_ID::MessageLite(),
       emails_(from.emails_) {
   _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
-  captcha_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  content_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    captcha_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    content_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_captcha().empty()) {
-    captcha_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_captcha(), 
+  if (!from._internal_content().empty()) {
+    content_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_content(), 
       GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:SMTP.Captcha.SMTP_Captcha_Req)
+  subject_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    subject_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_subject().empty()) {
+    subject_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_subject(), 
+      GetArenaForAllocation());
+  }
+  content_type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    content_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_content_type().empty()) {
+    content_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_content_type(), 
+      GetArenaForAllocation());
+  }
+  charset_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    charset_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_charset().empty()) {
+    charset_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_charset(), 
+      GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:SMTP.Email_Msg.SMTP_Req)
 }
 
-inline void SMTP_Captcha_Req::SharedCtor() {
-captcha_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void SMTP_Req::SharedCtor() {
+content_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  captcha_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  content_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+subject_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  subject_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+content_type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  content_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+charset_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  charset_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-SMTP_Captcha_Req::~SMTP_Captcha_Req() {
-  // @@protoc_insertion_point(destructor:SMTP.Captcha.SMTP_Captcha_Req)
+SMTP_Req::~SMTP_Req() {
+  // @@protoc_insertion_point(destructor:SMTP.Email_Msg.SMTP_Req)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<std::string>();
 }
 
-inline void SMTP_Captcha_Req::SharedDtor() {
+inline void SMTP_Req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  captcha_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  content_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  subject_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  content_type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  charset_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
-void SMTP_Captcha_Req::ArenaDtor(void* object) {
-  SMTP_Captcha_Req* _this = reinterpret_cast< SMTP_Captcha_Req* >(object);
+void SMTP_Req::ArenaDtor(void* object) {
+  SMTP_Req* _this = reinterpret_cast< SMTP_Req* >(object);
   (void)_this;
 }
-void SMTP_Captcha_Req::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void SMTP_Req::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void SMTP_Captcha_Req::SetCachedSize(int size) const {
+void SMTP_Req::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void SMTP_Captcha_Req::Clear() {
-// @@protoc_insertion_point(message_clear_start:SMTP.Captcha.SMTP_Captcha_Req)
+void SMTP_Req::Clear() {
+// @@protoc_insertion_point(message_clear_start:SMTP.Email_Msg.SMTP_Req)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   emails_.Clear();
-  captcha_.ClearToEmpty();
+  content_.ClearToEmpty();
+  subject_.ClearToEmpty();
+  content_type_.ClearToEmpty();
+  charset_.ClearToEmpty();
   _internal_metadata_.Clear<std::string>();
 }
 
-const char* SMTP_Captcha_Req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* SMTP_Req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -137,10 +182,40 @@ const char* SMTP_Captcha_Req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
         } else
           goto handle_unusual;
         continue;
-      // string captcha = 2;
+      // string content = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_captcha();
+          auto str = _internal_mutable_content();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, nullptr));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string subject = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_subject();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, nullptr));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string content_type = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_content_type();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, nullptr));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string charset = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_charset();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, nullptr));
           CHK_(ptr);
@@ -170,9 +245,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* SMTP_Captcha_Req::_InternalSerialize(
+uint8_t* SMTP_Req::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:SMTP.Captcha.SMTP_Captcha_Req)
+  // @@protoc_insertion_point(serialize_to_array_start:SMTP.Email_Msg.SMTP_Req)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -182,30 +257,60 @@ uint8_t* SMTP_Captcha_Req::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "SMTP.Captcha.SMTP_Captcha_Req.emails");
+      "SMTP.Email_Msg.SMTP_Req.emails");
     target = stream->WriteString(1, s, target);
   }
 
-  // string captcha = 2;
-  if (!this->_internal_captcha().empty()) {
+  // string content = 2;
+  if (!this->_internal_content().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_captcha().data(), static_cast<int>(this->_internal_captcha().length()),
+      this->_internal_content().data(), static_cast<int>(this->_internal_content().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "SMTP.Captcha.SMTP_Captcha_Req.captcha");
+      "SMTP.Email_Msg.SMTP_Req.content");
     target = stream->WriteStringMaybeAliased(
-        2, this->_internal_captcha(), target);
+        2, this->_internal_content(), target);
+  }
+
+  // string subject = 3;
+  if (!this->_internal_subject().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_subject().data(), static_cast<int>(this->_internal_subject().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "SMTP.Email_Msg.SMTP_Req.subject");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_subject(), target);
+  }
+
+  // string content_type = 4;
+  if (!this->_internal_content_type().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_content_type().data(), static_cast<int>(this->_internal_content_type().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "SMTP.Email_Msg.SMTP_Req.content_type");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_content_type(), target);
+  }
+
+  // string charset = 5;
+  if (!this->_internal_charset().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_charset().data(), static_cast<int>(this->_internal_charset().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "SMTP.Email_Msg.SMTP_Req.charset");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_charset(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
         static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:SMTP.Captcha.SMTP_Captcha_Req)
+  // @@protoc_insertion_point(serialize_to_array_end:SMTP.Email_Msg.SMTP_Req)
   return target;
 }
 
-size_t SMTP_Captcha_Req::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:SMTP.Captcha.SMTP_Captcha_Req)
+size_t SMTP_Req::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:SMTP.Email_Msg.SMTP_Req)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -220,11 +325,32 @@ size_t SMTP_Captcha_Req::ByteSizeLong() const {
       emails_.Get(i));
   }
 
-  // string captcha = 2;
-  if (!this->_internal_captcha().empty()) {
+  // string content = 2;
+  if (!this->_internal_content().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_captcha());
+        this->_internal_content());
+  }
+
+  // string subject = 3;
+  if (!this->_internal_subject().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_subject());
+  }
+
+  // string content_type = 4;
+  if (!this->_internal_content_type().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_content_type());
+  }
+
+  // string charset = 5;
+  if (!this->_internal_charset().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_charset());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -235,37 +361,46 @@ size_t SMTP_Captcha_Req::ByteSizeLong() const {
   return total_size;
 }
 
-void SMTP_Captcha_Req::CheckTypeAndMergeFrom(
+void SMTP_Req::CheckTypeAndMergeFrom(
     const ::PROTOBUF_NAMESPACE_ID::MessageLite& from) {
-  MergeFrom(*::PROTOBUF_NAMESPACE_ID::internal::DownCast<const SMTP_Captcha_Req*>(
+  MergeFrom(*::PROTOBUF_NAMESPACE_ID::internal::DownCast<const SMTP_Req*>(
       &from));
 }
 
-void SMTP_Captcha_Req::MergeFrom(const SMTP_Captcha_Req& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:SMTP.Captcha.SMTP_Captcha_Req)
+void SMTP_Req::MergeFrom(const SMTP_Req& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:SMTP.Email_Msg.SMTP_Req)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   emails_.MergeFrom(from.emails_);
-  if (!from._internal_captcha().empty()) {
-    _internal_set_captcha(from._internal_captcha());
+  if (!from._internal_content().empty()) {
+    _internal_set_content(from._internal_content());
+  }
+  if (!from._internal_subject().empty()) {
+    _internal_set_subject(from._internal_subject());
+  }
+  if (!from._internal_content_type().empty()) {
+    _internal_set_content_type(from._internal_content_type());
+  }
+  if (!from._internal_charset().empty()) {
+    _internal_set_charset(from._internal_charset());
   }
   _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
 }
 
-void SMTP_Captcha_Req::CopyFrom(const SMTP_Captcha_Req& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:SMTP.Captcha.SMTP_Captcha_Req)
+void SMTP_Req::CopyFrom(const SMTP_Req& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:SMTP.Email_Msg.SMTP_Req)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool SMTP_Captcha_Req::IsInitialized() const {
+bool SMTP_Req::IsInitialized() const {
   return true;
 }
 
-void SMTP_Captcha_Req::InternalSwap(SMTP_Captcha_Req* other) {
+void SMTP_Req::InternalSwap(SMTP_Req* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
@@ -273,65 +408,80 @@ void SMTP_Captcha_Req::InternalSwap(SMTP_Captcha_Req* other) {
   emails_.InternalSwap(&other->emails_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &captcha_, lhs_arena,
-      &other->captcha_, rhs_arena
+      &content_, lhs_arena,
+      &other->content_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &subject_, lhs_arena,
+      &other->subject_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &content_type_, lhs_arena,
+      &other->content_type_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &charset_, lhs_arena,
+      &other->charset_, rhs_arena
   );
 }
 
-std::string SMTP_Captcha_Req::GetTypeName() const {
-  return "SMTP.Captcha.SMTP_Captcha_Req";
+std::string SMTP_Req::GetTypeName() const {
+  return "SMTP.Email_Msg.SMTP_Req";
 }
 
 
 // ===================================================================
 
-class SMTP_Captcha_Rsp::_Internal {
+class SMTP_Rsp::_Internal {
  public:
 };
 
-SMTP_Captcha_Rsp::SMTP_Captcha_Rsp(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+SMTP_Rsp::SMTP_Rsp(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena, is_message_owned) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:SMTP.Captcha.SMTP_Captcha_Rsp)
+  // @@protoc_insertion_point(arena_constructor:SMTP.Email_Msg.SMTP_Rsp)
 }
-SMTP_Captcha_Rsp::SMTP_Captcha_Rsp(const SMTP_Captcha_Rsp& from)
+SMTP_Rsp::SMTP_Rsp(const SMTP_Rsp& from)
   : ::PROTOBUF_NAMESPACE_ID::MessageLite() {
   _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
   code_ = from.code_;
-  // @@protoc_insertion_point(copy_constructor:SMTP.Captcha.SMTP_Captcha_Rsp)
+  // @@protoc_insertion_point(copy_constructor:SMTP.Email_Msg.SMTP_Rsp)
 }
 
-inline void SMTP_Captcha_Rsp::SharedCtor() {
+inline void SMTP_Rsp::SharedCtor() {
 code_ = 0u;
 }
 
-SMTP_Captcha_Rsp::~SMTP_Captcha_Rsp() {
-  // @@protoc_insertion_point(destructor:SMTP.Captcha.SMTP_Captcha_Rsp)
+SMTP_Rsp::~SMTP_Rsp() {
+  // @@protoc_insertion_point(destructor:SMTP.Email_Msg.SMTP_Rsp)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<std::string>();
 }
 
-inline void SMTP_Captcha_Rsp::SharedDtor() {
+inline void SMTP_Rsp::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void SMTP_Captcha_Rsp::ArenaDtor(void* object) {
-  SMTP_Captcha_Rsp* _this = reinterpret_cast< SMTP_Captcha_Rsp* >(object);
+void SMTP_Rsp::ArenaDtor(void* object) {
+  SMTP_Rsp* _this = reinterpret_cast< SMTP_Rsp* >(object);
   (void)_this;
 }
-void SMTP_Captcha_Rsp::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void SMTP_Rsp::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void SMTP_Captcha_Rsp::SetCachedSize(int size) const {
+void SMTP_Rsp::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void SMTP_Captcha_Rsp::Clear() {
-// @@protoc_insertion_point(message_clear_start:SMTP.Captcha.SMTP_Captcha_Rsp)
+void SMTP_Rsp::Clear() {
+// @@protoc_insertion_point(message_clear_start:SMTP.Email_Msg.SMTP_Rsp)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -340,7 +490,7 @@ void SMTP_Captcha_Rsp::Clear() {
   _internal_metadata_.Clear<std::string>();
 }
 
-const char* SMTP_Captcha_Rsp::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* SMTP_Rsp::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -377,9 +527,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* SMTP_Captcha_Rsp::_InternalSerialize(
+uint8_t* SMTP_Rsp::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:SMTP.Captcha.SMTP_Captcha_Rsp)
+  // @@protoc_insertion_point(serialize_to_array_start:SMTP.Email_Msg.SMTP_Rsp)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -393,12 +543,12 @@ uint8_t* SMTP_Captcha_Rsp::_InternalSerialize(
     target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
         static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:SMTP.Captcha.SMTP_Captcha_Rsp)
+  // @@protoc_insertion_point(serialize_to_array_end:SMTP.Email_Msg.SMTP_Rsp)
   return target;
 }
 
-size_t SMTP_Captcha_Rsp::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:SMTP.Captcha.SMTP_Captcha_Rsp)
+size_t SMTP_Rsp::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:SMTP.Email_Msg.SMTP_Rsp)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -418,14 +568,14 @@ size_t SMTP_Captcha_Rsp::ByteSizeLong() const {
   return total_size;
 }
 
-void SMTP_Captcha_Rsp::CheckTypeAndMergeFrom(
+void SMTP_Rsp::CheckTypeAndMergeFrom(
     const ::PROTOBUF_NAMESPACE_ID::MessageLite& from) {
-  MergeFrom(*::PROTOBUF_NAMESPACE_ID::internal::DownCast<const SMTP_Captcha_Rsp*>(
+  MergeFrom(*::PROTOBUF_NAMESPACE_ID::internal::DownCast<const SMTP_Rsp*>(
       &from));
 }
 
-void SMTP_Captcha_Rsp::MergeFrom(const SMTP_Captcha_Rsp& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:SMTP.Captcha.SMTP_Captcha_Rsp)
+void SMTP_Rsp::MergeFrom(const SMTP_Rsp& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:SMTP.Email_Msg.SMTP_Rsp)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -436,37 +586,37 @@ void SMTP_Captcha_Rsp::MergeFrom(const SMTP_Captcha_Rsp& from) {
   _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
 }
 
-void SMTP_Captcha_Rsp::CopyFrom(const SMTP_Captcha_Rsp& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:SMTP.Captcha.SMTP_Captcha_Rsp)
+void SMTP_Rsp::CopyFrom(const SMTP_Rsp& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:SMTP.Email_Msg.SMTP_Rsp)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool SMTP_Captcha_Rsp::IsInitialized() const {
+bool SMTP_Rsp::IsInitialized() const {
   return true;
 }
 
-void SMTP_Captcha_Rsp::InternalSwap(SMTP_Captcha_Rsp* other) {
+void SMTP_Rsp::InternalSwap(SMTP_Rsp* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(code_, other->code_);
 }
 
-std::string SMTP_Captcha_Rsp::GetTypeName() const {
-  return "SMTP.Captcha.SMTP_Captcha_Rsp";
+std::string SMTP_Rsp::GetTypeName() const {
+  return "SMTP.Email_Msg.SMTP_Rsp";
 }
 
 
 // @@protoc_insertion_point(namespace_scope)
-}  // namespace Captcha
+}  // namespace Email_Msg
 }  // namespace SMTP
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::SMTP::Captcha::SMTP_Captcha_Req* Arena::CreateMaybeMessage< ::SMTP::Captcha::SMTP_Captcha_Req >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::SMTP::Captcha::SMTP_Captcha_Req >(arena);
+template<> PROTOBUF_NOINLINE ::SMTP::Email_Msg::SMTP_Req* Arena::CreateMaybeMessage< ::SMTP::Email_Msg::SMTP_Req >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SMTP::Email_Msg::SMTP_Req >(arena);
 }
-template<> PROTOBUF_NOINLINE ::SMTP::Captcha::SMTP_Captcha_Rsp* Arena::CreateMaybeMessage< ::SMTP::Captcha::SMTP_Captcha_Rsp >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::SMTP::Captcha::SMTP_Captcha_Rsp >(arena);
+template<> PROTOBUF_NOINLINE ::SMTP::Email_Msg::SMTP_Rsp* Arena::CreateMaybeMessage< ::SMTP::Email_Msg::SMTP_Rsp >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SMTP::Email_Msg::SMTP_Rsp >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

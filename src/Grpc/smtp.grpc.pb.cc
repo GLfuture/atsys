@@ -20,62 +20,62 @@
 #include <grpcpp/impl/codegen/service_type.h>
 #include <grpcpp/impl/codegen/sync_stream.h>
 namespace SMTP {
-namespace Captcha {
+namespace Email_Msg {
 
-static const char* Send_Captcha_method_names[] = {
-  "/SMTP.Captcha.Send_Captcha/SendCaptcha",
+static const char* Send_Email_Msg_method_names[] = {
+  "/SMTP.Email_Msg.Send_Email_Msg/Send_Msg",
 };
 
-std::unique_ptr< Send_Captcha::Stub> Send_Captcha::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
+std::unique_ptr< Send_Email_Msg::Stub> Send_Email_Msg::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
   (void)options;
-  std::unique_ptr< Send_Captcha::Stub> stub(new Send_Captcha::Stub(channel, options));
+  std::unique_ptr< Send_Email_Msg::Stub> stub(new Send_Email_Msg::Stub(channel, options));
   return stub;
 }
 
-Send_Captcha::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_SendCaptcha_(Send_Captcha_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+Send_Email_Msg::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
+  : channel_(channel), rpcmethod_Send_Msg_(Send_Email_Msg_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::Status Send_Captcha::Stub::SendCaptcha(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req& request, ::SMTP::Captcha::SMTP_Captcha_Rsp* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::SMTP::Captcha::SMTP_Captcha_Req, ::SMTP::Captcha::SMTP_Captcha_Rsp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SendCaptcha_, context, request, response);
+::grpc::Status Send_Email_Msg::Stub::Send_Msg(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req& request, ::SMTP::Email_Msg::SMTP_Rsp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::SMTP::Email_Msg::SMTP_Req, ::SMTP::Email_Msg::SMTP_Rsp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Send_Msg_, context, request, response);
 }
 
-void Send_Captcha::Stub::async::SendCaptcha(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req* request, ::SMTP::Captcha::SMTP_Captcha_Rsp* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::SMTP::Captcha::SMTP_Captcha_Req, ::SMTP::Captcha::SMTP_Captcha_Rsp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SendCaptcha_, context, request, response, std::move(f));
+void Send_Email_Msg::Stub::async::Send_Msg(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req* request, ::SMTP::Email_Msg::SMTP_Rsp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::SMTP::Email_Msg::SMTP_Req, ::SMTP::Email_Msg::SMTP_Rsp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Send_Msg_, context, request, response, std::move(f));
 }
 
-void Send_Captcha::Stub::async::SendCaptcha(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req* request, ::SMTP::Captcha::SMTP_Captcha_Rsp* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SendCaptcha_, context, request, response, reactor);
+void Send_Email_Msg::Stub::async::Send_Msg(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req* request, ::SMTP::Email_Msg::SMTP_Rsp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Send_Msg_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::SMTP::Captcha::SMTP_Captcha_Rsp>* Send_Captcha::Stub::PrepareAsyncSendCaptchaRaw(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::SMTP::Captcha::SMTP_Captcha_Rsp, ::SMTP::Captcha::SMTP_Captcha_Req, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SendCaptcha_, context, request);
+::grpc::ClientAsyncResponseReader< ::SMTP::Email_Msg::SMTP_Rsp>* Send_Email_Msg::Stub::PrepareAsyncSend_MsgRaw(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::SMTP::Email_Msg::SMTP_Rsp, ::SMTP::Email_Msg::SMTP_Req, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Send_Msg_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::SMTP::Captcha::SMTP_Captcha_Rsp>* Send_Captcha::Stub::AsyncSendCaptchaRaw(::grpc::ClientContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::SMTP::Email_Msg::SMTP_Rsp>* Send_Email_Msg::Stub::AsyncSend_MsgRaw(::grpc::ClientContext* context, const ::SMTP::Email_Msg::SMTP_Req& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncSendCaptchaRaw(context, request, cq);
+    this->PrepareAsyncSend_MsgRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-Send_Captcha::Service::Service() {
+Send_Email_Msg::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Send_Captcha_method_names[0],
+      Send_Email_Msg_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Send_Captcha::Service, ::SMTP::Captcha::SMTP_Captcha_Req, ::SMTP::Captcha::SMTP_Captcha_Rsp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](Send_Captcha::Service* service,
+      new ::grpc::internal::RpcMethodHandler< Send_Email_Msg::Service, ::SMTP::Email_Msg::SMTP_Req, ::SMTP::Email_Msg::SMTP_Rsp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](Send_Email_Msg::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::SMTP::Captcha::SMTP_Captcha_Req* req,
-             ::SMTP::Captcha::SMTP_Captcha_Rsp* resp) {
-               return service->SendCaptcha(ctx, req, resp);
+             const ::SMTP::Email_Msg::SMTP_Req* req,
+             ::SMTP::Email_Msg::SMTP_Rsp* resp) {
+               return service->Send_Msg(ctx, req, resp);
              }, this)));
 }
 
-Send_Captcha::Service::~Service() {
+Send_Email_Msg::Service::~Service() {
 }
 
-::grpc::Status Send_Captcha::Service::SendCaptcha(::grpc::ServerContext* context, const ::SMTP::Captcha::SMTP_Captcha_Req* request, ::SMTP::Captcha::SMTP_Captcha_Rsp* response) {
+::grpc::Status Send_Email_Msg::Service::Send_Msg(::grpc::ServerContext* context, const ::SMTP::Email_Msg::SMTP_Req* request, ::SMTP::Email_Msg::SMTP_Rsp* response) {
   (void) context;
   (void) request;
   (void) response;
@@ -84,5 +84,5 @@ Send_Captcha::Service::~Service() {
 
 
 }  // namespace SMTP
-}  // namespace Captcha
+}  // namespace Email_Msg
 

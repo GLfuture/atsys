@@ -21,32 +21,32 @@
 #define LOG_FILE_PATH           "../log/smtp.log"
 #define MAX_LOG_SIZE            10*1024*1024
 #define MAX_LOG_FILE_NUM        1
-#define LOG_LEVEL               spdlog::level::debug
+#define LOG_LEVEL               spdlog::level::info
 #define MAX_RECV_BUFFER_SIZE    1024
 
 
 using grpc::ServerBuilder;
 using grpc::ServerContext;
 using grpc::Status;
-using SMTP::Captcha::SMTP_Captcha_Req;
-using SMTP::Captcha::SMTP_Captcha_Rsp;
-using SMTP::Captcha::Send_Captcha;
+using SMTP::Email_Msg::SMTP_Req;
+using SMTP::Email_Msg::SMTP_Rsp;
+using SMTP::Email_Msg::Send_Email_Msg;
 
-class SendCaptchaImpl final : public Send_Captcha::Service
+class SendEmailMsgImpl final : public Send_Email_Msg::Service
 {
 public:
-    SendCaptchaImpl(Net_Interface_Base::Ptr interface,int sock)
+    SendEmailMsgImpl(Net_Interface_Base::Ptr interface,int sock)
     {
         this->_interface = interface;
         this->sock = sock;
     }
-    virtual Status SendCaptcha(ServerContext* context,const SMTP_Captcha_Req* request,SMTP_Captcha_Rsp* response) override
+    virtual Status Send_Msg(ServerContext* context,const SMTP_Req* request,SMTP_Rsp* response) override
     {
         std::vector<std::string> emails;
         for(auto it = request->emails().cbegin();it!=request->emails().end();it++){
             emails.push_back(*it);
         }
-        response->set_code(Send_Msg_To_SMTP_Server(emails,request->captcha()));
+        response->set_code(Send_Msg_To_SMTP_Server(emails,request->content(),request->subject(),request->content_type(),request->charset()));
         return Status::OK;
     }
 
@@ -87,7 +87,8 @@ private:
         return 0;
     }
 
-    int send_content(SSL* ssl, std::string email, std::vector<std::string> recivers, std::string content)
+    int send_content(SSL* ssl, std::string email, std::vector<std::string> recivers, std::string content,
+        std::string subject,std::string content_type,std::string charset)
     {
         std::string msg = "MAIL FROM: <";
         msg = msg + email + ">\r\n";
@@ -113,15 +114,16 @@ private:
             }
         }
         msg = msg + recvs + "\r\n";
-        msg = msg + "Subject: verify your identity\r\nContent-Type: text/html; charset=utf8" ;
-        msg += "\r\n\r\n" + content + "\r\n\r\n\r\n.\r\n\r\n";
+        msg = msg +"Subject: " + subject +"\r\n"+"Content-Type: "+content_type+";"+"charset="+
+            charset+"\r\n\r\n" + content + "\r\n\r\n\r\n.\r\n\r\n";
         Exchange_Msg(ssl, msg);
         msg.clear();
         Exchange_Msg(ssl,"QUIT\r\n\r\n");
         return 0;
     }
 
-    int Send_Msg_To_SMTP_Server(std::vector<std::string> emails,std::string captcha)
+    int Send_Msg_To_SMTP_Server(std::vector<std::string> emails,std::string content,
+        std::string subject,std::string content_type,std::string charset)
     {
         
         Net_Interface::SSL_Tup tuple = _interface->SSL_Init(TLS1_3_VERSION,TLS1_3_VERSION);
@@ -134,9 +136,7 @@ private:
         _interface->SSL_Connect(std::get<SSL*>(tuple));
         if(ping(std::get<SSL*>(tuple))==-1) return -1;
         if(identify(std::get<SSL*>(tuple),SMTP_EMAIL,SMTP_PASSWORD)==-1) return -1;
-        std::string content = "<html><body><h1>Verification Code</h1><p>Your verification code is: <span style=\"color: red\">";
-        content = content+ captcha +" </span></p><p> please input tour verification code in 5 minites</p></body></html>";
-        if(send_content(std::get<SSL*>(tuple),SMTP_EMAIL,emails,content)==-1) return -1; 
+        if(send_content(std::get<SSL*>(tuple),SMTP_EMAIL,emails,content,subject,content_type,charset)==-1) return -1; 
         _interface->SSL_Destory(std::get<SSL*>(tuple),std::get<SSL_CTX*>(tuple));
         close(connfd);
         return 0;
@@ -167,13 +167,13 @@ int main()
         std::string pid = std::to_string(getpid());
         stream.write(pid.c_str(), pid.length());
         stream.close();
-        auto m_logger = spdlog::rotating_logger_mt("global_logger", LOG_FILE_PATH, MAX_LOG_SIZE, 1);
+        auto m_logger = spdlog::rotating_logger_mt("global_logger", LOG_FILE_PATH, MAX_LOG_SIZE, 5);
         m_logger->set_level(LOG_LEVEL);
         spdlog::set_default_logger(m_logger);
         Net_Interface::Ptr interface = std::make_shared<Net_Interface>();
         interface->SSL_Env_Init();
         int sock = interface->Sock();
-        SendCaptchaImpl service(interface,sock);
+        SendEmailMsgImpl service(interface,sock);
         ServerBuilder builder;
         builder.AddListeningPort("127.0.0.1:5555", grpc::InsecureServerCredentials());
         builder.AddChannelArgument(GRPC_ARG_KEEPALIVE_TIME_MS, 5000);
