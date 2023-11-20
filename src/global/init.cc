@@ -148,7 +148,7 @@ void Accept_cb(int workerid,Net_Layer::Ptr net_layer)
     int connfd = worker->Accept();
     if(connfd <= 0) return ;
     Tcp_Conn_Base::Ptr conn_ptr = std::make_shared<Tcp_Conn>(connfd);
-    R->Add_Reactor(worker->Get_Epoll_Fd(),connfd,EPOLLIN);
+    R->Add_Reactor(worker->Get_Epoll_Fd(),connfd,EPOLLIN | EPOLLET);
     worker->Add_Conn(conn_ptr);
 }
 
@@ -162,9 +162,18 @@ void Read_cb(int workerid,App::Ptr app_ptr)
     uint32_t cfd = R->Get_Now_Event().data.fd;
     Tcp_Conn_Base::Ptr cptr = worker->Get_Conn(cfd);
     int len = worker->Recv(cptr,global_max_http_head_len);
-    if(len <= 0){
+    if(len == 0){
         worker->callback.Exit_cb();
         return ;
+    }
+    else if( len == -1)
+    {
+        if(errno == EINTR || errno == EWOULDBLOCK || errno == EAGAIN){
+            return;
+        }else{
+            worker->callback.Exit_cb();
+            return ;
+        }
     }
     std::string buffer(cptr->Get_Rbuffer());
     HTTP_NSP::HTTP::Ptr http = std::make_shared<HTTP_NSP::HTTP>();
@@ -192,10 +201,14 @@ void Write_cb(int workerid,Net_Layer::Ptr net_layer)
     uint32_t cfd = R->Get_Now_Event().data.fd;
     Tcp_Conn_Base::Ptr cptr = worker->Get_Conn(cfd);
     int len = worker->Send(cptr,cptr->Get_Wbuffer_Length());
-    if(len <= 0){
-        cptr->Erase_Rbuffer(cptr->Get_Wbuffer_Length());
-        return;
+    if(len == -1){
+        if(errno == EINTR || errno == EWOULDBLOCK || errno == EAGAIN){
+            return ;
+        }else{
+            worker->callback.Exit_cb();
+        }
     }
+    cptr->Erase_Wbuffer(len);
     R->Mod_Reactor(worker->Get_Epoll_Fd(),cfd,EPOLLIN);
 }
 
@@ -206,6 +219,7 @@ void Exit_cb(int workerid,Net_Layer::Ptr net_layer)
     int cfd = R->Get_Now_Event().data.fd;
     R->Del_Reactor(worker->Get_Epoll_Fd(),cfd,EPOLLIN);
     worker->Close(cfd);
+    worker->Del_Conn(cfd);
 }
 
 void  init_smtp()

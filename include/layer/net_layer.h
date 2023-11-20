@@ -3,6 +3,7 @@
 
 #include "../global/global.h"
 #include "../base/net/reactor.h"
+#include <pthread.h>
 #include <spdlog/spdlog.h>
 
 class Net_Layer

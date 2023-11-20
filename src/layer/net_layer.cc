@@ -37,9 +37,14 @@ int Net_Layer::start(uint32_t port,uint32_t backlog,uint16_t event_num)
         workers[i]->callback.Write_cb = std::bind(global_write_cb,i);
         workers[i]->callback.Exit_cb = std::bind(global_exit_cb,i);
         reactors[i] = std::make_shared<Reactor>(event_num);
-        reactors[i]->Add_Reactor(epfd,fd,EPOLLIN);
+        reactors[i]->Add_Reactor(epfd,fd,EPOLLIN | EPOLLET);
         reactors[i]->Add_Reactor(epfd,timerfd,EPOLLIN|EPOLLET);
-        threads[i] = std::make_shared<std::thread>(&Reactor::Event_Loop,reactors[i],workers[i],epfd,-1);    
+        threads[i] = std::make_shared<std::thread>(&Reactor::Event_Loop,reactors[i],workers[i],epfd,-1);
+        cpu_set_t cpuset;
+        CPU_ZERO(&cpuset);
+        //绑定到第i个CPU上
+        CPU_SET(i,&cpuset);
+        pthread_setaffinity_np(threads[i]->native_handle(),sizeof(cpu_set_t),&cpuset);
     }
 
     for(int i=0;i<workers.size();i++)
