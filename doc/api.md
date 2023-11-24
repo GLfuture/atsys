@@ -119,7 +119,7 @@ manager can only use username and password to login
 
 ```json
 need: { 
-    	"method":0,   //add
+    	"method":0,  
     	"role":1, 
     	"username":"",
     	"password":"" 
