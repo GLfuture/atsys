@@ -128,10 +128,10 @@ need: {
 
 ```json
 return: 
-	head: Token //http header中带有身份信息的token字段
-	{ 
-        "code": 
-    }
+head: Token //http header中带有身份信息的token字段
+{ 
+	"code": 
+}
 ```
 
 add:
@@ -194,11 +194,12 @@ method: 1 //delete need uid and cid(simple user del his card record  ,   manager
 method: 2 //update need uid and cid and num)
 
 ```json
-need: { 
+need:
+{ 
     	"method" :0,
        	"cname"  :"",
     	"description":"",//不超过80个字节
-      }
+}
 ```
 
 ```json
@@ -212,7 +213,7 @@ or
 ```json
 need: 
 {	
-    "method":1,
+    	"method":1,
 	"cid": int 
 }
 ```
@@ -230,9 +231,9 @@ or
  ```json
 need:
 { 
-    "method":2, 
+    	"method":2, 
  	"cid": int,
-    "num": int, //+为加,-为减 
+    	"num": int, //+为加,-为减 
 }
  ```
 
@@ -245,11 +246,11 @@ manager:
 ```json
 need:
 { 
-    "method":2 ,
+    	"method":2 ,
  	"uid": int,
-    "cid": int,
-    "num": int,
-    "description": "" //不超过80个字节，如果没有该字段或者为空就不修改卡片描述
+    	"cid": int,
+    	"num": int,
+    	"description": "" //不超过80个字节，如果没有该字段或者为空就不修改卡片描述
 }
 ```
 
@@ -307,7 +308,7 @@ need: { "method":0 }
 ```json
 return: 
 { 
-    "time":  int64_t,//时间戳 
+    	"time":  int64_t,//时间戳 
  	"code":
 }
 ```
@@ -403,11 +404,11 @@ return :
         "cid1":	{ 
         			"cardname" : concrete_cardname,
         			"num" : concrete_num(int) 
-				},
+		},
      	"cid2"：{ 
             		"cardname": concrete_cardname
             		"num" : concrete_num(int)  
-        		}
+		}
 		...
     },
 	"uid2": 
@@ -415,12 +416,12 @@ return :
         "username": 
         "cid1":	{ 
         			"cardname" : concrete_cardname,
-        			"num" : concrete_num(int) 
-				},
+        			"num" : concrete_num(int)
+		},
      	"cid2"：{ 
             		"cardname": concrete_cardname
             		"num" : concrete_num(int)  
-        		}
+		}
 		...
     },
 }
@@ -443,14 +444,14 @@ return:
 { 
     "cid1": 
  	{ 
-        "cardname": concrete_cardname,
-        "description":
-    } 
+        	"cardname": concrete_cardname,
+        	"description":
+    	} 
     "cid2": 
-    { 
-        "cardname": concrete_cardname,
-    	"description":
-    } 
+    	{ 
+        	"cardname": concrete_cardname,
+    		"description":
+    	} 
     ... 
 }
 ```
@@ -467,7 +468,8 @@ manager:/api/data/user?page=0
 
 ```json
 return: { 
-    		"concert_uid": { 
+    		"concert_uid":
+			{ 
      				"username":concert_username,
      				"email": concert_eamil,
      				"telphone": concert_telphone,
@@ -513,12 +515,13 @@ api/data/time
 ```json
 return:
 { 
-    "uid1": {
-        "username": "",
-        "sex": int ,
-        "total_time":int64_t ,  //秒级
-        "need_time":int64_t
-    }
+    "uid1":
+	{
+        	"username": "",
+        	"sex": int ,
+        	"total_time":int64_t ,  //秒级
+        	"need_time":int64_t
+    	}
 }
 ```
 
