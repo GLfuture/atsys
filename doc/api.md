@@ -435,7 +435,7 @@ other error situations return code
 
 ## get all cards' data
 
-url:/api/data/card?page=0
+url:/api/data/card
 
 (both simple user and manager can access)
 
