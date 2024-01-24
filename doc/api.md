@@ -166,7 +166,7 @@ url:/api/register
 
 "only simple user can access"
 
-doesn't  allow  repeated  username,email,telphone 
+doesn't  allow  repeated  username,email,phone 
 
 ```json
 need: 
@@ -273,7 +273,7 @@ need: { //需要改哪些字段传哪些字段，也可以全传
     	"username": varchar(15) ,
     	"password": varchar(20),
     	"email": varchar(20),
-    	"telphone": varchar(20),
+    	"phone": varchar(20),
     	"address": varchar(20),
     	"sex": int //0 女 1 男
 	}
@@ -474,7 +474,7 @@ return: {
 			{ 
      				"username":concert_username,
      				"email": concert_eamil,
-     				"telphone": concert_telphone,
+     				"phone": concert_telphone,
      				"address": concert_address,
      				"sex": //0 女 1 男 
     			}  
@@ -499,7 +499,7 @@ return:
    { 
      "username":concert_username,
      "email": concert_eamil,
-     "telphone": concert_telphone,
+     "phone": concert_telphone,
      "address": concert_address,
      "sex": //0 女 1 男 
     } 
