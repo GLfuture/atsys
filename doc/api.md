@@ -155,7 +155,9 @@ return:
 	"code":
 }
 ```
-
+## logout
+method: POST
+url: /api/logout
 
 
 ## register
