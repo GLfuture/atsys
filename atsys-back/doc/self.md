@@ -1,1 +1,0 @@
-要实现自定义接口需要在global.h的API_TYPE中添加自定义api的编号，api需要继承API_Base类,传递的context可以继承自Context_Base类,然后在event_layer中添加对应接口的url，最后在main的api_manager中注册对应api
